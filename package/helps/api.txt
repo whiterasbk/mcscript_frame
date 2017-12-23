@@ -1,0 +1,358 @@
+package函数表(部分)
+
+✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯
+    常量表
+✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯
+
+sdcard
+类型: String
+值: 安卓手机sdcard的路径(根据手机的实际情况，它的值是变化的。比如在小米手机里它的值是"/mnt/sdcard/"，而在OPPO手机下它又是"/storage/emulated/0/")
+作用: 主要用来解决手机兼容性问题
+
+✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯
+    Android服务类函数
+✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯
+
+vibrator(parInt)
+震动指定时长
+参数一: int类型 震动时间(以毫秒为单位，单位换算:1秒=1000毫秒)
+示例: vibrator(1000);//震动1秒
+
+✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯
+    Android媒体类函数
+✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯
+
+media.play(parString)
+播放指定路径下的音乐
+参数一: String类型 音乐文件的路径
+示例: media.play(sdcard + "games/com.mojang/mcpe-bgm.mp3");//播放音乐
+
+media.pause()
+暂停当前正在播放的音乐
+示例: media.pause();//暂停播放
+
+media.stop()
+停止当前正在播放的音乐
+示例: media.stop();//停止播放
+
+media.reset()
+将播放系统重置(播放下一首音乐之前要调用这个函数)
+示例: media.reset();//重置
+
+VideoDialog(parString)
+播放指定路径下的视频
+参数一: String类型 视频文件的路径
+注意: 此函数要运行在UI线程中
+示例: runOnUiThread(function(){
+		VideoDialog("/mnt/sdcard/mcpe.mp4");
+	 })
+
+tts.setLanguage(parOnject)
+设置文本转语言(TTS)的语言
+参数一: Object类型 语言
+示例: tts.setLanguage(Locale.English);
+
+tts.speak(parString)
+将指定字符串通过扬声器读出来(如果手机不支持TTS那么这个函数就没有什么用了)
+参数一: String类型 要读的内容
+示例: tts.speak("Mr Cobb have a job offer would like to discuss with you");
+
+✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯
+    Android网络类函数
+✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯
+
+DownloadUtil.setUrl(parString)
+设置要下载的文件的网址(就是那个http://www.什么的)
+参数一: String类型 网址
+
+DownloadUtil.setDownLoadPath(parString)
+设置要把文件下载到手机什么的位置
+参数一: String类型 文件路径
+
+DownloadUtil.setTimeout(parInt)
+设置超时时间(多少秒以后认为超时)
+参数一: int类型 时间(以毫秒为单位)
+
+DownloadUtil.download()
+下载文件
+
+DownloadUtil.downloadByThread()
+在新线程里下载文件
+
+DownloadUtil.reset()
+重置下载系统
+
+下载文件示例:
+var url = "https://vd1.bdstatic.com/mda-hgp018h7j2rbr778/mda-hgp018h7j2rbr778.mp4?playlist=%5B%22hd%22%2C%22sc%22%5D&auth_key=1502415712-0-0-443ff2ddd4caaee4f796cd43135108cd&bcevod_channel=searchbox_feed";//这个链接里的是什么我就不说了，你可以自己下载来看是什么东西
+DownloadUtil.setUrl(url);
+DownloadUtil.setDownLoadPath(sdcard + "xingyouji-1st-xuamchuan.mp4");
+DownloadUtil.setTimeout(10 * 1000);
+DownloadUtil.download();
+DownloadUtil.reset();
+print("下载完成");
+
+WebDialog(parString, parString)
+打开一个网站
+参数一: String类型 网站的网址
+参数二: String类型 打开对话框后对话框的标题
+注意: 此函数必须运行在UI线程里
+示例: WebDialog("http://www.youku.com/", "优酷视频");
+
+✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯
+    Android输出类函数
+✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯
+
+Debug(parObject)
+输出调试信息
+参数一: Object类型 要输出的信息
+示例: Debug("Hello ModPE");
+
+MessageDialog(parString, parString)
+输出信息
+参数一: String类型 要显示的信息内容
+参数二: String类型 对话框的标题
+示例: MessageDialog("Hello ModPE", "你好");
+
+✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯
+    Android配置类函数
+✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯
+
+PropertiesINI.load(parString)
+加载配置文件
+参数一: String类型 配置文件的路径
+示例: PropertiesINI.load("/mnt/sdcard/ini.txt");
+
+PropertiesINI.set(parString, parString)
+设置配置参数
+参数一: String类型 参数名称
+参数二: String类型 如果这个参数不存在，那么就返回这个值
+示例: PropertiesINI.set("name", "abc");
+
+PropertiesINI.get(parString) 
+获取配置参数
+参数一: String类型 参数名称
+返回值 String类型 对应参数的值
+示例: PropertiesINI.get("name");
+
+PropertiesINI.clear()
+清空所有记录
+示例: PropertiesINI.clear();
+
+PropertiesINI.save()
+保存配置
+示例: PropertiesINI.save();
+
+✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯
+    Android文件类函数
+✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯
+
+makeFileExist(parString)
+使文件存在(创建文件)
+参数一: String类型 文件的路径
+说明: 如果这个路径所代表的文件存在，那么不进行任何操作，如果不存在，那么就创建这个文件
+示例: makeFileExist("/mnt/sdcard/about/String/String/String/type/asset/android.android");
+
+getFileName(parString)
+获取文件的名字
+参数一: String类型 文件的路径
+返回值: String类型 文件的名字
+示例: getFileName("/mnt/sdcard/image.png");//返回 "image.png"
+
+readByte(parString)
+获取文件的字节
+参数一: String类型 文件的路径
+返回值: byte[]类型(字节数组) 文件的字节
+示例: readByte("/mnt/sdcard/script.js");
+
+readText(parString)
+获取文件的内容
+参数一: String类型 文件的路径
+返回值: String类型 文件的内容
+示例: readText("/mnt/sdcard/script.js");
+
+writeText(parString, parString)
+将字符串写入文件
+参数一: String类型 要写入的字符串
+参数二: String类型 文件的路径
+示例: writeText("print(233);", "/mnt/sdcard/script.js");
+
+writeByte(parString, parString)
+将字节数组写入文件
+参数一: byte[]类型 要写入的字节数组
+参数二: String类型 文件的路径
+示例: var bytes = ModPE.getBytesFromTexturePack("images/1.png");
+	 writeByte(bytes, "/mnt/sdcard/script.js")
+
+TextFileChecker(parString, parString)
+查看文本文件的内容
+参数一: String类型 文本文件的路径
+参数二: String类型 对话框的标题
+注意: 此函数要运行在UI线程里
+示例: runOnUiThread(function(){
+		TextFileChecker("/mnt/sdcard/script.js", "文件内容");
+	 });
+
+ImageDialog(parString, parString)
+查看图片的内容
+参数一: String类型 图片文件的路径
+参数二: String类型 对话框的标题
+注意: 此函数要运行在UI线程里
+示例: runOnUiThread(function(){
+		ImageDialog("/mnt/sdcard/image.png", "图片内容");
+	 });
+
+FontDialog(parString)
+查看字体文件的内容
+参数一: String类型字体文件的路径
+注意: 此函数要运行在UI线程里
+示例: runOnUiThread(function(){
+		FontDialog("/mnt/sdcard/font.ttf");
+	 });
+
+ExportDialog(parString)
+显示文件浏览器
+参数一: String类型 文件夹的路径
+注意: 此函数要运行在UI线程里
+示例: runOnUiThread(function(){
+		ExportDialog("/mnt/sdcard/Android/");
+	 });
+
+UnZipProgress(parString, parString, parString)
+解压文件(对话框+进度条)
+参数一: String类型 对话框的标题
+参数二: String类型 压缩文件的路径
+参数三: String类型 解压目录的路径
+注意: 此函数要运行在UI线程里
+示例: runOnUiThread(function(){
+		UnZipProgress("解压文件", "/mnt/sdcard/ssr.zip", "/mnt/sdcard/ssr/");
+	 });
+
+ZipProgress(parString, parString, parString)
+压缩文件(对话框+进度条)
+参数一: String类型 对话框的标题
+参数二: String类型 压缩文件的路径
+参数三: String类型 要压缩的文件夹的路径
+注意: 此函数要运行在UI线程里
+示例: runOnUiThread(function(){
+		UnZipProgress("解压文件", "/mnt/sdcard/games.zip", "/mnt/sdcard/games/");
+	 });
+
+✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯
+    Android随机类函数
+✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯
+
+randomItem(parArray)
+从数组里面随机选取一个元素返回
+参数一: Array类型 数组
+返回值类型: Object类型
+示例: randomItem([1, 3, 4, 7, 1, 8]);
+
+randomRun(parFunction, parDouble)
+根据随机值决定是否执行一个函数
+参数一: function类型 函数名称
+参数二: double类型 函数执行的可能性(0~1之间的小数)
+示例: randomRun(function(){
+		//要执行的代码
+	 }, 0.1);
+
+randomAlgorithms.boolean(parDouble)
+根据可能性来返回一个布尔值
+参数一: double类型 可能性(0~1之间的小数)
+返回值: boolean类型 返回的结果
+示例: randomAlgorithms.boolean(0.4);
+
+randomAlgorithms.range(parInt, parInt)
+随机返回一个范围里的数值
+参数一: int类型 范围的开始
+参数二: int类型 范围的结束
+返回值: int类型 一个在给定范围的数值
+示例: randomAlgorithms.range(0, 9);//返回0~9任意一个数字
+
+✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯
+    Android线程类函数
+✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯
+
+newThread(parFunction)
+创建一个新的线程
+参数一: function类型 函数的名字
+返回值: java.lang.Thread类型 创建好的线程
+示例: function a(){
+	//要执行的代码
+}
+newThread(a);
+
+startNewThread(parFunction)
+创建并启动一个新的线程
+参数一: function类型 函数的名字
+返回值: java.lang.Thread类型 创建好的线程
+示例: function a(){
+	//要执行的代码
+}
+startNewThread(a);
+
+runOnUiThread(parFunction)
+运行在UI线程
+参数一: function类型 函数的名字
+示例: function a(){
+	//要执行的代码
+}
+runOnUiThread(a);
+
+✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯
+    Android压缩类函数
+✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯
+
+UnZip(parString, parString)
+解压文件
+参数一: String类型 压缩文件的路径
+参数二: String类型 解压目录的路径
+示例: UnZip("/mnt/sdcard/ssr.zip", "/mnt/sdcard/ssr/");
+
+ZipAllFile(parString, parString)
+压缩文件
+参数一: String类型 压缩文件的路径
+参数二: String类型 要的压缩文件夹的路径
+示例: ZipAllFile("/mnt/sdcard/games.zip", "/mnt/sdcard/games/")
+
+✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯
+    Android杂项类函数
+✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯
+
+delayRun(parInt, parFunction)
+延迟运行一个函数
+参数一: int类型 延迟的时间
+参数二: function类型 函数名称
+示例: function a(){/*要运行的代码*/} delayRun(5 * 1000, a);
+
+getTime()
+获取当前的时间(yy mm dd..)
+返回值: String类型 当前时间
+示例: print(getTime());
+
+showScriptInfo()
+显示这个Mod的信息，包括作者，版权，备注，时间，Mod的logo等
+示例: showScriptInfo();
+
+AndroidResourceChecker()
+检查安卓的资源
+注意: 此函数要运行在UI线程里
+
+CheckThemes() 
+检查安卓的主题
+注意: 此函数要运行在UI线程里
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

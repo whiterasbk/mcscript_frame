@@ -1,0 +1,32 @@
+{
+   "scripts": [
+      {
+         "name": "mcpe",
+         "path": "mcpe.js"
+      },
+      {
+      	 "name": "run",
+      	 "path": "run.js"
+      }
+   ],
+   "inf": {
+      "extra": "此MOD包由whiter编写，可以任意转载但要注明版权作者等信息，未经允许禁止盗用源码",
+      "introduction": "末影工作室出品",
+      "maker": "whiter",
+      "time": "2017.7.22",
+      "msgTitle": "欢迎使用末影API",
+      "iconPath": "icon.png",
+      "copyright": "whiter编写",
+      "version": "1.0.0"
+   },
+   "libs": [
+      {
+          "name": "BaseLib",
+          "path": "libs/base.bin"
+      },
+      {
+          "name": "MCPELib",
+          "path": "libs/mcpe.bin"
+      }
+   ]
+}

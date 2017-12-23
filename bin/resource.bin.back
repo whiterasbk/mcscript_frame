@@ -1,0 +1,4202 @@
+var StringType = (new java.lang.String("==").class);
+var ByteType = java.lang.Byte.TYPE;
+
+var LayoutParams =
+{
+	FillParent  :  android.view.ViewGroup.LayoutParams.FILL_PARENT,
+	WrapContent : android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
+	MatchParent : android.view.ViewGroup.LayoutParams.MATCH_PARENT,
+	getParams   : function(Width, Height) { 
+		return new android.view.ViewGroup.LayoutParams(Width == null ? -2 : Width , Height == null ? -2 : Height);
+	},
+	getWeight : function(Width, Height, Weight) {
+		return new android.widget.LinearLayout.LayoutParams(Width == null ? -2 : Width , Height == null ? -2 : Height, Weight);
+	}
+};
+var InputType = 
+{
+    DataTime          : android.text.InputType.TYPE_CLASS_DATETIME,
+	Text              : android.text.InputType.TYPE_CLASS_TEXT,
+	Number            : android.text.InputType.TYPE_CLASS_NUMBER,
+	VariationPassWord : android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD,
+	EmailAddress      : android.text.InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
+};
+var Interpolator = 
+{
+	Linear               : new android.view.animation.LinearInterpolator(),
+	Accelerate           : new android.view.animation.AccelerateInterpolator(),
+	AccelerateDecelerate : new android.view.animation.AccelerateDecelerateInterpolator(),
+	Decelerate           : new android.view.animation.DecelerateInterpolator(),
+	Bounce    	         : new android.view.animation.BounceInterpolator(),
+	Cycle                : function(FloatSin) {
+		return new android.view.animation.CycleInterpolator(java.lang.Float(FloatSin.toString()));
+	}
+};
+var AnimationRepeatMode = {
+	reverse:android.view.animation.Animation.REVERSE
+};
+var AnimationRepeatCount = {
+	infinite:android.view.animation.Animation.INFINITE
+};
+var Gravity = 
+{
+	Centre : android.view.Gravity.CENTER,
+	Left : android.view.Gravity.LEFT,
+	Right : android.view.Gravity.RIGHT,
+	Bottom : android.view.Gravity.BOTTOM,
+	Top : android.view.Gravity.TOP
+};
+
+var Adapters =
+{
+	Params :
+	{
+		full : LayoutParams.getParams(-1, -1),
+		wider : LayoutParams.getParams(-1, -2),
+		heighter : LayoutParams.getParams(-2, -1),
+		warp : LayoutParams.getParams(-2, -2)
+	}
+};
+var ScreenOrientation = {
+	vertical:android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT,
+	horizontal:android.content.pm.ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+};
+var Defaults =
+{
+	DialogTitleColor : "#ff0028",
+	DialogTitleClick : function(v) {Toast({msg:"你点标题干嘛。。。"});},
+	AlertDialogColor : "#ff0028",
+	sdcard : "/sdcard",
+	media_controller_Background : null,
+	UnZipBufferSize:20 * 1024,
+	ZipBufferSize:20 * 1024,
+	DownloadBufferSize: 1024 * 20,
+	ConnectionTimeout:10 * 1000,
+	TTFTestText:Math.random() > 0.5 ? "这是个测试字符串" : " It's a test string",
+	LogcatDir:sdcard + "whiter.js/logcat.db"
+};
+var XmlPullSign = 
+{
+	start_tag : org.xmlpull.v1.XmlPullParser.START_TAG,
+	start_document : org.xmlpull.v1.XmlPullParser.START_DOCUMENT,
+	end_document : org.xmlpull.v1.XmlPullParser.END_DOCUMENT,
+	end_tag : org.xmlpull.v1.XmlPullParser.END_TAG
+};
+var Locale = {
+	US:java.util.Locale.US,
+    Canada:java.util.Locale.CANADA,
+	Canada_French:java.util.Locale.CANADA_FRENCH,
+	China:java.util.Locale.CHINA,
+	Chinese:java.util.Locale.CHINESE,
+	English:java.util.Locale.ENGLISH,
+	France:java.util.Locale.FRANCE,
+	French:java.util.Locale.FRENCH,
+	German:java.util.Locale.GERMAN,
+	Germany:java.util.Locale.GERMANY,
+	Italian:java.util.Locale.ITALIAN,
+	Italy:java.util.Locale.ITALY,
+	Japan:java.util.Locale.JAPAN,
+	Japanese:java.util.Locale.JAPANESE,
+	Taiwan:java.util.Locale.TAIWAN,
+	Simplified_Chinese:java.util.Locale.SIMPLIFIED_CHINESE,
+	Traditional_Chinese:java.util.Locale.TRADITIONAL_CHINESE,
+	UK:java.util.Locale.UK
+};
+var AudioStreamType = {
+	Alarm:android.media.AudioManager.STREAM_ALARM,
+	Dtmf:android.media.AudioManager.STREAM_DTMF,
+	Music:android.media.AudioManager.STREAM_MUSIC,
+	Notification:android.media.AudioManager.STREAM_NOTIFICATION,
+	Ring:android.media.AudioManager.STREAM_RING,
+	System:android.media.AudioManager.STREAM_SYSTEM,
+	VoiceCall:android.media.AudioManager.STREAM_VOICE_CALL,
+};
+var AudioManagerFlags = {
+	AllowRingModes:android.media.AudioManager.FLAG_ALLOW_RINGER_MODES,
+	PlaySound:android.media.AudioManager.FLAG_PLAY_SOUND,
+	RemoveSoundAndVibrate: android.media.AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE,
+	ShowUI:android.media.AudioManager.FLAG_SHOW_UI,
+	Vibrate:android.media.AudioManager.FLAG_VIBRATE
+};
+var TTSQueue = {
+	flush:android.speech.tts.TextToSpeech.QUEUE_FLUSH,
+	add:android.speech.tts.TextToSpeech.QUEUE_ADD
+};
+var ProgressStyle = {
+	Horizontal:android.app.ProgressDialog.STYLE_HORIZONTAL,
+	Spinner:android.app.ProgressDialog.STYLE_SPINNER
+};
+var ProgressAction = {
+	setMessage:3,
+	setProgress:2,
+	Show:1,
+	Dismiss:0
+};
+var TextUtilsTruncateAt = {
+	End:android.text.TextUtils.TruncateAt.END,
+	Middle:android.text.TextUtils.TruncateAt.MIDDLE,
+	Start:android.text.TextUtils.TruncateAt.START,
+	Marquee:android.text.TextUtils.TruncateAt.MARQUEE
+};
+var MediaMode = {
+	Local:1,
+	URL:2
+};
+var NumberMode = {
+	Double:0,
+	Integer:1,
+	Float:2,
+	Long:3,
+	Short:4
+};
+var SimpleListItemResources = {
+	1:android.R.layout.simple_list_item_1,
+    2:android.R.layout.simple_list_item_2,
+    activated1:android.R.layout.simple_list_item_activated_1,
+    activated2:android.R.layout.simple_list_item_activated_2,
+    checked:android.R.layout.simple_list_item_checked,
+    multiple_choice:android.R.layout.simple_list_item_multiple_choice,
+    single_choice:android.R.layout.simple_list_item_single_choice
+};
+var PropertiesINILoadMode = {
+	TEXT : "text",
+	XML : "xml"
+};
+var SearchMode = {
+	File : "file",
+	Dir : "dir",
+	Both : "both"
+};
+var ERMarks = {
+	large : "Large",
+	small : "Small"
+};
+var FileType = {
+	file : "file",
+	dir : "dir"
+};
+var CursorType = {
+	Blob:android.database.Cursor.FIELD_TYPE_BLOB,
+    Float:android.database.Cursor.FIELD_TYPE_FLOAT,
+    Int:android.database.Cursor.FIELD_TYPE_INTEGER,
+    Null:android.database.Cursor.FIELD_TYPE_NULL,
+    String:android.database.Cursor.FIELD_TYPE_STRING
+};
+var QQUrl = {
+	base:{
+		head:"mqqwpa://im/chat?chat_type=",
+		connect:"&uin=",
+		version:"&version=1"
+	},
+	type:{
+		number:"wpa",
+		group:"group"
+	},
+	getNumberUrl:function(number){
+		return this.base.head + this.type.number + this.base.connect + number + this.base.version;
+	},
+	getGroupUrl:function(number){
+		return this.base.head + this.type.group + this.base.connect + number + this.base.version;
+	}
+};
+var ListAdapter = {
+	array:function(list, layout){
+		return new android.widget.ArrayAdapter(ctx, layout == null ? FormatId(SimpleListItemResources[1]) : layout, ToJavaArray(list, StringType));
+	},
+};
+
+function vibrator(min) {
+	var vibrator = ctx.getSystemService(android.content.Context.VIBRATOR_SERVICE);
+	vibrator.vibrate(min);
+}
+var PendingIntentFactory = {
+	create:function(intent) {
+		return android.app.PendingIntent.getActivity(ctx, 0, intent, 0);
+	}
+};
+var notifyFactory = {
+	getManager:function() {
+		return ctx.getSystemService(ctx.NOTIFICATION_SERVICE);
+	},
+	newInstance:function(arg) {
+		var n = new android.app.Notification.Builder(ctx);
+
+		n.setWhen(java.lang.System.currentTimeMillis());
+		n.setAutoCancel(true);
+		n.setTicker("Script-->>新消息");
+		
+		if (arg != null)
+		{
+			if (arg.AutoCancel != null) n.setAutoCancel(arg.AutoCancel);
+			if (arg.Ticker != null) n.setTicker(arg.Ticker);
+			if (arg.SmallIcon != null) n.setSmallIcon(arg.SmallIcon);
+			if (arg.Title != null) n.setContentTitle(arg.Title);
+			if (arg.Text != null) n.setContentText(arg.Text);
+			if (arg.When != null) n.setWhen(arg.When);
+			if (arg.Intent != null) n.setContentIntent(arg.Intent);
+
+			if (arg.ac != null) n.setAutoCancel(arg.ac);
+			if (arg.tick != null) n.setTicker(arg.tick);
+			if (arg.icon != null) n.setSmallIcon(arg.icon);
+			if (arg.title != null) n.setContentTitle(arg.title);
+			if (arg.t != null) n.setContentText(arg.t);
+			if (arg.w != null) n.setWhen(arg.w);
+			if (arg.i != null) n.setContentIntent(arg.i);
+		}
+        return n.build();
+	},
+	notify:function(n, id) {
+		this.getManager().notify(id, n);
+	},
+	cancel:function(id) {
+		this.getManager().cancel(id);
+	}
+};
+var AndroidResourceManager = {
+	ares:android.content.res.Resources.getSystem(),
+	getDrawable:function(res_id, theme){
+		if (theme == null) return this.ares.getDrawable(FormatId(res_id));
+		else return this.ares.getDrawable(FormatId(res_id), theme);
+	},
+	getAnimation:function(res_id){
+		return android.view.animation.AnimationUtils.loadAnimation(ctx, FormatId(res_id));
+	},
+	getInterpolator:function(res_id){
+		return android.view.animation.AnimationUtils.loadInterpolator(ctx, FormatId(res_id));
+	},
+	getAssets:function(){
+		return this.ares.getAssets();
+	},
+	getResourceEntryName:function(id){
+		return this.ares.getResourceEntryName(FormatId(id));
+	},
+	getResourceName:function(id){
+		return this.ares.getResourceName(FormatId(id));
+	},
+	getResourcePackageName:function(id){
+		return this.ares.getResourcePackageName(FormatId(id));
+	},
+	getResourceTypeName:function(id){
+		return this.ares.getResourceTypeName(FormatId(id));
+	}
+};
+var Assets = {
+	open:function(fileName){
+		return AndroidResourceManager.getAssets().open(fileName);
+	},
+	close:function(){
+		AndroidResourceManager.getAssets().close();
+	},
+	list:function(folder){
+		return AndroidResourceManager.getAssets().list(folder);
+	}
+};
+function FormatId(id){
+	if (typeof id == "number"){
+		return id;
+	} else
+	if (typeof id == "string"){
+		return eval("android.R." + id);
+	}
+}
+
+function ToJavaArray(array, type) {
+	if (array != null)
+	{
+		var JavaArray = java.lang.reflect.Array.newInstance(type, array.length);
+		for (var i = 0; i < array.length; i++)
+			JavaArray[i] = array[i];
+		return JavaArray;
+	}
+	else
+	{
+		return java.lang.reflect.Array.newInstance(type, 0);
+	}
+}
+function toJavaStringArray(array) {
+	return ToJavaArray(array, (StringType));
+}
+function getJavaArray(type, length) {
+	return java.lang.reflect.Array.newInstance(type, length);
+}
+var StriptManager = {
+	getAndroidDrawableWithTheme:function(ResourceName) {
+		if (typeof ResourceName == typeof 1)
+			return ctx.getResources().getDrawable(ResourceName, ctx.getTheme());
+		else
+			return ctx.getResources().getDrawable(android["R"]["drawable"][ResourceName], ctx.getTheme());
+	},
+	getAndroidDrawable:function(ResourceName) {
+		if (typeof ResourceName == typeof 1)
+			return ctx.getResources().getDrawable(ResourceName);
+		else
+			return ctx.getResources().getDrawable(android["R"]["drawable"][ResourceName]);
+	},
+	setTheme:function(Theme) {
+		if (typeof Theme == typeof 1)
+			ctx.setTheme(Theme);
+		else
+			ctx.setTheme(android['R']['style'][Theme]);
+	}
+};
+function getRunTime(Action) {
+	var start = java.lang.System.currentTimeMillis();
+	Action.Do();
+    var end = java.lang.System.currentTimeMillis();
+    return end - start;
+}
+function Debug(obj) {
+	if (debug)
+	{
+		Exception(obj.toString());
+	}
+	else
+	{
+		Toast(obj.toString());
+	}
+}
+function getTime(){
+	var date = new Date();
+	return date.getFullYear() + "." + add(date.getMonth()) +  "." + date.getDate() + "  " +  date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + ":" + date.getMilliseconds();  
+	function add(m){
+		if (m <= 11)
+			return m + 1;
+		else
+		if (m == 12)
+			return 1;
+	}
+}
+function parseJavaFloat(m){
+	return java.lang.Float.parseFloat(m.toString());
+}
+function delayRun(time, fun) {
+	new android.os.Handler().postDelayed(new java.lang.Runnable({run:function(){try{fun();}catch(e){Exception(e);}}}), time);
+}
+
+var ScriptMediaPlayer = new android.media.MediaPlayer();
+var media_seek_onLongClicked = false, media_seek_tpopx = 0, media_seek_tpopy = 0, media_seek_mX, media_seek_mY;
+var media = {
+	play:function(path, mode){
+		if (ScriptMediaPlayer.isPlaying())
+			ScriptMediaPlayer.stop();
+		ScriptMediaPlayer.reset();
+		
+		if (mode == null || mode == MediaMode.Local)
+			ScriptMediaPlayer.setDataSource(path);
+		else if (mode == MediaMode.URL)
+			ScriptMediaPlayer.setDataSource(this, parseURI(path));
+		
+		ScriptMediaPlayer.prepare();
+		ScriptMediaPlayer.start();
+		
+		media_controller_seek.setMax(ScriptMediaPlayer.getDuration());
+	},
+	stop:function(){
+		if (ScriptMediaPlayer.isPlaying())
+			ScriptMediaPlayer.stop();
+	},
+	pause:function(){
+		if (ScriptMediaPlayer.isPlaying())
+			ScriptMediaPlayer.pause();
+	},
+	seekTo:function(num){
+		if (ScriptMediaPlayer.isPlaying())
+			ScriptMediaPlayer.seekTo(num);
+	},
+	start:function(){
+		ScriptMediaPlayer.start();
+	},
+	isplaying:function(){
+		return ScriptMediaPlayer.isPlaying();
+	}
+};
+var media_controller_seek = SeekBar({lp:Adapters.Params.wider, osc:{osp:function(seek, int){
+	if (ScriptMediaPlayer.isPlaying())
+		media.seekTo(seek.getProgress());
+}}});
+var media_controller_layout = LinearLayout({b : Defaults.media_controller_Background, vs:[
+	media_controller_seek,
+	LinearLayout({o:0, lp:Adapters.Params.wider, g:Gravity.Right, vs:[
+		Button({b:android.R.drawable.ic_media_pause, lp:LayoutParams.getParams(50, 50), oc:function(v){
+			if (media.isplaying())
+			{
+				v.setBackgroundDrawable(getBitmap(android.R.drawable.ic_media_play));
+				media.pause();
+			}
+			else
+			{
+				v.setBackgroundDrawable(getBitmap(android.R.drawable.ic_media_pause));
+				media.start();
+			}
+		}, olc:function(){media_controller_window.dismiss();}}),
+		Button({b:android.R.drawable.ic_menu_compass, lp:LayoutParams.getParams(50, 50), oc:function(){Toast({msg:"长按移动"});}, olc:(function(v){media_seek_onLongClicked = true;}),
+			ot:(function(v, e){
+				if (!media_seek_onLongClicked)
+				{
+					media_seek_mX = e.getX();
+					media_seek_mY = e.getY();
+				}
+				if (media_seek_onLongClicked)
+				{
+					var a = e.getAction();
+					if (a == 2)
+					{
+						var delX = parseInt(e.getX() - media_seek_mX) * -1 / 10;
+						var delY = parseInt(e.getY() - media_seek_mY) * -1 / 10;
+						media_seek_tpopx = media_seek_tpopx - delX;
+						media_seek_tpopy = media_seek_tpopy - delY;
+						media_controller_window.update(parseInt(media_seek_tpopx), parseInt(media_seek_tpopy), -1, -1);
+					}
+					if (a == 1) media_seek_onLongClicked = false;
+				}
+			})
+		})
+	]})
+]});
+var media_controller_window = BaseWindow({
+	Height:80,
+	Width:250,
+	View:media_controller_layout,
+	Show:false,
+	Focusable:false
+});
+ScriptMediaPlayer.setOnCompletionListener(new android.media.MediaPlayer.OnCompletionListener({onCompletion:function(MediaPlayer){
+	runOnUiThread(function(){
+		if (media_controller_window.isShowing())
+			media_controller_window.dismiss();
+	});
+}}));
+
+var ScriptVideoView = null;
+var VideoViewNameTitle = TextView({t:"NullPointer", ml:1});
+var VideoViewTitle = LinearLayout({o:1, vs:[VideoViewNameTitle]});
+
+var VideoViewBuilder = null;
+var VideoViewDialog = null;
+//var video_seek_onLongClicked = false, video_seek_tpopx = 0, video_seek_tpopy = 0, video_seek_mX, video_seek_mY;
+
+runOnUiThread(function(){
+	ScriptVideoView = new android.widget.VideoView(ctx);
+	
+    VideoViewBuilder = baseDialog({
+		Cancelable:true,
+		CustomTitle:VideoViewTitle,
+		View:ScriptVideoView,
+		Show:false,
+		PositiveButton:{Text:"关闭"}
+	});
+	
+	VideoViewDialog = VideoViewBuilder.create();
+});
+
+var video = {
+	Duration:0,
+	play:function(path, mode){
+		if (ScriptVideoView.isPlaying())
+			ScriptVideoView.stopPlayback();
+		
+		ScriptVideoView.resume();
+		
+		if (mode == null || mode == MediaMode.Local)
+			ScriptVideoView.setVideoPath(path);
+		else if (mode == MediaMode.URL)
+			ScriptVideoView.setVideoURI(parseURI(path));
+			
+		VideoViewNameTitle.setText(new java.io.File(path).getName());
+		
+		ScriptVideoView.start();
+		
+		
+		var tempMedia = new android.media.MediaPlayer();
+   		tempMedia.setDataSource(path);
+   		tempMedia.prepare();
+ 		
+   		this.Duration = tempMedia.getDuration();
+		tempMedia.release();
+		
+		video_controller_seek.setMax(this.Duration);
+		
+		VideoViewDialog.show();
+		ScriptVideoView.setClickable(true);
+
+		//video_controller_window.update();
+	},
+	stop:function(){
+		if (ScriptVideoView.isPlaying())
+			ScriptVideoView.stopPlayback();
+	},
+	pause:function(){
+		if (ScriptVideoView.isPlaying())
+			ScriptVideoView.pause();
+	},
+	seekTo:function(num){
+		if (ScriptVideoView.isPlaying())
+			ScriptVideoView.seekTo(num);
+	},
+	start:function(){
+		ScriptVideoView.start();
+	},
+	isplaying:function(){
+		return ScriptVideoView.isPlaying();
+	}
+};
+
+var video_controller_seek = SeekBar({lp:LayoutParams.getParams(400, -2), osc:{osp:function(seek, int){
+	if (ScriptVideoView.isPlaying())
+		video.seekTo(seek.getProgress());
+}}});
+var video_controller_layout = LinearLayout({o:0, b : Defaults.media_controller_Background, vs:[
+	video_controller_seek,
+	LinearLayout({o:1, lp:Adapters.Params.wider, g:Gravity.Right, vs:[
+		Button({b:android.R.drawable.ic_media_pause, lp:LayoutParams.getParams(50, 50), oc:function(v){
+			if (video.isplaying())
+			{
+				v.setBackgroundDrawable(getBitmap(android.R.drawable.ic_media_play));
+				video.pause();
+			}
+			else
+			{
+				v.setBackgroundDrawable(getBitmap(android.R.drawable.ic_media_pause));
+				video.start();
+			}
+		}, olc:function(){/*video_controller_window.dismiss();*/}}),
+		//Button({b:android.R.drawable.ic_menu_compass, lp:LayoutParams.getParams(50, 50), oc:function(){Toast({msg:"长按移动"});}, olc:(function(v){video_seek_onLongClicked = true;}),ot:(function(v, e){if (!video_seek_onLongClicked){video_seek_mX = e.getX();video_seek_mY = e.getY();}if (video_seek_onLongClicked){var a = e.getAction();if (a == 2){var delX = parseInt(e.getX() - video_seek_mX) * -1 / 10;var delY = parseInt(e.getY() - video_seek_mY) * -1 / 10;video_seek_tpopx = video_seek_tpopx - delX;video_seek_tpopy = video_seek_tpopy - delY;video_controller_window.update(parseInt(video_seek_tpopx), parseInt(video_seek_tpopy), -1, -1);}if (a == 1) video_seek_onLongClicked = false;}})})
+	]})
+]});
+/*
+var video_controller_window = BaseWindow({
+	Height:80,
+	Width:250,
+	View:new TextView(),// video_controller_layout,
+	Show:false,
+	Focusable:false
+});
+ScriptVideoView.setOnCompletionListener(new android.media.MediaPlayer.OnCompletionListener({onCompletion:function(MediaPlayer){
+	runOnUiThread(function(){
+		if (video_controller_window.isShowing())
+			video_controller_window.dismiss();
+	});
+}}));
+*/
+VideoViewTitle.addView(video_controller_layout);
+
+var AndroidTTS_Language = Locale.English;
+var tts = {
+	setLanguage:function(language) {
+		AndroidTTS_Language = language;
+	},
+	speak:function(str, queue){
+			var tts = new android.speech.tts.TextToSpeech(ctx, new android.speech.tts.TextToSpeech.OnInitListener({onInit:function(int){try{
+			if (int == android.speech.tts.TextToSpeech.SUCCESS)
+    		{
+         		var r = tts.setLanguage(AndroidTTS_Language);
+        		if (r != android.speech.tts.TextToSpeech.LANG_COUNTRY_VAR_AVAILABLE && r != android.speech.tts.TextToSpeech.LANG_AVAILABLE)
+        		{
+             		Exception("不支持此语言的朗读");
+        		};
+				tts.speak(str, queue == null ? TTSQueue.flush : queue, null, "speech");
+    		}
+    		else
+    		{
+         		Exception("未加载成功");
+    		}
+		}
+		catch(e){Exception(e);}
+	}}));
+    }
+};
+
+/*
+//var AndroidTTS = null;
+var tts = {
+	setLanguage:function(language) {
+		var r = AndroidTTS.setLanguage(language);
+        if (r != android.speech.tts.TextToSpeech.LANG_COUNTRY_VAR_AVAILABLE && r != android.speech.tts.TextToSpeech.LANG_AVAILABLE)
+        {
+             Exception("不支持此语言的朗读");
+        }
+	},
+	speak:function(str, queue){
+        AndroidTTS.speak(str, queue == null ? TTSQueue.flush : queue, null, "speech");
+    },
+	shutdown:function(){
+		AndroidTTS.shutdown();
+	},
+	static_speak:function(language, text, queue){
+		this.setLanguage(tts, language);
+		this.speak(tts, text, queue);
+	}
+};
+AndroidTTS = new android.speech.tts.TextToSpeech(ctx, new android.speech.tts.TextToSpeech.OnInitListener({onInit:function(int){try{
+		if (int == android.speech.tts.TextToSpeech.SUCCESS)
+    	{
+         	tts.setLanguage(Locale.English);
+			tts.speak("AndroidTTS = new android.speech.tts.TextToSpeech");
+    	}
+    	else
+    	{
+         	Exception("未加载成功");
+    	}
+	}
+	catch(e){Exception(e);}
+}}));
+
+
+
+
+var TTSFactory = {
+	newInstance:function(init){
+		return new AndroidTTS(ctx, new AndroidTTS.OnInitListener({onInit:function(int){try{init(int);}catch(e){Exception(e);}}}));
+	},
+	newPrettyInstance:function(onInitSuccessfully){
+		return this.newInstance(function(int){
+			 if (int == AndroidTTS.SUCCESS)
+             {
+				 if (onInitSuccessfully != null)
+					 onInitSuccessfully();
+                  //var r = tts.setLanguage(language);
+						
+//                   if (r != AndroidTTS.LANG_COUNTRY_VAR_AVAILABLE && r != AndroidTTS.LANG_AVAILABLE)
+//                   {
+//                          throw  SystemException("不支持此语言的朗读");
+//                   }
+            }
+			else
+			{
+				throw  SystemException("未加载成功");
+			}
+		});
+	},
+	setLanguage:function(tts, language){
+		var r = tts.setLanguage(language);
+		if (r != AndroidTTS.LANG_COUNTRY_VAR_AVAILABLE && r != AndroidTTS.LANG_AVAILABLE)
+		{
+            throw  SystemException("不支持此语言的朗读");
+		}
+	},
+	
+};
+
+*/
+
+var audio = {
+	Instance:ctx.getSystemService(ctx.AUDIO_SERVICE),
+	adjustStreamVolume:function(type, direction, flags){
+		this.Instance.adjustStreamVolume(type, direction, flags == null ? AudioManagerFlags.ShowUI : flags);
+	},
+	setStreamVolume:function(type, index, flags){
+		this.Instance.setStreamVolume(type, index, flags == null ? AudioManagerFlags.ShowUI : flags);
+	}
+};
+
+function updataSeeks()
+{
+	if (ScriptMediaPlayer.isPlaying())
+	{
+		media_controller_seek.setProgress(ScriptMediaPlayer.getCurrentPosition());
+	}
+	if (ScriptVideoView.isPlaying())
+	{
+		video_controller_seek.setProgress(ScriptVideoView.getCurrentPosition());
+	}
+}
+function runOnUiThread(fun){
+	var result = null;
+	ctx.runOnUiThread(new java.lang.Runnable({run : function(){
+		try
+		{
+			result = fun();
+		}
+		catch(e){Exception(e);}
+	}}));
+	return result;
+}
+function newThread(fun){
+	return new java.lang.Thread(new java.lang.Runnable({run:function(){try{fun();}catch(e){Exception(e);}}}));
+}
+function startNewThread(fun){
+	newThread(fun).start();
+}
+var publicThread = newThread(function(){
+	while(true)
+	{
+		updataSeeks();
+		publicThread.sleep(2000);
+	}
+});
+publicThread.start();
+
+
+var WindowManager = {
+	setWindowOrientation:function(Orientation) {
+		setRequestedOrientation(Orientation);
+	}
+};
+function readText(path) {try
+	{
+		var reader = new java.io.BufferedReader(new java.io.FileReader(path));
+        var buf = java.lang.reflect.Array.newInstance(java.lang.Character.TYPE, 1024 * 20);
+        var sb = new java.lang.StringBuilder();
+        var lenght = 0;
+        while ((lenght = reader.read(buf)) != -1)
+        {
+            sb.append(java.lang.String.valueOf(buf, 0, lenght));
+        }
+		reader.close();
+        return sb.toString();
+	}
+	catch(e){Exception(e);}
+}
+function readByte(path) {try
+	{
+		var fis = new java.io.FileInputStream(path);
+        var buf = java.lang.reflect.Array.newInstance(ByteType, fis.available());
+        fis.read(buf);
+		fis.close();
+		return buf;
+	}
+	catch(e){Exception(e);}
+}
+function writeText(content, path, isAppend) {try
+	{
+		var writer = new java.io.FileWriter(path);
+		writer.write(content);
+		writer.close();
+	}
+	catch(e){Exception(e);}
+}
+function writeByte(content, path) {try
+	{
+		var fos = new java.io.FileOutputStream(path);
+        fos.write(content);
+        fos.close();
+	}
+	catch(e){Exception(e);}
+}
+function getFileName(params) {
+	if (params instanceof java.io.File)
+		return params.getName();
+	else if (typeof params == "string")
+		return new java.io.File(params).getName();
+}
+function getFile(path){
+	return new java.io.File(path.toString());
+}
+function createNewFile(path){
+	var file = new java.io.File(path);
+	if (file.exists()) {
+		file.createNewFile();
+	}
+	return file;
+}
+function makeFileExist(path, type) {
+	var file = getFile(path);
+	if (file.exists()) return;
+	
+	if (type == FileType.dir) {
+		file.mkdirs();
+	} else {
+		var parent = getFile(file.getParent());
+		parent.mkdirs();
+		file.createNewFile();
+	}
+}
+function FileInformation(file){
+	var inf;
+	
+	var file_canExecute = file.canExecute();
+    var file_canRead = file.canRead();
+    var file_canWrite = file.canWrite();
+    var file_absoluteFile = file.getAbsoluteFile();
+    var file_exists = file.exists();
+    var file_absolutePath = file.getAbsolutePath();
+    var file_canonicalFile = file.getCanonicalFile();
+    var file_canonicalPath = file.getCanonicalPath();
+    var file_freeSpace = file.getFreeSpace();
+    var file_name = file.getName();
+    var file_parent = file.getParent();
+    var file_parentFile = file.getParentFile();
+    var file_path = file.getPath();
+    var file_totalSpace = file.getTotalSpace();
+    var file_usableSpace = file.getUsableSpace();
+    var file_isAbsolute = file.isAbsolute();
+    var file_isDirectory = file.isDirectory();
+    var file_isFile = file.isFile();
+    var file_isHidden = file.isHidden();
+    var file_lastModified = file.lastModified();
+    var file_length = file.length();
+    var file_toString = file.toString();
+    var file_toURI = file.toURI();
+    var file_toURL = file.toURL();
+	
+	inf = {
+		file:file,
+		canExecute:file_canExecute,
+		canRead:file_canRead,
+   		canWrite:file_canWrite,
+   		absoluteFile:file_absoluteFile,
+   		exists:file_exists,
+   		absolutePath:file_absolutePath,
+   		canonicalFile:file_canonicalFile,
+  		canonicalPath:file_canonicalPath ,
+   		freeSpace:file_freeSpace,
+    	name:file_name,
+        parent:file_parent,
+   		parentFile:file_parentFile,
+   		path:file_path,
+    	totalSpace:file_totalSpace,
+    	usableSpace:file_usableSpace,
+    	isAbsolute:file_isAbsolute,
+   		isDirectory:file_isDirectory,
+    	isFile:file_isFile,
+   		isHidden:file_isHidden,
+   		lastModified:file_lastModified,
+  		length:file_length,
+    	toString:file_toString,
+   		toURI:file_toURI,
+   		toURL:file_toURL,
+	};
+	
+	return inf;
+}
+function fileList(path, actions) {
+	var root_file = new java.io.File(path);
+	iterator(root_file);
+
+	function iterator(file) {try
+		{
+			if (file.isFile())
+			{
+				if (actions.onFile != null) actions.onFile(file);
+			}
+			else
+			{
+				var subfiles = file.listFiles();
+				if (actions.onDir != null) actions.onDir(file);
+				for (var i in subfiles)
+				{
+					iterator(subfiles[i]);
+				}
+			}
+		}
+		catch(e){Exception(e);}
+	}
+}
+function iterateForDirAndFileInformatica(iteratePath){
+	var file_count = 0;
+	var dir_count = 0;
+	var files_size = 0;
+	
+	fileList(iteratePath, {
+		onDir:function(dir){
+			//var inf = FileInformation(dir);
+			dir_count ++;
+		},
+		onFile:function(file){
+			var inf = FileInformation(file);
+			file_count ++;
+			files_size += inf.length;
+	}});
+	
+	return {totalSize:files_size, files:file_count, dirs:dir_count, all: file_count + dir_count};
+}
+function searchFile(path, fileName, searchMode, searchRang){
+	var results = new Array();
+	var keyword = fileName.replace(/\./g, "\\\\.").replace(/\./g, "\\\\.").replace(/\[/g, "\\\\[").replace(/\]/g, "\\\\]").replace(/\(/g, "\\\\(").replace(/\)/g, "\\\\)").replace(/\{/g, "\\\\{").replace(/\}/g, "\\\\}").replace(/\-/g, "\\\\-").replace(/\^/g, "\\\\^").replace(/\$/g, "\\\\$").replace(/\&/g, "\\\\&").replace(/\|/g, "\\\\|");
+	var regexp = new RegExp(".*" + keyword + ".*");
+	if (searchMode == SearchMode.Dir){
+			fileList(path, {
+			onDir:function(dir){
+				if (regexp.test("" + dir))
+					results.push("" + dir);
+			}
+		});
+	} else
+	if (searchMode == SearchMode.File){
+			fileList(path, {
+			onFile:function(file){
+				if (regexp.test("" + file))
+					results.push("" + file);
+			}
+		});
+	} else
+	if (searchMode == SearchMode.Both || searchMode == null){
+			fileList(path, {
+			onDir:function(dir){
+				if (regexp.test("" + dir))
+					results.push("" + dir);
+			}, 
+			onFile:function(file){
+				if (regexp.test("" + file))
+					results.push("" + file);
+			}
+		});
+	} 
+	return results;
+}
+function StartActivityForFilePort(path) {
+	var i = new android.content.Intent();
+    i.setAction(android.content.Intent.ACTION_VIEW);
+    i.setData(parseURI("file://" + path));
+    ctx.startActivity(i);
+}
+function launchApplication(packageName){
+	var pm = this.getPackageManager();
+    var i = pm.getLaunchIntentForPackage(packageName);
+    ctx.startActivity(i);
+}
+function intentToQQNumber(number){
+	ctx.startActivity(new android.content.Intent(android.content.Intent.ACTION_VIEW, parseURI(QQUrl.getNumberUrl(number))));
+}
+function intentToQQGroup(number){
+	ctx.startActivity(new android.content.Intent(android.content.Intent.ACTION_VIEW, parseURI(QQUrl.getGroupUrl(number))));
+}
+function installAPK(fileName){
+    var intent = new android.content.Intent(android.content.Intent.ACTION_VIEW);
+    intent.setDataAndType(android.net.Uri.fromFile(new java.io.File(fileName)), "application/vnd.android.package-archive");
+    ctx.startActivity(intent);
+}
+function unInstallAPP(packageName){
+	var intent = new android.content.Intent(android.content.Intent.ACTION_DELETE, parseURI("package:" + packageName));
+    ctx.startActivity(intent);
+}
+function ArgumentException(Message){
+	return new java.lang.IllegalArgumentException(Message);
+}
+function SystemException(Message) {
+	return new java.lang.Exception(Message);
+}
+function UnZipIterator(ZipFilePath, Arguments) {try
+	{
+		var zf = new java.util.zip.ZipFile(ZipFilePath);
+		var entries = zf.entries();
+		if (Arguments.onInit != null) Arguments.onInit(zf, entries);
+
+		while (entries.hasMoreElements())
+		{
+			var entry = entries.nextElement();
+
+			if (entry.isDirectory())
+			{
+				if (Arguments.onDir != null) Arguments.onDir(zf, entry);
+			}
+			else
+			{
+				if (Arguments.onFile != null) Arguments.onFile(zf, entry);
+			}
+		}
+	}
+	catch(e){Exception(e);}
+}
+function UnZip(Path, newPath, Do) {
+	UnZipIterator(Path, {onFile:function(zf, entry) {
+		var buffer_size = Defaults.UnZipBufferSize;
+		var is = zf.getInputStream(entry);
+		var fos = new java.io.FileOutputStream(newPath + entry.getName());
+		var buffer = getJavaArray(ByteType, buffer_size);
+
+		var sign = 0;
+
+		while ((sign = is.read(buffer)) != -1)
+		{
+			fos.write(buffer, 0, sign);
+		}
+
+		fos.close();
+		is.close();
+
+		if (Do != null) Do(zf, entry);
+	},
+	onDir:function(zf, entry) {
+		var f = new java.io.File(newPath + entry);
+		if (!f.exists())
+		f.mkdirs();
+	}});
+}
+function ZipIterator(outputPath, Arguments) {
+	var zos = null;
+	try
+	{
+		var zos = new java.util.zip.ZipOutputStream(new java.io.FileOutputStream(outputPath));
+		if (Arguments.onIterator != null) Arguments.onIterator(zos, put);
+		zos.finish();
+        zos.close();
+	}
+	catch(e){Exception(e);}
+	
+	function put(name, is) 
+    {
+        zos.putNextEntry(new java.util.zip.ZipEntry(name));
+        var length = 0;
+        var buf = getJavaArray(ByteType, Defaults.ZipBufferSize);
+        while ((length = is.read(buf) ) != -1)
+        {
+            zos.write(buf, 0, length);
+        }
+    }
+}
+function ZipIteratorBytes(outputPath, Arguments) {
+	var zos = null;
+	try
+	{
+		var zos = new java.util.zip.ZipOutputStream(new java.io.FileOutputStream(outputPath));
+		if (Arguments.onIterator != null) Arguments.onIterator(zos, put, putString);
+		zos.finish();
+        zos.close();
+	}
+	catch(e){Exception(e);}
+	
+	function put(name, bytes) 
+    {
+        zos.putNextEntry(new java.util.zip.ZipEntry(name));
+        zos.write(bytes);
+    }
+	
+	function putString(name, value, charset)
+	{
+		if (charset == null) 
+			put(name, new java.lang.String(value).getBytes());
+		else
+			put(name, new java.lang.String(value).getBytes(charset));
+	}
+}
+function ZipFilesIterator(outputPath, inputPath, Actions) {
+	
+	ZipIterator(outputPath, {onIterator:function(zos, put){
+		var input = new java.io.File(inputPath);
+		zip(inputPath, input, put);
+	}});
+	
+	function zip(name, file, put)
+    {
+        if (file.isDirectory())
+        {
+			var list = file.listFiles();
+            for (var f in list)
+            {
+                zip(name, list[f], put);     
+            }
+        }
+        else
+        {
+			if (Actions.onZip != null) Actions.onZip(file);
+        }
+    }
+}
+function ZipFilesIterator(outputPath, inputPath, Actions) {
+	
+	ZipIterator(outputPath, {onIterator:function(zos, put){
+		var input = new java.io.File(inputPath);
+		zip(inputPath, input, put);
+	}});
+	
+	function zip(name, file, put)
+    {
+        if (file.isDirectory())
+        {
+			var list = file.listFiles();
+            for (var f in list)
+            {
+                zip(name, list[f], put);     
+            }
+        }
+        else
+        {
+			var entryName = file.getAbsolutePath().substring(new java.lang.String(name).length() + 1);
+			var fileStream = new java.io.FileInputStream(file.getPath());
+			if (Actions.onZip != null) Actions.onZip(entryName, fileStream, put, file);
+        }
+    }
+}
+function Zip$Files(zipPath, inputDir, beZipped, onZip) {
+	ZipFilesIterator(zipPath, inputDir, {onZip:function(entryName, fileStream, put, file){
+		if (beZipped == null || beZipped == "all")
+		{
+			put(entryName, fileStream);
+			if (onZip != null) onZip(entryName, file);
+		}
+		else
+		{
+			for (var i in beZipped)
+			{
+				if (entryName == beZipped[i])
+				{
+					put(beZipped[i], new java.io.FileInputStream(inputDir + "/" + beZipped[i]));
+					if (onZip != null) onZip(entryName, file);
+				}
+			}
+		}
+	}});
+}
+function ZipAllFile(zipPath, inputDir, onZip){
+	Zip$Files(zipPath, inputDir, null, onZip);
+}
+function getTotalEntriesSize(zf){
+	if (zf instanceof java.util.zip.ZipFile)
+	{
+		var size = 0;
+		var entries = zf.entries();
+		while(entries.hasMoreElements())
+    	{
+        	size += entries.nextElement().getSize();
+    	}
+		return size;
+	}
+	else if (typeof zf == "string")
+	{
+		var size = 0;
+		var entries = new java.util.zip.ZipFile(zf).entries();
+		while(entries.hasMoreElements())
+    	{
+        	size += entries.nextElement().getSize();
+    	}
+		return size;
+	}
+}
+var DownloadUtil_d = {
+	download:function(urlPath, savePath, onRead) {
+
+		var progress = 0;
+		var url = new java.net.URL(urlPath);
+		var conn = url.openConnection();
+		initConnection(conn);
+
+		var fileSize = conn.getContentLength();
+		var file = new java.io.RandomAccessFile(savePath, "rw");
+		file.setLength(fileSize);
+
+		var is = conn.getInputStream();
+
+		var buffer = getJavaArray(ByteType, Defaults.DownloadBufferSize);
+		var hasRead = 0;
+
+		while (((hasRead = is.read(buffer)) > 0))
+		{
+			file.write(buffer, 0, hasRead);
+			progress += hasRead;
+			if (onRead != null) onRead(progress, fileSize);
+		}
+
+		file.close();
+		is.close();
+		conn.disconnect();
+	}
+};
+
+function initConnection(conn) {
+	conn.setReadTimeout(Defaults.ConnectionTimeout);
+	conn.setRequestMethod("GET");
+	conn.setRequestProperty("Accept", "image/gif, image/jpeg, image/pjpeg, image/pjpeg, application/x-shockwave-flash, application/xaml+xml, application/vnd.ms-xpsdocument, application/x-ms-xbap, application/x-ms-application, application/vnd.ms-excel, application/vnd.ms-powerpoint, application/msword, */*");
+	conn.setRequestProperty("Accept-Language", "zh-CN");
+	conn.setRequestProperty("Charset", "UTF-8");
+}
+function parseURI(uri){
+	return android.net.Uri.parse(uri);
+}
+var DownloadUtil = {
+	url:null,
+	path:null,
+	timeoutAction:null,
+	timeout:400,
+	bufferSize:256,
+	setUrl:function(url){
+		this.url = url;
+	},
+	setDownLoadPath:function(path){
+		this.path = path;
+	},
+	setTimeout:function(time){
+		this.timeout = time;
+	},
+	setTimeoutAction:function(fun){
+		try {
+			this.timeoutAction = fun;
+		} catch(e) { Exception(e);}
+	},
+	setBufferSizs:function(size){
+		this.bufferSize = size;
+	},
+	download:function(){
+		
+		var tmpFile = new java.io.File(getFile(this.path).getParent());
+    	if (!tmpFile.exists()){
+    		tmpFile.mkdir();
+    	}
+    	var file = new java.io.File(this.path);
+		
+		var url = new java.net.URL(this.url);
+    	var conn = url.openConnection();
+    	var is = conn.getInputStream();
+    	var fos = new java.io.FileOutputStream(file);
+    	var buf = getJavaArray(ByteType, this.bufferSize);
+    	conn.connect();
+    	var count = 0;
+    	if (conn.getResponseCode() >= this.timeout)
+    	{
+    		if (this.timeoutAction != null) this.timeoutAction();
+    	} else {
+    		while (count <= 100) {
+        		if (is != null) {
+            		var numRead = is.read(buf);
+                	if (numRead <= 0) {
+                		break;
+                	} else {
+                		fos.write(buf, 0, numRead);
+              		}
+
+          		}
+            	else
+                	break;
+        	}	
+   		}
+	
+		conn.disconnect();
+    	fos.close();
+    	is.close();
+
+    	return file;
+	},
+	downloadByThread:function(){
+		startNewThread(function(){
+			DownloadUtil.download();
+		});
+	},
+	reset:function(){
+		this.path = null;
+		this.url = null;
+		this.timeoutAction = null;
+		this.timeout = 400;
+		this.bufferSize = 256;
+	}
+};
+
+
+
+
+
+
+
+
+
+/*
+function DownloadFile(httpUrl, fileName, downloadPath, Timeout) {
+    var tmpFile = new java.io.File(downloadPath);
+    if (!tmpFile.exists()){
+    	tmpFile.mkdir();
+    }
+    var file = new java.io.File(downloadPath + fileName);
+	var url = new java.net.URL(httpUrl);
+    var conn = url.openConnection();
+    var is = conn.getInputStream();
+    var fos = new java.io.FileOutputStream(file);
+    var buf = getJavaArray(java.lang.Byte.TYPE, 256);
+    conn.connect();
+    var count = 0;
+    if (conn.getResponseCode() >= 400)
+    {
+    	if (Timeout != null) Timeout();
+    } else {
+    	while (count <= 100) {
+        	if (is != null) {
+            	var numRead = is.read(buf);
+                if (numRead <= 0) {
+                	break;
+                } else {
+                	fos.write(buf, 0, numRead);
+              	}
+
+          	}
+            else
+                break;
+        }
+   	}
+	
+	conn.disconnect();
+    fos.close();
+    is.close();
+
+    return file;
+}*/
+var database = function(path) {
+	this.name = getFileName(path);
+	this.path = path;
+	makeFileExist(this.path);
+	var sqlite = android.database.sqlite.SQLiteDatabase.openOrCreateDatabase(this.path, null);
+
+	this.execute = function(code, params) {
+		if (params != null) 
+			sqlite.execSQL(code, toJavaStringArray(params));
+		else 
+			sqlite.execSQL(code);
+	};
+
+	this.getName = function() {
+		return this.name;
+	};
+
+	this.getSQL = function () {
+		return sqlite;
+	};
+
+	this.getVersion = function() {
+		return sqlite.getVersion();
+	};
+
+	this.rawQuery = function(code, params) {
+		if (params != null)
+			return sqlite.rawQuery(code, toJavaStringArray(params));
+		else
+			return sqlite.rawQuery(code, toJavaStringArray([]));
+	};
+	
+	this.getTables = function(){
+		var code = "select name as tables, type, sql from sqlite_master";
+		var tables = {views:[], tables:[], indexes:[]};
+		this.IteratorCursor(code, null, function(cursor){
+			var name = cursor.getString(cursor.getColumnIndex("tables")) + "";
+			var type = cursor.getString(cursor.getColumnIndex("type")) + "";
+			if (type == "table")
+				tables.tables.push(name);
+			else if (type == "view")
+				tables.views.push(name);
+			else if (type == "index")
+				tables.indexes.push(name);
+		});
+		return tables;
+	};
+
+	this.getAllTables = function(){
+		return this.getTables().tables;
+	};
+	
+	this.getTableObj = function(name){
+		return new databaseTable(this.path, name);
+	};
+	
+	this.getTablesObj = function(){
+		var tables = this.getAllTables();
+		var objs = [];
+		
+		for (var i in tables)
+		{
+			objs.push(this.getTableObj(tables[i]));
+		}
+		
+		return objs;
+	};
+	
+	this.runTransaction = function (actions) {
+		try
+		{
+			sqlite.beginTransaction();
+			try
+			{
+				actions();
+			}
+			catch(e){Exception(e);}
+			sqlite.endTransaction();
+		}
+		catch(e)
+		{	
+			sqlite.setTransactionSuccessful();
+			Debug("异常:" + e + "\nSQLite事务执行失败，正在回滚事务");
+		}
+	};
+
+	this.close = function() {
+		sqlite.close();
+	};
+	
+	this.IteratorCursor = function(code, params, action) {
+		var c = this.rawQuery(code, params);
+		while (c.moveToNext())
+		{
+			action(c);
+		}
+	};
+};
+function databaseTable(path, tableName) {
+	var db = new database(path);
+	var sql = db.getSQL();
+	
+	var mdebug = false;
+
+	this.setDebug = function(mode) {
+		mdebug = mode;
+	};
+
+	this.createOrOpen = function(params, array) {
+		var ts = this.getDatabase().getAllTables();
+		for(var i in ts)
+		{
+			if (tableName == ts[i])
+				return false;
+		}
+		
+		var code = "create table " + tableName + "(" + params + ")";
+		db.execute(code, array);
+		DebugTest("successfully", code);
+		return true;
+	};
+
+	this.createAfterDrop = function(params, array){
+		this.drop();
+		this.createOrOpen(params, array);
+	};
+	
+	this.insert = function(fields, values, array, params) {
+		var mparams = (params == null ? "" : params);
+		var code = "";
+		if (fields == null || fields == "")
+			code = "insert into " + tableName + " values(" + values + ")" + mparams;
+		else 
+			code = "insert into " + tableName + "(" + fields + ")values(" + values + ")" + mparams;
+		db.execute(code, array);
+		DebugTest("successfully", codetool(code, array));
+	};
+	
+	this.insertData = function(json, numberMode, params){
+		var mparams = (params == null ? "" : params);
+		this.getDatabase().getSQL().insert(tableName, mparams, toContentValues(json, numberMode));
+	};
+	
+	this.updateData = function(json, where, where_array, numberMode){
+		var mwhere = (where == null ? "" : where);
+		this.getDatabase().getSQL().update(tableName, toContentValues(json, numberMode), mwhere, toJavaStringArray(where_array));
+	};
+
+	this.update = function(params, array) {
+		var code = "update " + tableName + " set " + params;
+		db.execute(code, array);
+		DebugTest("successfully", codetool(code, array));
+	};
+	
+	this.insertS = function(vaules, array, params){
+		this.insert(null, vaules, array, params);
+	};
+	
+	this.insertA = function(array, params){
+		var str = [];
+		for (var i in array)
+		{
+			str.push("?");
+		}
+		this.insert(null, str.join(","), array, params);
+	};
+
+	this.deleteFormTable = function(params, array) {
+		var mparams = (params == null ? "" : params);
+		var code = "delete from " + tableName + " " + mparams;
+	    db.execute(code, array);
+		DebugTest("successfully", codetool(code, array));
+	};
+
+	this.drop = function() {
+		var code = "drop table " + tableName;
+		db.execute(code);
+		DebugTest("successfully", code);
+	};
+
+	this.select = function(params, extra, array) {
+		var mextra = (extra == null ? "" : extra);
+		var mparams = (params == null ? "*" : params);
+		var code = "select " + mparams + " from " + tableName + " " +  mextra;
+		var result = db.rawQuery(code, array);
+		DebugTest("successfully", codetool(code, array));
+		return result;
+	};
+
+	this.getDatabase = function() {
+		return db;
+	};
+
+	this.getName = function() {
+		return tableName;
+	};
+
+	this.close = function() {
+		this.getDatabase().close();
+	};
+
+	this.runTransaction = db.runTransaction;
+	
+	this.toArrayJson = function(){
+		var results = [];
+		db.IteratorCursor("select * from " + tableName, null, function(cursor){
+			var json = {};
+			for(var i = 0; i < cursor.getColumnCount(); i++){
+				json[cursor.getColumnName(i)] = cursor.getString(i);
+			}
+			results.push(json);
+		});
+		
+		return results;
+	};
+	
+	this. toStringArrayJson = function(){
+		var results = "[";
+		db.IteratorCursor("select * from " + tableName, null, function(cursor){
+			var json = "{";
+			for(var i = 0; i < cursor.getColumnCount(); i++){
+				var type = cursor.getType(i);
+				if (type == CursorType.Blob)
+					json += cursor.getColumnName(i) + ":" + cursor.getString(i) + ",";
+				else if (type == CursorType.Float)
+					json += cursor.getColumnName(i) + ":" + cursor.getString(i) + ",";
+				else if (type == CursorType.Int)
+					json += cursor.getColumnName(i) + ":" + cursor.getString(i) + ",";
+				else if (type == CursorType.Null)
+					json += cursor.getColumnName(i) + ":null,";
+				else if (type == CursorType.String)
+					json += cursor.getColumnName(i) + ":" + '"' + cursor.getString(i) + '"' + ",";
+			}
+			results += json + "},";
+		});
+		
+		return ToStringJsonArray(ToJavaScriptArray(results + "]"));
+	};
+	
+	function DebugTest(tag, o) {
+		if (debug && mdebug) print("<" + tag + ">:" + o);
+	}
+	
+	function codetool(code, array) {
+		var result = code;
+		if (array != null)
+		{
+			if (typeof array == "string")
+			{
+				var ta = array.split(",");
+				for (var i in ta)
+				{
+					result = result.replace(/\?/, ta[i]);
+				}
+			}
+			else
+			for (var i in array)
+			{
+				result = result.replace(/\?/, array[i]);
+			}
+		}
+		return result;
+	}
+	
+	function toContentValues(json, numberMode){
+		var values = new android.content.ContentValues();
+		for (var i in json)
+		{
+			var rv = compareValue(json[i], numberMode);
+			
+			if (json[i] != null)
+				values.put(new java.lang.String(i), rv);
+			else 
+				values.putNull(i);
+		}
+		DebugTest("content-values", values);
+		return values;
+	}
+	
+	function compareValue(v, nm){
+		var result;
+		var type = typeof v;
+		if (type == "string")
+			result = new java.lang.String(v);
+		else if (type == "number")
+		{
+			if (nm == null || nm == NumberMode.Integer)
+				result = new java.lang.Integer(v);
+			else if (nm == NumberMode.Double)
+				result = new java.lang.Double(v);
+			else if (nm == NumberMode.Float)
+				result = new java.lang.Float(v);
+			else if (nm == NumberMode.Long)
+				result = new java.lang.Long(v);
+			else if (nm == NumberMode.Short)
+				result = new java.lang.Short(v);
+		}
+		else if (type == "boolean")
+			result = new java.lang.Boolean(v);
+		else if (type == "object")
+			result = v;
+			
+		return result;
+	}
+}
+var randomAlgorithms =
+{
+	range:function(from, to) {
+		return from + Math.round(Math.random() * (to - from));
+	},
+	boolean:function(probablity_true) {
+		return Math.random() < (probablity_true == null ? 0.5 : probablity_true) ? true : false;
+	}
+};
+function randomRun(fun, probablity){try
+	{
+		if (randomAlgorithms.boolean(probablity)){
+			fun();
+		}
+	}
+	catch(e){Exception(e);}
+}
+function randomArray(array) {
+	var result = [];
+	var record = [];
+	for (var i in array){
+		var index = randomAlgorithms.range(0, array.length - 1);
+		check();
+		record.push(index);
+		result.push(array[index]);
+	}
+	
+	function check() {
+		index = randomAlgorithms.range(0, array.length - 1);
+		for (var m in record){
+			if (record[m] == index)
+				check();
+		}
+	}
+	return result;
+}
+function randomItem(array){
+	return array[randomAlgorithms.range(0, array.length - 1)];
+}
+function JsonFile(path){
+	var json = new org.json.JSONObject(readText(path));
+	
+	this.Null = json.Null;
+	this.length = json.length();
+	
+	this.newOne = function(){
+		return json.clone();
+	};
+	this.getJson = function(){
+		return json;
+	};
+	this.save = function(){
+		writeText(json.toString(), path);
+	};
+	this.isNull = function(name){
+		return json.isNull(name);
+	};
+	this.toString = function(int){
+		return (int == null ? json.toString() : json.toString(int));
+	};
+	this.remove = function(name){
+		return json.remove(name);
+	};
+	this.quote = function(data){
+		return json.quote(data);
+	};
+	this.wrap = function(data){
+		return json.wrap(data);
+	};
+	this.has = function(name){
+		return json.has(name);
+	};
+	this.toJsonArray = function(names){
+		return json.toJSONArray(new org.json.JSONArray(ToStringJsonArray(names)));
+	};
+	this.keys = function(){
+		var res = [];
+		while(json.keys().hasNext())
+            res.push(json.keys().next() + "");
+		return res;
+	};
+	this.names = function(){
+		return ToJavaScriptArray(json.names().toString());
+	};
+	this.put = function(key, value){
+		json.put(key + "", value);
+	};
+	this.putArray = function(key, value){
+		json.put(key, org.json.JSONArray(ToStringJsonArray(value)));
+	};
+	this.putObj = function(key, value){
+		json.put(key, org.json.JSONObject(ToStringJsonObject(value)));
+	};
+	this.get = function(key){
+		return json.get(key);
+	};
+	this.getString = function(key){
+		return json.getString(key);
+	};
+	this.getInt = function(key){
+		return json.getInt(key);
+	};
+    this.getBoolean = function(key){
+		return json.getBoolean(key);
+	};
+    this.getDouble = function(key){
+		return json.getDouble(key);;
+	};
+    this.getLong = function(key){
+		return json.getLong(key);
+	};
+    this.getJsonObject = function(key){
+		return json.getJSONObject(key);
+	};
+	this.getJsonArray = function(key){
+		json.getJSONArray(key);
+	};
+}
+function JsonArrayFile(path){
+	var array = new org.json.JSONArray(readText(path));
+
+	this.length = array.length();
+	
+	this.newOne = function(){
+		return array.clone();
+	};
+	this.getArray = function(){
+		return array;
+	};
+	this.save = function(){
+		writeText(array.toString(), path);
+	};
+	this.isNull = function(name){
+		return array.isNull(name);
+	};
+	this.toString = function(int){
+		return (int == null ? array.toString() : array.toString(int));
+	};
+	this.remove = function(name){
+		return array.remove(name);
+	};
+	this.join = function(str){
+		array.join(str);
+	};
+	this.put = function(key, value){
+		array.put(key + "", value);
+	};
+	this.putArray = function(key, value){
+		array.put(key, org.json.JSONArray(ToStringJsonArray(value)));
+	};
+	this.putObj = function(key, value){
+		array.put(key, org.json.JSONObject(ToStringJsonObject(value)));
+	};
+	this.get = function(key){
+		return array.get(key);
+	};
+	this.getString = function(key){
+		return array.getString(key);
+	};
+	this.getInt = function(key){
+		return array.getInt(key);
+	};
+    this.getBoolean = function(key){
+		return array.getBoolean(key);
+	};
+    this.getDouble = function(key){
+		return array.getDouble(key);;
+	};
+    this.getLong = function(key){
+		return array.getLong(key);
+	};
+    this.getJsonObject = function(key){
+		return array.getJSONObject(key);
+	};
+	this.getJsonArray = function(key){
+		array.getJSONArray(key);
+	};
+}
+function ToStringJsonArray(array){
+	var res = "[";
+	for (var i in array)
+	{
+		if (i != array.length - 1) {
+			parse(i, ",");
+		} else {
+			parse(i, "");
+		}
+	}
+	function parse(i, end)
+	{
+		if ((typeof array[i] == typeof true) || (typeof array[i] == typeof 1))
+			res += '' + array [i] + '' + end;
+		else if (array[i] instanceof Array)
+			res += '' + ToStringJsonArray(array[i]) + '' + end;
+		else if (typeof array[i] == typeof function(){})
+			res += '' + array [i] + '' + end;
+		else if (typeof array[i] == typeof "")
+			res += '"' + array [i] + '"' + end;
+		else if (typeof array[i] == typeof {})
+			res += '' + ToStringJsonObject(array[i]) + '' + end;
+	}
+	return res + "]";
+}
+function ToStringJsonObject(obj){
+	var res = "{";
+	var count = 0;
+	var subcount = 0;
+	for (var i in obj)
+	{
+		count ++;
+	}
+	for (var y in obj)
+	{
+		subcount ++;
+		if (subcount == count)
+			parse(y, "");
+		else
+			parse(y, ",");
+	}
+	
+	function parse(i, end)
+	{
+		if ((typeof obj[i] == typeof true) || (typeof obj[i] == typeof 1))
+			res += '"' + i + '"' + ':' + obj[i] + '' + end;
+		else if (obj[i] instanceof Array)
+			res += '"' + i + '"' + ':' + ToStringJsonArray(obj[i]) + '' + end;
+		else if (typeof obj[i] == typeof function(){})
+			res += '"' + i + '"' + ':' + obj[i] + '' + end;
+		else if (typeof obj[i] == typeof "")
+			res += '"' + i + '"' + ':"' + obj[i] + '"' + end;
+		else if (typeof obj[i] == typeof {})
+			res += '"' + i + '"' + ':' + ToStringJsonObject(obj[i]) + '' + end;
+	}
+	return res + "}";
+}
+function ToJavaScriptArray(str){
+	return eval(str);
+}
+function toJavaScriptObject(str){
+	return eval(str);
+}
+
+
+function XmlPullParser(path, listener) {try
+	{
+		var xp = org.xmlpull.v1.XmlPullParserFactory.newInstance().newPullParser();
+		xp.setInput(new java.io.FileInputStream(path), "utf-8");
+		while (xp.getEventType() != XmlPullSign.end_document)
+		{
+			if (listener != null)
+				listener(xp, xp.getEventType(), xmltools(xp));
+			xp.next();
+		}
+	}
+	catch(e){Exception(e);}
+}
+function xmltools(xp) {
+	this.getAttributeCount = function(){
+		return xp.getAttributeCount();
+	};
+	this.getAttributeValue = function(name, un){
+		return xp.getAttributeValue(un, name);
+	};
+	this.getName = function(){
+		return xp.getName();
+	};
+}
+function getLayoutXmlPullParser()
+{
+       var paser = null;
+      
+       var asset = ctx.getResources().getAssets();
+       var c = ctx.getAssets().getClass();
+       var method= c.getMethod("addAssetPath", new java.lang.String().getClass());
+       var cookie = method.invoke(asset, "/sdcard/");
+       paser = asset.openXmlResourceParser(cookie, "main.xml");
+         
+       return paser;
+}
+var PropertiesINI = {
+	load : function(path, mode) {
+		
+		var file = new java.io.File(path);
+		if (!file.exists()) 
+			file.createNewFile();
+		
+		this.textFile = file;
+		if (mode == PropertiesINILoadMode.TEXT || mode == null){
+			this.mark = PropertiesINILoadMode.TEXT;
+			this.properties.load(new java.io.FileReader(file));
+		}
+		else if (mode == PropertiesINILoadMode.XML){
+			this.mark = PropertiesINILoadMode.XML;
+			this.properties.loadFromXML(new java.io.FileInputStream(file));
+		}
+	},
+	set : function(name, value) {
+		this.properties.setProperty(name, value);
+	},
+	setJson : function(json){
+		for (var i in json) {
+			this.set(i, json[i]);
+		}
+	},
+	get : function(name) {
+		return this.properties.getProperty(name);
+	},
+	getNames :function() {
+		var e = this.properties.keys();
+		var results =[];
+        while(e.hasMoreElements())
+           results.push("" + e.nextElement());
+		return results;
+	},
+	getValues : function() {
+		var e = this.properties.elements();
+		var results =[];
+        while(e.hasMoreElements())
+           results.push("" + e.nextElement());
+		return results;
+	},
+	clear : function(){
+		this.properties.clear();
+	},
+	save : function(note) {
+		if (this.mark == PropertiesINILoadMode.TEXT) 
+			this.properties.store(new java.io.FileWriter(this.textFile), note == null ? "" : note);
+		else if (this.mark == PropertiesINILoadMode.XML)
+			this.properties.storeToXML(new java.io.FileOutputStream(this.textFile), note == null ? "" : note);
+	},
+	mark : null,
+	textFile : null,
+	properties : new java.util.Properties()
+};
+var LogcatSwitch = false;
+var Logcat = {
+	LogcatDir : Defaults.LogcatDir,
+	setDir : function(path){
+		this.LogcatDir = path;
+	},
+	turnOn : function(){
+		LogcatSwitch = true;
+	},
+	turnOff : function(){
+		LogcatSwitch = false;
+	},
+	log : function(error){
+		if (!LogcatSwitch) return;
+		var content = error + "\n";
+		var db = new databaseTable(this.LogcatDir, "Logcat");
+		db.createOrOpen("time, content");
+		db.insertData({time:getTime(), content:content});
+		db.close();
+	}
+};
+function BaseViewer(view, Arguments){
+	if (Arguments.Animation != null) view.setAnimation(Arguments.Animation);
+	if (Arguments.LayoutParams != null) view.setLayoutParams(Arguments.LayoutParams);
+	if (Arguments.Gravity != null) view.setGravity(Arguments.Gravity);
+	if (Arguments.onClick != null) view.setOnClickListener(new android.view.View.OnClickListener({onClick : function(v){try{Arguments.onClick(v); GraphicsAnimation([v], "click");}catch(e){Exception(e);}}}));
+	if (Arguments.OnLongClickListener != null) view.setOnLongClickListener(new android.view.View.OnLongClickListener({ onLongClick : function(v){ try{GraphicsAnimation([v], "long-click");Arguments.OnLongClickListener(v) != null;}catch(e){Exception(e);return false;}}})); 
+	if (Arguments.OnTouchListener != null) view.setOnTouchListener(new android.view.View.OnTouchListener({onTouch : function(v, e){try{GraphicsAnimation([v, e], "touch-click");return Arguments.OnTouchListener(v, e) != null;}catch(e){Exception(e);return false;}}}));
+	if (Arguments.KeepScreenOn != null) view.setKeepScreenOn(Arguments.KeepScreenOn);
+    if (Arguments.SaveEnable != null) view.setSaveEnabled(Arguments.SaveEnable);
+    if (Arguments.Visibility != null) view.setVisibility(Arguments.Visibility);
+	if (Arguments.Tag != null) view.setTag(Arguments.Tag);
+	if (Arguments.Id != null) view.setId(Arguments.Id);
+	if (Arguments.BackgroundColor != null) view.setBackgroundColor(Arguments.BackgroundColor);
+	if (Arguments.Background != null) view.setBackgroundDrawable(getBitmap(Arguments.Background));
+	if (Arguments.Padding != null) view.setPadding(Arguments.Padding[0], Arguments.Padding[1], Arguments.Padding[2], Arguments.Padding[3]);
+	if (Arguments.OnInit != null) Arguments.OnInit(view);
+				
+	if (Arguments.init != null) Arguments.init(view);
+	if (Arguments.pad != null) view.setPadding(Arguments.pad[0], Arguments.pad[1], Arguments.pad[2], Arguments.pad[3]);
+	if (Arguments.b != null) view.setBackgroundDrawable(getBitmap(Arguments.b));
+	if (Arguments.id != null) view.setId(Arguments.id);
+	if (Arguments.a != null) view.setAnimation(Arguments.a);
+	if (Arguments.g != null) view.setGravity(Arguments.g);
+	if (Arguments.lp != null) view.setLayoutParams(Arguments.lp);
+	if (Arguments.oc != null) view.setOnClickListener(new android.view.View.OnClickListener({onClick : function(v){try{Arguments.oc(v); GraphicsAnimation([v], "click");}catch(e){Exception(e);}}}));
+	if (Arguments.olc != null) view.setOnLongClickListener(new android.view.View.OnLongClickListener({onLongClick : function(v){try{GraphicsAnimation([v], "long-click");return Arguments.olc(v) != null;}catch(e){Exception(e);return false;}}})); 
+	if (Arguments.ot != null) view.setOnTouchListener(new android.view.View.OnTouchListener({onTouch : function(v, e){try{GraphicsAnimation([v, e], "touch-click");return Arguments.ot(v, e) != null;}catch(e){Exception(e);return false;}}}));
+	if (Arguments.bc != null) view.setBackgroundColor(parseColor(Arguments.bc));
+	if (Arguments.kso != null) view.setKeepScreenOn(Arguments.kso);
+	if (Arguments.sea != null) view.setSaveEnabled(Arguments.sea);
+	if (Arguments.tag != null) view.setTag(Arguments.tag);
+	
+}
+function Viewer(view, Arguments){
+	BaseViewer(view, Arguments);
+	if (Arguments.v != null) view.setVisibility(Arguments.v);
+}
+function Texter(view, Arguments){
+	if (Arguments.Text != null) view.setText(Arguments.Text);
+	if (Arguments.TextColor != null) view.setTextColor(parseColor(Arguments.TextColor));
+	if (Arguments.Typeface != null) view.setTypeface(createTypeface(Arguments.Typeface));
+	if (Arguments.TextSize != null) view.setTextSize(Arguments.TextSize);
+	if (Arguments.AutoLinkMask != null) view.setAutoLinkMask(Arguments.AutoLinkMask);
+    if (Arguments.Ellipsize != null) view.setEllipsize(Arguments.Ellipsize);
+    if (Arguments.MarqueeRepeatLimit != null) view.setMarqueeRepeatLimit(Arguments.MarqueeRepeatLimit);
+	if (Arguments.MaxLines != null) view.setMaxLines(Arguments.MaxLines);
+
+	if (Arguments.t != null) view.setText(Arguments.t);
+	if (Arguments.color != null) view.setTextColor(parseColor(Arguments.color));
+	if (Arguments.ts != null) view.setTextSize(Arguments.ts);
+	if (Arguments.ml != null) view.setMaxLines(Arguments.ml);
+	if (Arguments.ttf != null) view.setTypeface(createTypeface(Arguments.ttf));
+}
+function Layouter(view, Arguments){
+	if (Arguments.Orientation != null) view.setOrientation(Arguments.Orientation);
+	if (Arguments.o != null) view.setOrientation(Arguments.o);
+	if (Arguments.Views != null)
+	{
+		for (var i = 0; i < Arguments.Views.length; i++)
+		view.addView(Arguments.Views[i]);
+	}
+	if (Arguments.vs != null) 
+	{
+		for (var i = 0; i < Arguments.vs.length; i++)
+		view.addView(Arguments.vs[i]);
+	}
+}
+function ScrollViewer(view, Arguments){
+	BaseViewer(view, Arguments);
+	if (Arguments.View != null) view.addView(Arguments.View);
+	if (Arguments.v != null) view.addView(Arguments.v);
+	if (Arguments.vy != null) view.setVisibility(Arguments.vy);
+}
+function ProgressBarer(view, Arguments){
+	if (Arguments.Progress != null) view.setProgress(Arguments.Progress);
+	if (Arguments.p != null) view.setProgress(Arguments.p);
+}
+function SeekBarer(view, Arguments){
+	if (Arguments.Thumb != null) view.setThumb(getBitmap(Arguments.Thumb));
+	if (Arguments.Max != null) view.setMax(Arguments.Max);
+	if (Arguments.OnSeekBarChangeListener != null) view.setOnSeekBarChangeListener({onProgressChanged:Arguments.OnSeekBarChangeListener});
+	if (Arguments.ProgressDrawable != null) view.setProgressDrawable(getBitmap(Arguments.ProgressDrawable));
+	if (Arguments.ProgressDrawableTiled) view.setProgressDrawableTiled(getBitmap(Arguments.ProgressDrawableTiled));
+			
+	if (Arguments.max != null) view.setMax(Arguments.max);
+	if (Arguments.thumb != null) view.setThumb(getBitmap(Arguments.thumb));
+	if (Arguments.osc != null) view.setOnSeekBarChangeListener(new android.widget.SeekBar.OnSeekBarChangeListener({onProgressChanged:function(SeekBar, int, boolean){try{if (Arguments.osc.opc != null) Arguments.osc.opc(SeekBar, int, boolean);}catch(e){Exception(e);}}, onStartTrackingTouch:function(SeekBar){try{if (Arguments.osc.ost != null) Arguments.osc.ost(SeekBar);}catch(e){Exception(e);}}, onStopTrackingTouch:function(SeekBar){try{if (Arguments.osc.osp != null) Arguments.osc.osp(SeekBar);}catch(e){Exception(e);}} }));
+	if (Arguments.pd != null) view.setProgressDrawable(getBitmap(Arguments.pd));
+	if (Arguments.pdt != null) view.setProgressDrawableTiled(getBitmap(Arguments.pdt));
+}
+function CheckBoxer(view, Arguments){
+	if (Arguments.OnCheckedChangeListener) view.setOnCheckedChangeListener(new android.widget.RadioButton.OnCheckedChangeListener({onCheckedChanged:function(button, boolean){try{Arguments.OnCheckedChangeListener(button, boolean);}catch(e){Exception(e);}}}));
+	if (Arguments.Checked != null) view.setChecked(Arguments.Checked);
+			
+	if (Arguments.ocl) view.setOnCheckedChangeListener(new android.widget.RadioButton.OnCheckedChangeListener({onCheckedChanged:function(button, boolean){try{Arguments.ocl(button, boolean);}catch(e){Exception(e);}}}));
+	if (Arguments.ed != null) view.setChecked(Arguments.ed);
+}
+
+
+/*
+function BaseViewer(view, Arguments){
+	if (Arguments.Animation != null) view.setAnimation(Arguments.Animation);
+	if (Arguments.LayoutParams != null) view.setLayoutParams(Arguments.LayoutParams);
+	if (Arguments.Gravity != null) view.setGravity(Arguments.Gravity);
+	if (Arguments.onClick != null) view.setOnClickListener(new android.view.View.OnClickListener({onClick : function(v){try{Arguments.onClick(v); GraphicsAnimation([v], "click");}catch(e){Exception(e);}}}));
+	if (Arguments.OnLongClickListener != null) view.setOnLongClickListener(new android.view.View.OnLongClickListener({ onLongClick : function(v){ try{GraphicsAnimation([v], "long-click");Arguments.OnLongClickListener(v) != null;}catch(e){Exception(e);return false;}}})); 
+	if (Arguments.OnTouchListener != null) view.setOnTouchListener(new android.view.View.OnTouchListener({onTouch : function(v, e){try{GraphicsAnimation([v, e], "touch-click");return Arguments.OnTouchListener(v, e) != null;}catch(e){Exception(e);return false;}}}));
+	if (Arguments.KeepScreenOn != null) view.setKeepScreenOn(Arguments.KeepScreenOn);
+    if (Arguments.SaveEnable != null) view.setSaveEnabled(Arguments.SaveEnable);
+    if (Arguments.Visibility != null) view.setVisibility(Arguments.Visibility);
+	if (Arguments.Tag != null) view.setTag(Arguments.Tag);
+	if (Arguments.Id != null) view.setId(Arguments.Id);
+	if (Arguments.BackgroundColor != null) view.setBackgroundColor(Arguments.BackgroundColor);
+	if (Arguments.Background != null) view.setBackgroundDrawable(getBitmap(Arguments.Background));
+	if (Arguments.Padding != null) view.setPadding(Arguments.Padding[0], Arguments.Padding[1], Arguments.Padding[2], Arguments.Padding[3]);
+	if (Arguments.OnInit != null) Arguments.OnInit(view);
+				
+	if (Arguments.init != null) Arguments.init(view);
+	if (Arguments.pad != null) view.setPadding(Arguments.pad[0], Arguments.pad[1], Arguments.pad[2], Arguments.pad[3]);
+	if (Arguments.b != null) view.setBackgroundDrawable(getBitmap(Arguments.b));
+	if (Arguments.id != null) view.setId(Arguments.id);
+	if (Arguments.a != null) view.setAnimation(Arguments.a);
+	if (Arguments.g != null) view.setGravity(Arguments.g);
+	if (Arguments.lp != null) view.setLayoutParams(Arguments.lp);
+	if (Arguments.oc != null) view.setOnClickListener(new android.view.View.OnClickListener({onClick : function(v){try{Arguments.oc(v); GraphicsAnimation([v], "click");}catch(e){Exception(e);}}}));
+	if (Arguments.olc != null) view.setOnLongClickListener(new android.view.View.OnLongClickListener({onLongClick : function(v){try{GraphicsAnimation([v], "long-click");return Arguments.olc(v) != null;}catch(e){Exception(e);return false;}}})); 
+	if (Arguments.ot != null) view.setOnTouchListener(new android.view.View.OnTouchListener({onTouch : function(v, e){try{GraphicsAnimation([v, e], "touch-click");return Arguments.ot(v, e) != null;}catch(e){Exception(e);return false;}}}));
+	if (Arguments.bc != null) view.setBackgroundColor(parseColor(Arguments.bc));
+	if (Arguments.kso != null) view.setKeepScreenOn(Arguments.kso);
+	if (Arguments.sea != null) view.setSaveEnabled(Arguments.sea);
+	if (Arguments.tag != null) view.setTag(Arguments.tag);
+	
+	
+	function animation(){}
+	function layoutparams(){}
+	function gravity(){}
+	function onClick(){}
+	function OnTouchListener(){}
+	function layoutparams(){}
+	function OnLongClickListener(){}
+	function KeepScreenOn(){}
+	function SaveEnable(){}
+	
+	function Visibility(){}
+	function Tag(){}
+	function Id(){}
+	function BackgroundColor(){}
+	function Background(){}
+	function Padding(){}
+	function OnInit(){}
+	
+	
+	
+	
+	
+	var Properties = {
+	Animation : {simple:"a", action:function(view, Arguments){view.setAnimation(Arguments.Animation);}},
+	LayoutParams : {simple:"lp", action:function(view, Arguments){view.setLayoutParams(Arguments.LayoutParams);}},
+	Gravity : {simple : "g", action : function(view, Arguments){view.setGravity(Arguments.Gravity);}},
+	onClick : {simple : "oc", action : function(view, Arguments, mark){view.setOnClickListener(new android.view.View.OnClickListener({onClick : function(v){try{if (mark == ERMarks.large) Arguments.onClick(v); else if (mark == ERMarks.small) Arguments[Properties.onClick.simple](v); GraphicsAnimation([v], "click");}catch(e){Exception(e);}}}));}},
+	OnLongClickListener : {simple : "olc", action : function(view, Arguments, mark){view.setOnLongClickListener(new android.view.View.OnLongClickListener({ onLongClick : function(v){ try{GraphicsAnimation([v], "long-click"); if (mark == ERMarks.large) return Arguments.OnLongClickListener(v) != null; else if (mark == ERMarks.small) return Arguments[Properties.OnLongClickListener.simple];}catch(e){Exception(e); return false;}}}));}},
+	OnTouchListener : {simple : "ot", action : function(view, Arguments, mark){view.setOnTouchListener(new android.view.View.OnTouchListener({onTouch : function(v, e){try{GraphicsAnimation([v, e], "touch-click"); if (mark == ERMarks.large) return Arguments.OnTouchListener(v, e) != null; else if(mark == ERMarks.small) return Arguments[Properties.OnTouchListener.simple];}catch(e){Exception(e);return false;}}}));}},
+	KeepScreenOn : {simple : "kso", action : function(view, Arguments){view.setKeepScreenOn(Arguments.KeepScreenOn);}},
+	SaveEnable : {simple : "sea", action : function(view, Arguments){view.setSaveEnabled(Arguments.SaveEnable);}},
+	Visibility : {simple : "v", action : function(view, Arguments){view.setVisibility(Arguments.Visibility);}},
+	Tag : {simple : "tag", action : function(view, Arguments){view.setTag(Arguments.Tag);}},
+	Id : {simple : "id", action : function(view, Arguments){view.setId(Arguments.Id);}},
+	BackgroundColor : {simple : "bc", action : function(view, Arguments){view.setBackgroundColor(Arguments.BackgroundColor);}},
+	Background : {simple : "b", action : function(view, Arguments){view.setBackgroundDrawable(getBitmap(Arguments.Background));}},
+	Padding : {simple : "pad", action : function(view, Arguments){view.setPadding(Arguments.Padding[0], Arguments.Padding[1], Arguments.Padding[2], Arguments.Padding[3]);}},
+	OnInit : {simple : "init", action : function(view, Arguments){Arguments.OnInit(view);}},
+};
+
+function BaseViewer(view, Arguments){
+	for (var i in Properties){
+		print("i:" + i);
+		//Properties[OnLongClickListener][simple];
+		//print("arg i : " + Arguments[i]);
+		//print("s i : " + Arguments[Properties[i]["simple"]]);
+		if (Arguments[i] != null) Properties[i].action(view, Arguments, ERMarks.large);
+		if (Arguments[Properties[i].simple] != null) Properties[i].action(view, Arguments, ERMarks.small);
+		
+	}
+	
+	//if (Arguments.Animation != null) animation();
+	//if (Arguments.LayoutParams != null) layoutparams();
+	/*if (Arguments.Gravity != null) gravity();
+	if (Arguments.onClick != null) onclick();
+	if (Arguments.OnLongClickListener != null) onlongclicklistener();
+	if (Arguments.OnTouchListener != null) ontouchlistener();
+	if (Arguments.KeepScreenOn != null) keepscreenon();
+    if (Arguments.SaveEnable != null) saveenable();
+    if (Arguments.Visibility != null) visibility();
+	if (Arguments.Tag != null) tag();
+	if (Arguments.Id != null) id();
+	if (Arguments.BackgroundColor != null) backgroundcolor();
+	if (Arguments.Background != null) background();
+	if (Arguments.Padding != null) padding();
+	if (Arguments.OnInit != null) oninit();
+				
+	if (Arguments.init != null) oninit();
+	if (Arguments.pad != null) padding();
+	if (Arguments.b != null) background();
+	if (Arguments.id != null) id();
+	if (Arguments.a != null) animation();
+	if (Arguments.g != null) gravity();
+	if (Arguments.lp != null) layoutparams();
+	if (Arguments.oc != null) onclick();
+	if (Arguments.olc != null) onlongclicklistener(); 
+	if (Arguments.ot != null) ontouchlistener();
+	if (Arguments.bc != null) backgroundcolor();
+	if (Arguments.kso != null) keepscreenon();
+	if (Arguments.sea != null) saveenable();
+	if (Arguments.tag != null) tag();
+	
+	function animation(){view.setAnimation(Arguments.Animation);}
+	function layoutparams(){}
+	function gravity(){}
+	function onclick(){}
+	function ontouchlistener(){}
+	function onlongclicklistener(){}
+	function keepscreenon(){}
+	function saveenable(){}
+	function visibility(){;}
+	function tag(){}
+	function id(){}
+	function backgroundcolor(){}
+	function background(){}
+	function padding(){}
+	function oninit(){}
+}*/
+
+Logcat.turnOn();
+
+runOnUiThread(function(){
+	print("加载时间:" + getAppRunTime() / 1000 + "秒");
+    runTemp();
+});
+/**
+	*var plan = {
+	*Ⅰ : database.js(get, transaction),
+	*Ⅱ : fileList.Function(),
+	*Ⅲ : listView(),
+  	*Ⅳ : Intent.js,
+	*Ⅴ : random.js
+	*logcat错误报告
+	参数窗口
+	*设置参数保存
+};
+*/
+
+
+function runTemp(){
+	
+	/*
+	var path = test_script_dir;
+	
+	fileList(path, {onDir:function(file){
+		print("Dir:" + file);
+	}, onFile:function(file){
+		print("File:" + file);
+	}});
+	*/
+	//if (LogcatSwitch)
+	//Logcat.log("()())()()(");
+	//print()();
+	
+	//writeText("Congratulations\n", "/storage/sdcard0/JavaScriptProjects/Library/testDir/us.log", true);
+	/*var path = "/storage/sdcayrd0/JavaScriptProjects/Library/testDir/us.log";
+	var writer = new java.io.FileWriter(path);
+	writer.append(path);
+	writer.close();*/
+	
+	//vibrator(1000);
+	//Logcat.turnOff();
+	/*
+	var ini = new databaseTable(test_script_dir + "testDir/ini.db", "INI");
+	ini.createOrOpen("name, type, content, extra");
+	//ini.drop();
+	for(var i = 0; i < 10; i++)
+		ini.insertData({name:"No." + i, type:"file", content:test_script_dir + "i" + i + ".db"});
+	*/
+	
+	/*var p = PopupWindow({w:100, h:100, v:
+	Button({t:"android",
+		olc:function(v){
+			startNewThread(function(){
+				print("开始");
+				
+				print("结束");
+			});
+		},
+		oc : function(v){
+			//print(randomItem([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 25, 6, 256, 7, 5, '6', 'rt', '/']));
+			//makeFileExist(test_script_dir + "gh.n/hj/uy", "dir");
+		}
+	})});
+	ShowPop(p);*/
+	//ExportDialog(test_script_dir);
+	
+	
+	/*var p = PopupWindow({w:100, h:300, v:ListView({oicl:function(p, v, po, i){print("(t;)" +  po);},
+	oilcl:function(p, v, po, id){print(po);},
+	oisl:{ois:function(p, v, po , i){print("oisl");} , ons:function(p){print("ons");}},
+	ad:ListAdapter.array(["==", "()", "}}", "gd", "hhhh", "yfg", "safb", "resc", "syj", "jhc"], SimpleListItemResources.multiple_choice)})});
+	ShowPop(p);
+	ExportDialog(test_script_dir);
+	
+	//AndroidTTS.speak("amazing", TTSQueue.add, null, "speech");
+	
+	//TTSFactory.static_speak(Locale.US, "successfully");
+	
+	//VideoDialog("/sdcard/Android/data/tv.danmaku.bili/download/7449411/1/lua.mp4.bili2api.1/0.blv");
+	
+	/*
+	var mt = new databaseTable(test_script_dir + "testDir/mydb.db0db", "TestTable");
+	mt.setDebug(true);
+	mt.create("name integer not null, id varchar primary key, extra varchar");
+		mt.insert("name, id", "?, ?", ["xiao", 1]);
+		mt.insert("name, id", "?, ?", ["xia ", 2]);
+		mt.insert("name, id", "?, ?", ["xing", 3]);
+		mt.insertA(["返回结婚", "4", null]);
+		mt.insertA(["家伙婚", "5", ""]);
+		print(mt.getDatabase().getSQL().inTransaction());
+		
+	mt.runTransaction(function(){
+		print(mt.getDatabase().getSQL().inTransaction());
+		mt.updateData({name:"hello", id:9, extra:new java.lang.String(databaseTable+"").getBytes()}, "id like 3", [], NumberMode.Integer);
+		mt.updateData({"name":'stupid', extra:getBitmap("/storage/sdcard0/JavaScriptProjects/查看乐谱/picture/查看乐谱-0000001.jpg")}, "id like ?", [2]);
+		mt.deleteFormTable("where name like ?", ["xing"]);
+		mt.update("name = ? where id like 1", ["小芳"]);
+		mt.insertData({name:"hello", id:7, extra:null}, NumberMode.Integer);
+		mt.insertData({name:"fuvk", id:8, extra:!true}, NumberMode.Long);
+	 
+	});
+	
+	mt.drop();
+	mt.close();
+	*/
+	/*
+    InputsDialog({
+	   t:"Test",
+	   inputs:
+	   [
+	   	  {type:"file", file_def:"==", path:"/sdcard"},
+		  {type:"dir", path:"/"},
+	      {type:"rbs", rbs:["内存", "几年", "手机"], rbs_o:0, rbs_color:"#00ef56"},	
+		  {type:"checks", checks:["是否", "眼睛"], checks_o:0, checks_color:"#00ef56"},
+		  {type:"edit", edt_t:"==="},
+		  {type:"rbs", rbs:["内存", "几年", "手机"], rbs_o:0, rbs_color:"#00ef56"},	
+		  {type:"checks", checks:["是否", "眼睛"], checks_o:0, checks_color:"#00ef56"},
+		  {type:"edit", edt_t:"===", inf:"[jhf]"},
+		  
+		  {type:"seek", t:"=="}
+	   ],
+	   done:function(rws){
+		   print(rws);
+	   }
+   });
+   */
+   //CheckThemes();
+  //ExportDialog("/storage/sdcard1/Android/data/");
+   //VideoDialog("/storage/sdcard1/Android/data/com.tencent.qqmusic/files/qqmusic/mv/动漫原声 - 某科学的超电磁炮 OP [mqms].mp4");;
+//   WebDialog("file:///storage/sdcard0/1-Work-Space-1-JavaScript/Library/temp.html", null, {jse:true}, {
+//	   ctx:"
+//   });*/
+   
+   //baseDialog({View:Button({t:"&&&"})});
+     
+	//ExportDialog("/storage/sdcard1/Android/data/");
+    /*MessageDialog("嫁鸡随鸡", "嫁狗随狗", function(){
+		print("加载时间:" + getAppRunTime() / 1000 + "秒");
+	});
+	
+	var v = notifyFactory.newInstance({title:"uuu",t:"===", i:PendingIntentFactory.create(new android.content.Intent())});
+	notifyFactory.notify(v, 0);
+	*/
+	//PendingIntentFactory.create()
+	//DownloadUtil.download("http://down.shouji.kuwo.cn/star/mobile/kwplayer_ar_kwmusic_m2.apk", "/storage/sdcard0/1-Work-Space-1-JavaScript/Library/temp.html");
+	
+//	var zipf = "/storage/sdcard0/1-Work-Space-1-JavaScript/Library/testDir/zip.zip";
+//	var unzipdir = "/storage/sdcard0/1-Work-Space-1-JavaScript/Library/testDir/zip/";
+//	var size = getTotalEntriesSize(zipf);
+//	var count = 0;
+//	
+//	var m = ProgressDialog({Max:size, Title:"unZipping"});
+//	m.showDialog();
+//	newThread(function(){
+//		UnZip(zipf, unzipdir, function(zf, entry){
+//			count += entry.getSize();
+//			var b = parseInt((count/size) * 100);
+//			
+//			if (b < 30)
+//				m.setText("解压刚刚开始");
+//			else if (30 <= b && b < 50)
+//				m.setText("解压一小半啦");
+//			else if (50 <= b && b < 100)
+//				m.setText("解压即将完成");
+//			else
+//				m.setText("解压完成!");
+//			
+//			m.setProgress(count);
+//			m.setRate("进度:" + b + "%");
+//		});
+//	}).start();
+	//m.dismisDialog();
+	
+//	var zipf = "/storage/sdcard0/1-Work-Space-1-JavaScript/Library/testDir/zip.zip";
+//	var unzipdir = "/storage/sdcard0/1-Work-Space-1-JavaScript/Library/testDir/zip/";
+//	var size = getTotalEntriesSize(zipf);
+//	var count = 0;
+//	
+//	var m = ProgressWindow({f:true, max:size, t:"unZipping", color:"#ff0028", os:function(){Toast("你拉也没有用。。");}});
+//	m.showWindow();
+//	newThread(function(){
+//		UnZip(zipf, unzipdir, function(zf, entry){
+//			count += entry.getSize();
+//			var b = parseInt((count/size) * 100);
+//			
+//			if (b < 30)
+//				m.setText("解压刚刚开始");
+//			else if (30 <= b && b < 50)
+//				m.setText("解压一小半啦");
+//			else if (50 <= b && b < 100)
+//				m.setText("解压即将完成");
+//			else
+//				m.setText("解压完成!");
+//			
+//			m.setProgress(count);
+//			m.setRate("进度:" + b + "%");
+//		});
+//	}).start();
+//	
+	//var m = ProgressWindow({Title:"yes?", Width:300, Height:125});
+	//m.showWindow();
+}
+
+
+
+/*
+
+File audioFile = new File(Environment.getExternalStorageDirectory(), "123.mp3");
+Uri uri = Uri.parse(audioFile.getAbsolutePath());
+Intent intent = new Intent(Intent.ACTION_MAIN);
+intent.setAction(Intent.ACTION_DEFAULT);
+// intent.addCategory(Intent.CATEGORY_APP_MUSIC);
+intent.setDataAndType(uri, "audio/*");
+startActivity(intent);
+
+或者
+
+var b = new databaseTable(test_script_dir + "testDir/ini.db", "INI");
+			print(b.toArrayJson());
+			var db = b.toArrayJson();
+			var t = [];
+			
+			for(var i in db) {
+				var o = {};
+				for(var j in db[i]) {
+					print(j + ":" + db[i][j]);
+					o[j] = db[i][j];
+				}
+				t.push(o);
+			}
+			print(ToStringJsonArray(o));
+			//print(ToStringJsonArray(b.toArrayJson()), test_script_dir + "testDir/db.json");
+			
+
+
+
+File audioFile = new File(Environment.getExternalStorageDirectory(), "123.mp3");
+Uri uri = Uri.parse(audioFile.getAbsolutePath());
+Intent intent = new Intent(Intent.ACTION_VIEW);
+// intent.addCategory(Intent.CATEGORY_APP_MUSIC);
+intent.setDataAndType(uri, "audio/*");
+startActivity(intent);*/
+
+function BaseWindow(Arguments){
+	if (Arguments != null)
+	{
+		if (Arguments.View == null || !(Arguments.View instanceof android.view.View)) throw ArgumentException("the argument 'View' is necessary and important, you can't fail it");
+		
+		var inner_Height = Arguments.Height == null ? 310 : Arguments.Height;
+		var inner_Width = Arguments.Width == null ? 320 : Arguments.Width;
+		
+		var Buttons = [];
+		if (Arguments.Button1 != null)
+			Buttons.push(Button({t:(Arguments.Button1.Text), oc:(Arguments.Button1.onClick), b:(Arguments.Button1.Background), lp:(Arguments.Button1.Params == null ? Adapters.heighter : Arguments.Button1.Params) }));
+		if (Arguments.Button2 != null)
+			Buttons.push(Button({t:(Arguments.Button2.Text), oc:(Arguments.Button2.onClick), b:(Arguments.Button2.Background), lp:(Arguments.Button2.Params == null ? Adapters.heighter : Arguments.Button2.Params) }));
+		if (Arguments.Button3 != null)
+			Buttons.push(Button({t:(Arguments.Button3.Text), oc:(Arguments.Button3.onClick), b:(Arguments.Button3.Background), lp:(Arguments.Button3.Params == null ? Adapters.heighter : Arguments.Button2.Params) }));
+		
+		var title = TextView({
+			lp:(Adapters.Params.wider),
+			color:(Arguments.TitleColor == null ? Defaults.DialogTitleColor : Arguments.TitleColor), 
+			t:(Arguments.Title == "" ? "notitle" : Arguments.Title),
+			oc:(Defaults.DialogTitleClick),
+			ml:(1),
+			v:(Arguments.Title == null ? android.view.View.GONE : android.view.View.VISIBLE)
+		});
+		
+		var content = ScrollView({
+			lp:(LayoutParams.getParams(-1, dip2px(Buttons.length == 0 ? 310 : (inner_Height / 310 * 230)))),
+			v:(Arguments.View),
+			b:(Arguments.ContentBackground),
+			g:(Arguments.ContentGravity)
+		});
+		
+		var bottom = HorizontalScrollView({
+			lp:(LayoutParams.getParams(-1, dip2px(inner_Height / 310 * 60))),
+			b:(Arguments.BottomBackground),
+			vy:(Buttons.length == 0 ? android.view.View.GONE : android.view.View.VISIBLE),
+			v:(LinearLayout({
+				lp:(Adapters.full),
+				o:(0),
+				vs:(Buttons),
+				g:(Arguments.BottomGravity == null ? Gravity.Centre : Arguments.BottomGravity)
+			}))
+		});
+		
+		var window = PopupWindow({
+			h:(inner_Height), 
+			w:(inner_Width),
+			f:(Arguments.Focusable == null ? true : Arguments.Focusable), 
+			v:(LinearLayout({
+				o:(1),
+				b:(Arguments.WindowBackground),
+				vs:([title, content, bottom]),
+				g:(Arguments.mainGravity)
+			})),
+			odl:(Arguments.Dismiss),
+			b:(Arguments.DroppestBackground)
+		});
+		
+		if (Arguments.Show == null || Arguments.Show == true)
+			return ShowPop(window, Arguments.Gravity, Arguments.X_offset, Arguments.Y_offset);
+		else 
+			return window;
+	}
+	else throw ArgumentException("there's no arguments in this function");
+}
+function baseDialog(Arguments){
+	if (Arguments != null)
+	{
+		var dialog = new android.app.AlertDialog.Builder(ctx);
+		
+		if (Arguments.Message != null) dialog.setMessage(Arguments.Message);
+		if (Arguments.Title != null) dialog.setTitle(Arguments.Title);
+		if (Arguments.Icon != null) dialog.setIcon(getBitmap(Arguments.Icon));
+		if (Arguments.View != null) dialog.setView(Arguments.View);
+		if (Arguments.Cancelable != null) dialog.setCancelable(Arguments.Cancelable);
+		if (Arguments.CustomTitle != null) dialog.setCustomTitle(Arguments.CustomTitle);
+		if (Arguments.InverseBackgroundForced != null) dialog.setInverseBackgroundForced(Arguments.InverseBackgroundForced);
+		if (Arguments.PositiveButton != null) dialog.setPositiveButton(Arguments.PositiveButton.Text, new android.content.DialogInterface.OnClickListener({onClick:function(DialogInterface, int){ try{if (Arguments.PositiveButton.onClick != null) Arguments.PositiveButton.onClick(DialogInterface, int);}catch(e){Exception(e);} }}));
+		if (Arguments.NegativeButton != null) dialog.setNegativeButton(Arguments.NegativeButton.Text, new android.content.DialogInterface.OnClickListener({onClick:function(DialogInterface, int){ try{if (Arguments.NegativeButton.onClick != null) Arguments.NegativeButton.onClick(DialogInterface, int);}catch(e){Exception(e);} }}));
+		if (Arguments.NeutralButton != null)  dialog.setNeutralButton(Arguments.NeutralButton.Text, new android.content.DialogInterface.OnClickListener({onClick:function(DialogInterface, int){ try{if (Arguments.NeutralButton.onClick != null) Arguments.NeutralButton.onClick(DialogInterface, int);}catch(e){Exception(e);} }}));
+		if (Arguments.OnDismissListener != null) dialog.setOnDismissListener(new android.content.DialogInterface.OnDismissListener({onDismiss:function(d){try{Arguments.OnDismissListener(d);}catch(e){Exception(e);}}}));
+		if (Arguments.OnCancelListener != null) dialog.setOnCancelListener(new android.content.DialogInterface.setOnCancelListener({onCancel:function(d){try{Arguments.OnCancelListener(d);}catch(e){Exception(e);}}}));
+		if (Arguments.OnKeyListener != null) dialog.setOnKeyListener(new android.content.DialogInterface.OnKeyListener({onKey:function(d, i, e){try{return Arguments.OnKeyListener(d, i, e);}catch(e){Exception(e);}}}));
+		if (Arguments.Items != null) dialog.setItems(ToJavaArray(Arguments.Items.Array, StringType), new android.content.DialogInterface.OnClickListener({onClick:function(d, w){try{if (Arguments.Items.onClicks != null) Arguments.Items.onClicks(d, w);}catch(e){Exception(e);}}}));
+		if (Arguments.SingleChoiceItems != null) dialog.setSingleChoiceItems(ToJavaArray(Arguments.SingleChoiceItems.Array, StringType), Arguments.SingleChoiceItems.Checked == null ? 0 : Arguments.SingleChoiceItems.Checked, new android.content.DialogInterface.OnClickListener({onClick:function(d, w){try{if (Arguments.SingleChoiceItems.Clicks != null) Arguments.SingleChoiceItems.Clicks(d, w, Arguments.SingleChoiceItems.Array);}catch(e){Exception(e);}}}));
+		if (Arguments.MultiChoiceItems != null) dialog.setMultiChoiceItems(ToJavaArray(Arguments.MultiChoiceItems.Array, StringType), ToJavaArray(Arguments.MultiChoiceItems.Checkeds, java.lang.Boolean.TYPE), new android.content.DialogInterface.OnMultiChoiceClickListener({onClick:function(d, i, b){try{if (Arguments.MultiChoiceItems.Clicks != null) Arguments.MultiChoiceItems.Clicks(d, i, b, Arguments.MultiChoiceItems.Array);}catch(e){Exception(e);}}}));
+		if (Arguments.OnInit != null) Arguments.OnInit(dialog);
+				
+		if (Arguments.init != null) Arguments.init(dialog);
+		if (Arguments.msg != null) dialog.setMessage(Arguments.msg);
+		if (Arguments.t != null) dialog.setTitle(Arguments.t);
+		if (Arguments.i != null) dialog.setIcon(getBitmap(Arguments.i));
+		if (Arguments.v != null) dialog.setView(Arguments.v);
+		if (Arguments.cc != null) dialog.setCancelable(Arguments.cc);
+		if (Arguments.ct != null) dialog.setCustomTitle(Arguments.ct);
+		if (Arguments.ibf != null) dialog.setInverseBackgroundForced(Arguments.ibf);
+		if (Arguments.pb != null) dialog.setPositiveButton(Arguments.pb.t, new android.content.DialogInterface.OnClickListener({onClick:function(DialogInterface, int){ try{if (Arguments.pb.oc != null) Arguments.pb.oc(DialogInterface, int);}catch(e){Exception(e);} }}));
+		if (Arguments.nb != null) dialog.setNegativeButton(Arguments.nb.t, new android.content.DialogInterface.OnClickListener({onClick:function(DialogInterface, int){ try{if (Arguments.nb.oc != null) Arguments.nb.oc(DialogInterface, int);}catch(e){Exception(e);} }}));
+		if (Arguments.mb != null)  dialog.setNeutralButton(Arguments.mb.t, new android.content.DialogInterface.OnClickListener({onClick:function(DialogInterface, int){ try{if (Arguments.mb.oc != null) Arguments.mb.oc(DialogInterface, int);}catch(e){Exception(e);} }}));
+		if (Arguments.odl != null) dialog.setOnDismissListener(new android.content.DialogInterface.OnDismissListener({onDismiss:function(d){try{Arguments.odl(d);}catch(e){Exception(e);}}}));
+		if (Arguments.ocl != null) dialog.setOnCancelListener(new android.content.DialogInterface.setOnCancelListener({onCancel:function(d){try{Arguments.ocl(d);}catch(e){Exception(e);}}}));
+		if (Arguments.okl != null) dialog.setOnKeyListener(new android.content.DialogInterface.OnKeyListener({onKey:function(d, i, e){try{return Arguments.okl(d, i, e);}catch(e){Exception(e);}}}));
+		if (Arguments.items != null) dialog.setItems(ToJavaArray(Arguments.items.a, StringType), new android.content.DialogInterface.OnClickListener({onClick:function(d, w){try{if (Arguments.items.oc != null) Arguments.items.oc(d, w);}catch(e){Exception(e);}}}));
+		if (Arguments.sci != null) dialog.setSingleChoiceItems(ToJavaArray(Arguments.sci.a, StringType), Arguments.sci.c == null ? 0 : Arguments.sci.c, new android.content.DialogInterface.OnClickListener({onClick:function(d, w){try{if (Arguments.sci.c != null) Arguments.sci.c(d, w, Arguments.sci.a);}catch(e){Exception(e);}}}));
+		if (Arguments.mci != null) dialog.setMultiChoiceItems(ToJavaArray(Arguments.mci.a, StringType), ToJavaArray(Arguments.mcu.c, java.lang.Boolean.TYPE), new android.content.DialogInterface.OnMultiChoiceClickListener({onClick:function(d, i, b){try{if (Arguments.mci.c != null) Arguments.mci.c(d, i, b, Arguments.mci.a);}catch(e){Exception(e);}}}));
+		
+		if (Arguments.Show == null || Arguments.Show == true)
+		{
+			dialog.create().show();
+			return dialog;
+		}
+		else
+			return dialog;
+	}
+	else throw ArgumentException("BaseDialog needs a objective argument");
+}
+function AlertWindow(Alert){
+	var Dialog = BaseWindow({
+		Title:("警告"),
+		Width:(180),
+		Height:(260),
+		View:(TextView({lp:(Adapters.full), t:(Alert), color:(Defaults.AlertDialogColor)})),
+		Button1:({Params:(LayoutParams.getParams(260, -1)), Text:("确定"), onClick:(function(v){Dialog.dismiss();})})
+	});
+}
+function MoveableWindow(Background, onClick, G, Text, Animation, W, H){
+	var onLongClicked = false, tpopx = 0, tpopy = 0, mX, mY;
+	var window = BaseWindow({
+		Gravity:(G),
+		Focusable:(false),
+		Width:(W == null ? 55 : W),
+		Height:(H == null ? 55 : H),
+		View:(Button({
+			a:(Animation),
+			t:(Text),
+			b:(Background),
+			oc:(onClick),
+			olc:(function(v){onLongClicked = true;}),
+			ot:(function(v, e){
+				if (!onLongClicked)
+				{
+					mX = e.getX();
+					mY = e.getY();
+				}
+				if (onLongClicked)
+				{
+					var a = e.getAction();
+					if (a == 2)
+					{
+						var delX = parseInt(e.getX() - mX) * -1 / 10;
+						var delY = parseInt(e.getY() - mY) * -1 / 10;
+						tpopx = tpopx - delX;
+						tpopy = tpopy - delY;
+						window.update(parseInt(tpopx), parseInt(tpopy), -1, -1);
+					}
+					if (a == 1) onLongClicked = false;
+				}
+			})
+		}))
+	});
+	return window;
+}
+function MoveableView(view, width, height, gravity){
+	var onLongClicked = false, tpopx = 0, tpopy = 0, mX, mY;
+	view.setOnLongClickListener(new android.view.View.OnLongClickListener({onLongClick : function(v){try{ 
+		onLongClicked = true;
+		GraphicsAnimation([v], "long-click");
+	}catch(e){Exception(e);}return true;}})); 
+	view.setOnTouchListener(new android.view.View.OnTouchListener({onTouch : function(v, e){try{
+		if (!onLongClicked)
+		{
+			mX = e.getX();
+			mY = e.getY();
+		}
+		if (onLongClicked)
+		{
+			var a = e.getAction();
+			if (a == 2)
+			{
+				var delX = parseInt(e.getX() - mX) * -1 / 10;
+				var delY = parseInt(e.getY() - mY) * -1 / 10;
+				tpopx = tpopx - delX;
+				tpopy = tpopy - delY;
+				window.update(parseInt(tpopx), parseInt(tpopy), -1, -1);
+			}
+			if (a == 1) onLongClicked = false;
+		}
+		GraphicsAnimation([v, e], "touch-click");
+	}catch(e){Exception(e);}return false;}}));
+	
+	var window = PopupWindow({w:width, h:height, f:false, v:view});
+	return ShowPop(window, gravity);
+}
+function MoveWindowView(view, window, onLongClick, onTouch) {
+	var onLongClicked = false, tpopx = 0, tpopy = 0, mX, mY;
+	view.setOnLongClickListener(new android.view.View.OnLongClickListener({onLongClick : function(v){try{ 
+		onLongClicked = true;
+		GraphicsAnimation([v], "long-click");
+		if (onLongClick != null) onLongClick(v);
+	}catch(e){Exception(e);}return true;}})); 
+	view.setOnTouchListener(new android.view.View.OnTouchListener({onTouch : function(v, e){try{
+		if (!onLongClicked)
+		{
+			mX = e.getX();
+			mY = e.getY();
+			
+			if (onTouch != null) onTouch(v, e);
+		}
+		if (onLongClicked)
+		{
+			var a = e.getAction();
+			if (a == 2)
+			{
+				var delX = parseInt(e.getX() - mX) * -1 / 10;
+				var delY = parseInt(e.getY() - mY) * -1 / 10;
+				tpopx = tpopx - delX;
+				tpopy = tpopy - delY;
+				window.update(parseInt(tpopx), parseInt(tpopy), -1, -1);
+			}
+			if (a == 1) onLongClicked = false;
+		}
+		GraphicsAnimation([v, e], "touch-click");
+	}catch(e){Exception(e);}return false;}}));
+	
+	return view;
+}
+function SingeFileDialog(Arguments){
+	if (Arguments.root == null) throw ArgumentException("Argument 'root' is null, please check your address");
+	
+	var rootfile = new java.io.File(Arguments.root);
+	var current_dir = rootfile.getAbsolutePath() + "/";
+	
+	show(addUpDir(rootfile.list()));
+	
+	function show(a){
+		var current = TextView({ml:2, t:current_dir, oc:function(v){MessageDialog(v.getText().toString(), "当前目录", null, "确定");}});
+		
+		var title = LinearLayout({
+			o:1,
+			b:Arguments.TitleBackground,
+			vs:[current, LinearLayout({
+				g:Gravity.Right,
+				o:0,
+				lp:Adapters.full,
+				vs:[Button({b:StriptManager.getAndroidDrawable("ic_menu_add"), lp:LayoutParams.getParams(50, 50), oc:function(v){
+					newFile();
+				}}), Button({b:StriptManager.getAndroidDrawable("ic_menu_delete"), lp:LayoutParams.getParams(50, 50), oc:function(v){
+					deleteFile(new java.io.File(current_dir).list());
+				}}), Button({b:StriptManager.getAndroidDrawable("ic_menu_search"), lp:LayoutParams.getParams(50, 50), oc:function(v){
+			   	 	searchFile();
+				}})]
+			})]
+		});
+		
+		var dialog = baseDialog({
+			CustomTitle:title,
+			Cancelable:Arguments.Cancelable,
+			NeutralButton:Arguments.NeutralButton,
+			PositiveButton:(Arguments.PositiveButton == null ? { Text:"取消"} : Arguments.PositiveButton ),
+			Items:{Array:a, onClicks:function(d, i){
+				if (i == 0)
+				{
+					current_dir = getUper(current_dir);
+					show(addUpDir(new java.io.File(current_dir).list()));
+				}
+				else
+				{
+					current_dir += a[i] + "/";
+					var sub = new java.io.File(current_dir);
+				
+					if (sub.isFile())
+					{
+						if (Arguments.onFile != null) Arguments.onFile(sub, d);
+						d.dismiss();
+					}
+					else
+					{
+						if (Arguments.onDir != null) Arguments.onDir(sub, d);
+						if (Arguments.onDir_isHide == null || Arguments.onDir_isHide == false)
+							show(addUpDir(sub.list()));
+						else
+							d.dismiss();
+					}
+				}
+			}}
+		});
+	}
+	function addUpDir(filelist){
+		var array = ["..."];
+		for (var i in filelist)
+			array.push(filelist[i]);
+		return array;
+	}
+	function getUper(path){
+		var temp = path.split("");
+				
+		if (temp[0] == "/")
+			temp.splice(0, 1, "");
+		if (temp[temp.length - 1] == "/")
+			temp.pop();
+
+		var array = temp.join("").split("/");
+		array.pop();
+
+		return array.join("/") + "/";
+	}
+	function newFile(){
+		var addview = LinearLayout({o:1, vs:[
+			TextView({lp:Adapters.wider, t:"请输入文件或者文件夹名"}), 
+			EditText({lp:Adapters.wider, id:10032})
+		]});
+		baseDialog({
+			Title:"new file/dir",
+			View:addview,
+			PositiveButton:{Text:"创建文件", onClick:function(){
+				var name = addview.findViewById(10032).getText().toString();
+				var file = new java.io.File(current_dir + name);
+				try
+				{
+					if (file.createNewFile())
+						Toast({msg:"创建成功"});
+					else
+						Toast({msg:"创建失败"});
+				}catch(e){
+					Toast({msg:"创建失败"});
+				}
+			}},
+			NeutralButton:{Text:"创建文件夹", onClick:function(){
+				var name = addview.findViewById(10032).getText().toString();
+				var file = new java.io.File(current_dir + name);
+				if(file.mkdir())
+					Toast({msg:"创建成功"});
+				else
+					Toast({msg:"创建失败"});
+			}},
+			NegativeButton:{Text:"取消"}
+		});
+	}
+	function deleteFile(list){
+		baseDialog({
+			Title:"delete file/dir",
+			Items:{Array:list, onClicks:function(d, i){
+				var file = new java.io.File(current_dir + list[i]);
+				baseDialog({
+					Title:"最后问一次",
+					Message:"是否删除" + list[i],
+					PositiveButton:{Text:"确定", onClick:function(){
+						eval("if (file.delete())Toast({msg:'删除成功'});else Toast({msg:'删除失败'});");
+					}},
+					NegativeButton:{Text:"取消"}
+				});
+			}},
+			NegativeButton:{Text:"取消"}
+		});
+	}
+	function searchFile(){
+		var list = [];
+		var view = LinearLayout({vs:[
+			TextView({t:"请输入文件名", lp:Adapters.wider}), 
+			EditText({lp:Adapters.wider, id:1410})
+			]
+		});
+		baseDialog({
+			Title:"search files",
+			View:view,
+			PositiveButton:{Text:"搜索", onClick:function(){
+				var text = view.findViewById(1410).getText().toString();
+				Toast({msg:"搜索中"});
+				newThread(function(){
+					search(new java.io.File(current_dir), text);
+					if (list.length == 0) 
+						Toast({msg:"无匹配文件"});
+					else
+						result();
+					Toast({msg:"搜索完成"});
+				}).start();
+			}},
+			NegativeButton:{Text:"取消"}
+		});
+		function result(){
+			runOnUiThread(function(){
+				baseDialog({
+					Title:"Files",
+					Items:{Array:list, onClicks:function(d, i){
+						Arguments.onFile(new java.io.File(list[i]));
+					}},
+					NegativeButton:{Text:"取消"}
+				});
+			});
+		}
+		function search(file, wn)
+		{
+			if (file.isDirectory())
+			{
+				var sub = file.listFiles();
+				for (var i in sub)
+				{
+					search(sub[i], wn);
+				}
+			}
+			else
+			{
+				var name = file.getName();
+				if (new RegExp(wn).test(name + ""))
+				{
+					list.push(file.toString());
+				}
+			}
+		}
+	}
+}
+function MessageDialog(Msg, title, click, btn){
+	baseDialog({
+		Title:title == null ? "信息" : title,
+		Message:Msg,
+		NegativeButton:{Text:btn == null ? "确定" : btn, onClick: click}
+	});
+}
+function VideoDialog(path){
+	video.play(path);
+}
+function WebDialog(url, title, Settings, objs){
+	var webview = android.webkit.WebView(ctx);
+	webview.setLayoutParams(Adapters.Params.full);
+	var set = webview.getSettings();
+	set.setJavaScriptEnabled(true);
+	webview.loadUrl(url);
+	var edit = EditText({t:url, lp:LayoutParams.getParams(350, -1), ml:1});
+	var button = Button({t:"加载", lp:LayoutParams.getParams(100, -1), oc:function(){
+		webview.loadUrl(edit.getText().toString());
+	}});
+	
+	initSet(set, Settings);
+	
+	baseDialog({
+		Title:title == null ? url : title,
+		View:LinearLayout({lp:Adapters.full, vs:[
+			LinearLayout({o:0, lp: Adapters.wider, vs:[edit, button]}),
+			webview
+		]}),
+		PositiveButton:{Text:"关闭"}
+	});
+	
+	function initSet(s, settings)
+	{
+		if (settings != null)
+		{
+			if(settings.afaffu != null) s.setAllowFileAccessFromFileURLs(settings.afaffu);
+        	if(settings.ace != null) s.setAppCacheEnabled(settings.ace);
+        	if(settings.acms != null) s.setAppCacheMaxSize(settings.acms);
+        	if(settings.acp != null) s.setAppCachePath(settings.acp);
+        	if(settings.bni != null) s.setBlockNetworkImage(settings.bni);
+        	if(settings.bnl != null) s.setBlockNetworkLoads(settings.bnl);
+        	if(settings.bizc != null) s.setBuiltInZoomControls(settings.bizc);
+        	if(settings.de != null) s.setDatabaseEnabled(settings.de);
+        	if(settings.dp != null) s.setDatabasePath(settings.dp);
+        	if(settings.dffs != null) s.setDefaultFixedFontSize(settings.dffs);
+        	if(settings.dfs != null) s.setDefaultFontSize(settings.dfs);
+        	if(settings.dten != null) s.setDefaultTextEncodingName(settings.dten);
+        	if(settings.jse != null) s.setJavaScriptEnabled(settings.jse);
+        	if(settings.lte != null) s.setLightTouchEnabled(settings.lte);
+        	if(settings.smw != null) s.setSupportMultipleWindows(settings.smw);
+        	if(settings.sz != null) s.setSupportZoom(settings.sz);
+        	if(settings.ts != null) s.setTextSize(settings.ts);
+        	if(settings.tz != null) s.setTextZoom(settings.tz);
+		}
+	}
+	
+	if (objs != null)
+	{
+		for (var obj in objs)
+		{
+			webview.addJavascriptInterface(objs[obj], obj + "");
+		}
+	}
+}
+function TextFileChecker(path, title, oc){
+	baseDialog({
+		Title:title == null ? new java.io.File(path).getName() : title,
+		Message:readText(path),
+		PositiveButton:{Text:"关闭", onClick:oc}
+	});
+}
+function ImageDialog(arg, title, oc){
+	baseDialog({
+		Title:title,
+		View:ImageView({i:arg}),
+		PositiveButton:{Text:"关闭", onClick:oc}
+	});
+}
+function ProgressDialog(Arguments){
+	if (Arguments == null) throw ArgumentException("Arguments should not be null");
+	
+	var full = Adapters.Params.full, wider = Adapters.Params.wider, highter = Adapters.Params.heighter, warp = Adapters.Params.warp;
+	
+	var bar = SeekBar({max:Arguments.Max, lp:wider, osc:{osp:function(){
+		if (Arguments.onSeek != null) Arguments.onSeek();
+		if (Arguments.os != null) Arguments.os();
+	}}});
+	var circle = ProgressBar({pad:[25, 25, 25, 25]});
+	var text = TextView({t:Arguments.Text, color:Arguments.TextColor, ml:1, lp:wider, pad:[15, 10, 15, 10], g:Gravity.Left, Ellipsize:TextUtilsTruncateAt.Middle});
+	var rate = TextView({t:Arguments.Rate, color:Arguments.RateColor, ml:1, lp:wider, pad:[15, 10, 15, 15], g:Gravity.Right});
+	
+	var layout = LinearLayout({lp:full, o:0,
+	vs:[
+		LinearLayout({lp:highter,
+			vs:[circle]}),
+		LinearLayout({lp:full, vs:
+			[
+				text, bar, rate
+			]})
+	 ]});
+	
+	var dialog = baseDialog({
+		View:layout,
+		Icon:Arguments.Icon,
+		Title:Arguments.Title,
+		Cancelable:Arguments.Cancelable,
+		PositiveButton:Arguments.PositiveButton,
+		NegativeButton:Arguments.NegativeButton,
+		NeutralButton:Arguments.NeutralButton,
+		OnDismissListener:Arguments.OnDismissListener,
+		OnCancelListener:Arguments.OnCancelListener,
+		Show:false
+	}).create();
+	
+	if (Arguments.i != null) dialog.setIcon(getBitmap(Arguments.i));
+	if (Arguments.title != null) dialog.setTitle(Arguments.title);
+	if (Arguments.c != null) dialog.setCancelable(Arguments.c);
+	if (Arguments.r != null) rate.setText(Arguments.r);
+	if (Arguments.t != null) text.setText(Arguments.t);
+	if (Arguments.max != null) bar.setMax(Arguments.max);
+	if (Arguments.tc != null) text.setTextColor(parseColor(Arguments.tc));
+	if (Arguments.rc != null) rate.setTextColor(parseColor(Arguments.rc));
+	if (Arguments.color != null)
+	{
+		var c = parseColor(Arguments.color);
+		text.setTextColor(c);
+		rate.setTextColor(c);
+	}
+	
+	return {
+		setProgress:function(int){
+		runOnUiThread(function(){
+			bar.setProgress(int);
+		});
+	},  dismisDialog:function(){
+		runOnUiThread(function(){
+			if (dialog.isShowing())
+				dialog.dismiss();
+		});
+	},  getDialog:function(){
+		return dialog;
+	},  setText:function(Text){
+		runOnUiThread(function(){
+			text.setText(Text);
+		});
+	}, setRate:function(Rate){
+		runOnUiThread(function(){
+			rate.setText(Rate);
+		});
+	}, showDialog:function(){
+		runOnUiThread(function(){
+			if (!dialog.isShowing())
+				dialog.show();
+		});
+	}};
+}
+function ProgressWindow(Arguments) {
+	if (Arguments == null) throw ArgumentException("Arguments should not be null");
+	
+	var full = Adapters.Params.full, wider = Adapters.Params.wider, highter = Adapters.Params.heighter, warp = Adapters.Params.warp;
+	
+	var title = TextView({t:Arguments.Title, color:Arguments.TitleColor, lp:wider, ml:1});
+	var bar = SeekBar({max:Arguments.Max, lp:wider, osc:{osp:function(){
+		if (Arguments.onSeek != null) Arguments.onSeek();
+		if (Arguments.os != null) Arguments.os();
+	}}});
+	var circle = ProgressBar({oc:function(){Toast("长按移动");}, pad:[25, 25, 25, 25]});
+	var text = TextView({t:Arguments.Text, color:Arguments.TextColor, ml:1, lp:wider, pad:[15, 10, 15, 10], g:Gravity.Left, Ellipsize:TextUtilsTruncateAt.Middle});
+	var rate = TextView({t:Arguments.Rate, color:Arguments.RateColor, ml:1, lp:wider, pad:[15, 10, 15, 15], g:Gravity.Right});
+	
+	var layout = LinearLayout({o:1, vs:[title, LinearLayout({lp:full, o:0, vs:[
+		LinearLayout({lp:highter, vs:[circle]}),
+		LinearLayout({lp:full, vs:[text, bar, rate]})]})
+	 ]
+	 });
+	
+	var window = PopupWindow({
+		v:layout,
+		odl:Arguments.OnDismissListener,
+		f:Arguments.Fucusable,
+		b:Arguments.Background,
+		w:Arguments.Width == null ? 300 : Arguments.Width,
+		h:Arguments.Height == null ? 125 : Arguments.Height
+	});
+	
+	if (Arguments.b != null) window.setBackgroundDrawable(getBitmap(Arguments.b));
+	if (Arguments.h != null) window.setHeight(Arguments.h);
+	if (Arguments.w != null) window.setWidth(Arguments.w);
+	if (Arguments.f != null) window.setFocusable(Arguments.f);
+	if (Arguments.r != null) rate.setText(Arguments.r);
+	if (Arguments.t != null) title.setText(Arguments.t);
+	if (Arguments.text != null) text.setText(Arguments.text);
+	if (Arguments.max != null) bar.setMax(Arguments.max);
+	if (Arguments.txc != null) text.setTextColor(parseColor(Arguments.txc));
+	if (Arguments.tc != null) title.setTextColor(parseColor(Arguments.tc));
+	if (Arguments.rc != null) rate.setTextColor(parseColor(Arguments.rc));
+	if (Arguments.color != null)
+	{
+		var c = parseColor(Arguments.color);
+		title.setTextColor(c);
+		text.setTextColor(c);
+		rate.setTextColor(c);
+	}
+	
+	MoveWindowView(circle, window, function(v){vibrator(200);});
+	
+	return {
+		setProgress:function(int){
+		runOnUiThread(function(){
+			bar.setProgress(int);
+		});
+	},  dismisWindow:function(){
+		runOnUiThread(function(){
+			if (window.isShowing())
+				window.dismiss();
+		});
+	},  getWindow:function(){
+		return window;
+	},  setText:function(Text){
+		runOnUiThread(function(){
+			text.setText(Text);
+		});
+	}, setRate:function(Rate){
+		runOnUiThread(function(){
+			rate.setText(Rate);
+		});
+	}, showWindow:function(gravity, x_offset, y_offset){
+		runOnUiThread(function(){
+			if (!window.isShowing())
+				ShowPop(window, gravity, x_offset, y_offset);
+		});
+	}};
+}
+function FontDialog(fontPath) {
+	baseDialog({
+		Title:"Font-" + getFileName(fontPath),
+		View:ScrollView({v:LinearLayout({lp:Adapters.full, vs:[
+				TextView({t:Defaults.TTFTestText, ts:5, lp:Adapters.wider, ttf:fontPath}),
+				TextView({t:Defaults.TTFTestText, ts:10, lp:Adapters.wider, ttf:fontPath}),
+				TextView({t:Defaults.TTFTestText, ts:15, lp:Adapters.wider, ttf:fontPath}),
+				TextView({t:Defaults.TTFTestText, ts:20, lp:Adapters.wider, ttf:fontPath}),
+				TextView({t:Defaults.TTFTestText, ts:30, lp:Adapters.wider, ttf:fontPath}),
+				EditText({ml:5, h:"输入任何字符", ts:30, lp:Adapters.wider, ttf:fontPath})
+			]})
+		}),
+		PositiveButton:{Text:"确定"}
+	});
+}
+function LogoDialog(image, text, title){
+	baseDialog({
+		Title:title,
+		View:LinearLayout({g:Gravity.Center, vs:[ImageView({i:image, lp:Adapters.Params.wider}), TextView({g:Gravity.Center, t:text, lp:Adapters.Params.wider})]}),
+		PositiveButton:{Text:"关闭"}
+	});
+}
+function ExportDialog(path){
+	var ends = "", current = "";
+	SingeFileDialog({root:path, Cancelable:false, onFile:function(file){
+	    ends = file.getName();
+		current = file.getParent() + "";
+		if (format(["jpg", "png", "bmp", "jpeg", "gif"]))
+			ImageDialog(file + "", ends, function(){
+				ExportDialog(current);
+			});
+		else if (format(["xml", "java", "c", "h", "py", "txt", "js", "html", "ini", "prop", "css", "sh", "vbs", "bat"]))
+			TextFileChecker(file + "", ends, function(){
+				ExportDialog(current);
+			});
+		else if (format(["mp3", "wav", "ogg", "m4a"]))
+		{
+			ExportDialog(current);
+			media.play(file + "");
+			MediaControlWindow();
+		}
+		else if (format(["mp4", "3gp", "mov", "avi"]))
+		{
+			ExportDialog(current);
+			VideoDialog(file + "");
+		}
+		else if (format(["ttf"]))
+		{
+			ExportDialog(current);
+			FontDialog(file + "");
+		}
+		else if (format(["apk"]))
+		{
+			ExportDialog(current);
+			baseDialog({
+				Title:"提示",
+				msg:"是否安装这个应用",
+				pb:{t:"确定", oc:function(){
+					installAPK(file + "");
+				}},
+				nb:{t:"取消"}
+			});
+		}
+		else
+		{
+			ExportDialog(current);
+			MessageDialog("没有合适的操作可以打开" + file.getName() + ",是否寻找合适的程序打开该文件?", "提示", function(){
+				StartActivityForFilePort(file);
+			}, "确定");
+		}
+		
+	}, onDir:function(dir){current = dir + "";}});
+	function format(mat){
+		var s = "";
+		for (var i in mat)
+			s += "ends.endsWith('." + mat[i] + "')||";
+   		return eval(s.replace(/\|\|$/, ""));
+	}
+}
+function InputDialog(Arguments){
+	if (Arguments != null)
+	{   
+		if (Arguments.inputs == null) throw ArgumentException("wtf, arguments 'inputs' is null...");
+		
+		var inputs = Arguments.inputs;
+		var edits = [];
+		var edited = false;
+		
+		for (var i in inputs)
+		{
+			edits.push(TextView({lp:Adapters.Params.wider, t:inputs[i].inf, color:inputs[i].inf_color}));
+			edits.push(EditText({lp:Adapters.Params.wider, t:inputs[i].def, color:inputs[i].def_color, i:inputs[i].def_type, h:inputs[i].def_h}));
+		}
+		
+		var mainView = ScrollView({v:LinearLayout({vs:edits, lp:Adapters.Params.full, b:Arguments.cb})});
+		baseDialog({
+			Title:Arguments.t,
+			View:mainView,
+			PositiveButton:{Text:"确定", onClick:function(d){
+				if (Arguments.done != null)
+				{
+					var edit_count = mainView.getChildCount();
+					var texts = [];
+					for (var i = 0; i < edit_count; i++)
+						if (mainView.getChildAt(i) instanceof android.widget.EditText) texts.push(mainView.getChildAt(i).getText().toString());
+					Arguments.done(texts);
+					edited = true;
+				}
+			}}, OnDismissListener:function(d){
+				if (Arguments.odl != null && !edited)
+					Arguments.odl(d);
+			}, NegativeButton:{Text:"取消"}
+		});
+	}
+	else throw ArgumentException("Argument is empty");
+}
+function SingeEditDialog(string, title, onDone){
+	var edit = EditText({t:string, lp:LayoutParams.getParams(300, 300)});
+	baseDialog({
+		Title:title,
+		View:edit,
+		PositiveButton:{Text:"确定", onClick:function(d){
+			if (onDone != null)
+				onDone(edit.getText().toString(), d);
+		}}
+	});
+}
+function FileEditDialog(Arguments){
+	if (Arguments == null) throw ArgumentException("Argument is null");
+	
+	var ends = "";
+	var fileName = TextView({t:(new java.io.File(Arguments.path).getName()), lp:Adapters.Params.wider, color:Arguments.title_color});
+	var edit = EditText({t:readText(Arguments.path), lp:Adapters.Params.full});
+	baseDialog({
+		Title:Arguments.title,
+		View:LinearLayout({vs:[fileName, edit], b:Arguments.bc}),
+		PositiveButton:{Text:"保存", onClick:function(d){
+			if (Arguments.onSave != null)
+				Arguments.onSave(edit.getText().toString(), d);
+		}}, NegativeButton:{Text:"取消"},
+		OnDismissListener:function(d){
+			if (Arguments.odl != null)
+				Arguments.odl(edit, d);
+		},
+		NeutralButton:{Text:"选择文件", onClick:function(){
+			SingeFileDialog({
+				root:new java.io.File(Arguments.path).getParent() + "",
+				onFile:function(f){
+					ends = f.getName();
+					if (format(["xml", "java", "c", "h", "py", "txt", "js", "html", "ini", "prop", "css", "sh", "vbs", "bat"]))
+						FileEditDialog({odl:Arguments.odl, path:f + "", title:f.getName(), cb:Arguments.cb, onSave:Arguments. onSave, title_color:Arguments.title_color });
+				}
+			});
+		}}
+	});
+	function format(mat){
+		var s = "";
+		for (var i in mat)
+			s += "ends.endsWith('." + mat[i] + "')||";
+   		return eval(s.replace(/\|\|$/, ""));
+	}
+}
+function SeekInputDialog(Arguments){
+	if (Arguments != null)
+	{   
+		if (Arguments.inputs == null) throw ArgumentException("wtf, arguments 'inputs' is null...");
+		
+		var inputs = Arguments.inputs;
+		var edits = [];
+		var edited = false;
+		
+		for (var i in inputs)
+		{
+			edits.push(LinearLayout({vs:[
+				TextView({lp:Adapters.Params.wider, t:inputs[i].inf, color:inputs[i].inf_color}),
+				TextView({lp:Adapters.Params.wider, t:"number:"}),
+				SeekBar({max:inputs[i].sek_max, p:inputs[i].sek_p, lp:Adapters.Params.wider, osc:{opc:function(seek, int){
+					var textview = seek.getParent().getChildAt(1);
+					textview.setText("number:" + int);
+				}}})
+			]}));
+		}
+		
+		var mainView = ScrollView({v:LinearLayout({vs:edits, lp:Adapters.Params.full, b:Arguments.cb})});
+		baseDialog({
+			Title:Arguments.t,
+			View:mainView,
+			PositiveButton:{Text:"确定", onClick:function(d){
+				if (Arguments.done != null)
+				{
+					var edit_count = mainView.getChildCount();
+					var nums = [];
+					for (var i = 0; i < edit_count; i++)
+						nums.push(mainView.getChildAt(i).getChildAt(2).getProgress());
+					Arguments.done(nums);
+					edited = true;
+				}
+			}}, OnDismissListener:function(d){
+				if (Arguments.odl != null && !edited)
+					Arguments.odl(d);
+			}, NegativeButton:{Text:"取消"}
+		});
+	}
+	else throw ArgumentException("Argument is empty");
+}
+function MultiChoiceDialog(Arguments){
+	if (Arguments != null)
+	{
+		var result = [];
+		copyArray(Arguments.eds, result);
+		if (Arguments.eds == null || Arguments.eds.length == 0)
+			fillBoolean(result, Arguments.list.length, false);
+		else if (Arguments.eds.length < Arguments.list.length)
+		{
+			fillArray(result, Arguments.list, false);
+		}
+		
+		baseDialog({
+			Title:Arguments.t,
+			CustomTitle:Arguments.b,
+			MultiChoiceItems:{Array:Arguments.list, Checkeds:result, Clicks:function(dialog, int, boolean, array){result[int] = boolean;  if (Arguments.cs != null) Arguments.cs(dialog, int, boolean, array);}},
+			NegativeButton:{Text:"取消"},
+			PositiveButton:{Text:"确定", onClick:function(){
+				if (Arguments.done != null)
+					Arguments.done(result, Arguments.list);
+			}}
+		});
+	}
+	else ArgumentException("Argument is empty");
+	
+	function fillBoolean(arr, length, value){
+		for (var i = 0; i < length; i++)
+			arr.push(value);
+	}
+	function fillArray(arr, to, value){
+		for (var i = arr.length; i < to.length; i++)
+			arr.push(value);
+	}
+	function copyArray(o, n){
+		for (var i in o)
+			n[i] = o[i];
+	}
+}
+function SingeItemsDialog(Arguments){
+	if (Arguments != null)
+	{
+		var array = Arguments.list;
+		var which = Arguments.ed == null ? 0 : Arguments.ed;
+		baseDialog({
+			Title:Arguments.t,
+			CustomTitle:Arguments.ct,
+			NegativeButton:{Text:"取消"},
+			PositiveButton:{Text:"确定", onClick:function(){
+				if (Arguments.done != null)
+					Arguments.done(which, array);
+			}},
+			SingleChoiceItems:{Array:Arguments.list, Checked:Arguments.ed, Clicks:function(dialog, int, list){
+				which = int;
+				if (Arguments.cs != null)
+					Arguments.cs(dialog, int, array);
+			}}
+		});
+	}
+	else throw ArgumentException("wtf");
+}
+function InputsDialog(Arguments){
+	if (Arguments != null)
+	{   
+		if (Arguments.inputs == null) throw ArgumentException("wtf, arguments 'inputs' is null...");
+		
+		var inputs = Arguments.inputs;
+		var edits = [];
+		var edited = false;
+		
+		for (var i in inputs)
+		{
+			var InputLayout = LinearLayout({o:1, lp:Adapters.Params.wider});
+			
+			switch (inputs[i].type)
+			{
+				case null:
+					InputLayout.addView(EditText({t:inputs[i].edt_t, i:inputs[i].edt_type, h:inputs[i].edt_h, lp:Adapters.Params.wider, olc:function(v){if (inputs[i].edt_olc != null) inputs[i].edt_olc(v); }}));
+				break;
+				case "edit":
+					InputLayout.addView(EditText({t:inputs[i].edt_t, i:inputs[i].edt_type, h:inputs[i].edt_h, lp:Adapters.Params.wider, olc:function(v){if (inputs[i].edt_olc != null) inputs[i].edt_olc(v); }}));
+				break;
+				case "seek":
+					InputLayout.addView(LinearLayout({lp:Adapters.Params.wider, vs:[
+						TextView({lp:Adapters.Params.wider, color:inputs[i].sek_color, t:"number:" + (inputs[i].sek_p == null ? 0 :inputs[i].sek_p)}),
+						SeekBar({max:inputs[i].sek_max, p:inputs[i].sek_p, lp:Adapters.Params.wider, osc:{opc:function(seek, int){
+							var textview = seek.getParent().getChildAt(0);
+							textview.setText("number:" + int);
+							if (inputs[i].sek_opc != null) inputs[i].sek_opc(seek, int);
+						}}})
+					]}));
+				break;
+				case "rbs":
+					InputLayout.addView(RadioGroup({lp:Adapters.Params.wider, o:inputs[i].rbs_o,
+						vs:parseRadioButton(i)
+					}));
+				case "checks":
+					InputLayout.addView(RadioGroup({lp:Adapters.Params.wider, o:inputs[i].checks_o,
+						vs:parseChecks(i)
+					}));
+				break;
+				case "file":
+					var file_path = inputs[i].path;
+					InputLayout.addView(EditText({lp:Adapters.Params.wider, h:"长按选择文件",t:inputs[i].file_def, olc:function(v){
+						SingeFileDialog({
+							root:file_path,
+							onFile:function(file){
+								v.setText(file.getPath());
+							}
+						});
+					}}));
+				break;
+				case "file-name":
+					var file_name_path = inputs[i].path;
+					InputLayout.addView(EditText({lp:Adapters.Params.wider, h:"长按选择文件",t:inputs[i].file_def, olc:function(v){
+						SingeFileDialog({
+							root:file_name_path,
+							onFile:function(file){
+								v.setText(file.getName());
+							}
+						});
+					}}));
+				break;
+				case "com-edit":
+					InputLayout.addView(EditText({lp:Adapters.Params.wider, h:inputs[i].comedit_h, t:inputs[i].comedit_t, olc:inputs[i].comedit_olc}));
+				break;
+				case "dir":
+					var dir_path = inputs[i].path;
+					InputLayout.addView(EditText({lp:Adapters.Params.wider, h:"长按选择文件夹", t:inputs[i].dir_def, olc:function(v){
+						SingeFileDialog({
+							root:dir_path,
+							onFile:function(file){
+								dir_onFile(file, v);
+							},
+							onDir:function(file, d){
+								v.setText(file.getPath());
+							},
+							PositiveButton:{Text:"确定"},
+							NeutralButton:{Text:"取消", onClick:function(){
+								v.setText("");
+							}}
+						});
+					}}));
+				break;
+				case "view":
+					InputLayout.addView(inputs[i].view);
+				break;
+			}
+			
+			edits.push(LinearLayout({vs:[
+				TextView({lp:Adapters.Params.wider, t:inputs[i].inf, color:inputs[i].inf_color}),
+				InputLayout
+			]}));
+		}
+		
+		var mainView = ScrollView({v:LinearLayout({vs:edits, lp:Adapters.Params.full, b:Arguments.cb})});
+		baseDialog({
+			Title:Arguments.t,
+			CustomTitle:Arguments.ct,
+			View:mainView,
+			PositiveButton:{Text:"确定", onClick:function(d){
+				if (Arguments.done != null)
+				{
+					var inf = [];
+					var input_layouts = [];
+					for (var i in edits)
+						if (edits[i] instanceof android.widget.LinearLayout)
+							input_layouts.push(edits[i]);
+					
+					for (var i in input_layouts)
+					{
+						var content_view = input_layouts[i].getChildAt(1).getChildAt(0);
+						if (content_view instanceof android.widget.EditText)
+							inf.push(content_view.getText().toString());
+						else
+						{
+							var inner = content_view.getChildAt(1);
+							if (inner instanceof android.widget.SeekBar)
+								inf.push(inner.getProgress());
+							else
+							{
+								var radio_grounp = inner.getParent();//.getCheckedRadioButtonId());
+								var radiobutton = radio_grounp.findViewById(radio_grounp.getCheckedRadioButtonId());
+								if (radiobutton != null)
+									inf.push(radiobutton.getText().toString());
+								else 
+								{
+									var checks = [];
+									for (var we = 0;  we < radio_grounp.getChildCount(); we++)
+									{
+										checks[we] = (radio_grounp.getChildAt(we).isChecked());
+									}
+									inf.push(checks);
+								}
+							}
+						}
+					}
+					
+					Arguments.done(inf);
+					edited = true;
+				}
+			}}, OnDismissListener:function(d){
+				if (Arguments.odl != null && !edited)
+					Arguments.odl(d);
+			}, NegativeButton:{Text:"取消"}
+		});
+	}
+	else throw ArgumentException("Argument is empty");
+	
+	function dir_onFile(file, v){
+		MessageDialog("不能选择文件作为路径", "提示", function(){
+			SingeFileDialog({root:file.getParent(), 
+			onFile:function(f){
+				dir_onFile(f, v);
+			},
+			onDir:function(f){
+				v.setText(f.getPath());
+			}});
+		}, "继续选择");
+	}
+	function parseRadioButton(w){
+		var array = [];
+		for (var i in inputs[w].rbs)
+		{
+			array.push(RadioButton({ts:inputs[w].rbs_ts, color:inputs[w].rbs_color, t:inputs[w].rbs[i], lp:Adapters.Params.wrap}));
+		}
+		return array;
+	}
+	function parseChecks(index){
+		var array = [];
+		for (var i in inputs[index].checks)
+		{
+			array.push(CheckBox({ts:inputs[index].checks_ts, color:inputs[index].check_color, t:inputs[index].checks[i], lp:Adapters.Params.wrap, ed:inputs[index].checks_w}));
+		}
+		return array;
+	}
+}
+function UnZipProgress(title, path, UnZipDir){
+	var size = getTotalEntriesSize(path);
+	var csize = 0;
+	
+	SimpleProgressDialog({
+		max:size,
+		title:title,
+		Do:function(d, t){UnZip(path, UnZipDir,
+			function(zf, entry){
+				csize += entry.getSize();
+				//t(d, ProgressAction.setMessage, "UnZipping:" + entry.getName());
+				t(d, ProgressAction.setProgress, csize);
+			});
+		}
+	});
+}
+function ZipProgress(title, ZipPath, ZipDir){
+
+	SimpleProgressDialog({
+		title:title,
+		im:true,
+		style:ProgressStyle.Spinner,
+		Do:function(d, t){ZipAllFile(ZipPath, ZipDir,
+			function(name, file){
+				t(d, ProgressAction.setMessage, "Zipping:" + name);
+			});
+		}
+	});
+}
+function SimpleProgressDialog(meta){
+	var tools = AndroidProgressDialogTools;
+	var ProgressDialog = AndroidProgressDialog;
+	
+	runOnUiThread(function(){
+		var dialog = ProgressDialog({max:meta.max, style:meta.style, msg:meta.msg, title:meta.title, im:meta.im, v:meta.m, icon:meta.icon, ct:meta.ct, cancelable:meta.cancelable});
+		if (meta.init != null) meta.init(dialog, tools);
+		tools(dialog, ProgressAction.Show);
+		newThread(function(){
+			if(meta.Do != null) meta.Do(dialog, tools);
+			tools(dialog, ProgressAction.Dismiss);
+		}).start();
+	});
+}
+
+function AndroidProgressDialog(params){
+	var dialog =  new android.app.ProgressDialog(ctx);
+    
+	dialog.setProgressStyle(ProgressStyle.Horizontal);
+	dialog.setIndeterminate(false);
+	if(params.max != null) dialog.setMax(params.max);
+    if (params.msg != null) dialog.setMessage(params.msg);
+    if (params.style != null) dialog.setProgressStyle(params.style);
+    if (params.title != null) dialog.setTitle(params.title);
+	if (params.im != null) dialog.setIndeterminate(params.im);
+    if (params.v != null) dialog.setView(params.v);
+	if (params.icon != null) dialog.setIcon(getBitmap(params.icon));
+	if (params.ct != null) dialog.setCustomTitle(params.ct);
+	if (params.cancelable) dialog.setCancelable(params.cancelable);
+	return dialog;
+}
+function AndroidProgressDialogTools(dialog, action, extra){
+	runOnUiThread(function(){
+		if (action == ProgressAction.Show)
+			dialog.show();
+		else if (action == ProgressAction.Dismiss)
+			dialog.dismiss();
+		else if (action == ProgressAction.setProgress)
+			dialog.setProgress(extra);
+		else if (action == ProgressAction.setMessage)
+			dialog.setMessage(extra);
+	});
+}
+function MediaControlWindow(){
+	ShowPop(media_controller_window);
+}
+/********************************************************************************************/
+function AndroidResourceChecker(){
+	var items = [];var count = 0;var button = Button({lp:(LayoutParams.getParams(100, 100))});var drawable = android.R.drawable;for (var i in drawable) items.push(i);var text = TextView({color:"#ff0028"}); BaseWindow({Title:"AndroidResourceChecker",Width : 250,Height : 250,View: LinearLayout({vs:[button, text],lp:Adapters.full}), Button1:{Text:"next", onClick:function(v){if (count < items.length){button.setBackgroundResource(drawable[items[count]]);text.setText("name-->\n" + items[count] + "\n\n(" + count + "/" + items.length + ")");count ++;}}},Button2 : {Text:"last", onClick:function(v){if (0 < count){button.setBackgroundResource(drawable[items[count]]);text.setText("name-->\n" + items[count] + "\n\n(" + count + "/" + items.length + ")");count --;}}}});
+}
+function CheckThemes(){
+	var list = android.R.style;
+	var items = [];
+	for (var i in list)
+		items.push(i);
+	check();
+	function check(index){
+		baseDialog({
+			Title:"CheckThemes",
+			PositiveButton:{Text:"finish"},
+			SingleChoiceItems:{Array:items, Checked:index, Clicks:function(d, i){
+				ctx.setTheme(list[items[i]]);
+				print("Checked Theme-->" + items[i]);
+				baseDialog({PositiveButton:{Text:"I agree.."} ,Title:"TestShow", Message:"if java is terminated from the world, there will be a big evil in this world, we can't imagine life without java."});
+			}}
+		});
+	}
+}
+/*
+function PropertiesDialog(INIPath, Arguments){
+	var ini = new databaseTable(INIPath, "INI");
+	ini.createOrOpen("name, type, content, extra");
+	var db = ini.toArrayJson();
+	
+	for(var i in db)
+		for(var j in db[i]) {
+			db[i]["inf"] = db[i]["name"];
+			delete db[i]["name"];
+			
+			if (db[i]["type"] == "file") {
+				db[i]["file_def"] = db[i]["content"];
+				db[i]["path"] = db[i]["content"];
+				
+			} else if (db[i]["type"] == "dir") {
+				db[i]["dir_def"] = db[i]["content"];
+				db[i]["path"] = db[i]["content"];
+				
+			} else if (db[i]["type"] == "seek") {
+				db[i]["sek_max"] = (db[i]["extra"] ? 100 : Number(db[i]["extra"]));
+				db[i]["sek_p"] = Number(db[i]["content"]);
+				
+			} else if (db[i]["type"] == "edit") {
+				db[i]["edt_t"] = db[i]["content"];
+				db[i]["edt_h"] = db[i]["extra"] ? "" : db[i]["extra"];
+				
+			} else if (db[i]["type"] == "rbs") {
+				
+			} else if (db[i]["type"] == "checks") {
+				db[i]["checks"] = ToJavaScriptArray(db[i]["content"]);
+				db[i]["checks_w"] = db[i]["extra"];
+			} else if (db[i]["type"] == "file-name") {
+				
+			} else if (db[i]["type"] == "com-edit") {
+			
+				
+			}
+			print(db[i][j]);
+		}
+	
+	InputsDialog({
+		t:Arguments.t == null ? "参数设置" : Arguments.t,
+		inputs:db,
+		done:function(rws){
+			
+		}
+	});
+	
+	/*u = [
+	    {type:"file", name:"Dir", content:"/sdcard"},
+		{type:"", name:"", content:""},
+		{type:"", name:"", content:""}
+	];
+	u = [
+	    {type:"file", file_def:"==", path:"/sdcard"},
+		{type:"dir", path:"/"},
+	    {type:"rbs", rbs:["内存", "几年", "手机"], rbs_o:0, rbs_color:"#00ef56"},	
+	];
+		
+		
+		/*
+	PropertiesINI.load(INIPath);
+	var names = PropertiesINI.getNames();
+	var values = [];
+	for (var i in names){
+		values.push(PropertiesINI.get(i));
+	}
+	
+	
+	
+	InputsDialog({
+	   t:"Test",
+	   inputs:
+	   [
+	   	  {type:"file", file_def:"==", path:"/sdcard"},
+		  {type:"dir", path:"/"},
+	      {type:"rbs", rbs:["内存", "几年", "手机"], rbs_o:0, rbs_color:"#00ef56"},	
+		  {type:"checks", checks:["是否", "眼睛"], checks_o:0, checks_color:"#00ef56"},
+		  {type:"edit", edt_t:"==="},
+		  {type:"rbs", rbs:["内存", "几年", "手机"], rbs_o:0, rbs_color:"#00ef56"},	
+		  {type:"checks", checks:["是否", "眼睛"], checks_o:0, checks_color:"#00ef56"},
+		  {type:"edit", edt_t:"==="},
+		  
+		  {type:"seek", t:"=="}
+	   ],
+	   done:function(rws){
+		   print(rws);
+	   }
+   });
+}
+*/
+function Button(Arguments) {try
+	{
+		var view = new android.widget.Button(ctx);
+		if (Arguments != null)
+		{
+			Viewer(view, Arguments);
+			Texter(view, Arguments);
+		}
+		return view;
+	}
+	catch(err){Exception(err);}
+}
+function Buttonoil(Text, TextColor, Background){
+	var but = new android.widget.Button(ctx);
+	if (Text != null) but.setText(Text);
+	if (TextColor != null) but.setTextColor(TextColor);
+	if (Background != null) but.setBackgroundDrawable(getBitmap(Background));
+	return but;
+}
+function RadioButton(Arguments){try
+	{
+		var view = new android.widget.RadioButton(ctx);
+		if (Arguments != null)
+		{
+			Viewer(view, Arguments);
+			Texter(view, Arguments);
+			CheckBoxer(view, Arguments);
+		}
+		return view;
+	}
+	catch(e){Exception(e);}
+}
+function TextView(Arguments) {try
+	{
+		var view = new android.widget.TextView(ctx);
+		if (Arguments != null)
+		{
+			Viewer(view, Arguments);
+			Texter(view, Arguments);
+		}
+		return view;
+	}catch(err){Exception(err);}
+}
+function TextViewoil(Text, TextColor){
+	var text = new android.widget.TextView(ctx);
+	if (Text != null) text.setText(Text);
+	if (TextColor != null) text.setTextColor(parseColor(TextColor));
+	return text;
+}
+function EditText(Arguments) {try
+	{
+		var view = new android.widget.EditText(ctx);
+		if (Arguments != null)
+		{
+			Viewer(view, Arguments);
+			Texter(view, Arguments);
+			if (Arguments.Hint != null) view.setHint(Arguments.Hint);
+			if (Arguments.HintColor != null) view.setHintColor(parseColor(Arguments.HintColor));
+			if (Arguments.Input != null) view.setInputType(Arguments.Input);
+			
+			if (Arguments.h != null) view.setHint(Arguments.h);
+			if (Arguments.ht != null) view.setHintColor(parseColor(Arguments.ht));
+			if (Arguments.i != null) view.setInputType(Arguments.i);
+		}
+		return view;
+	}
+	catch(e){Exception(e);}
+}
+function EditTextoil(Hint, Params){
+	var edit = new android.widget.EditText(ctx);
+	if (Hint != null) edit.setHint(Hint);
+	if (params != null) edit.setLayoutParams(Params);
+	return edit;
+}
+function ListView(Arguments) {try
+	{
+		var view = new android.widget.ListView(ctx);
+		if (Arguments != null)
+		{
+			Viewer(view, Arguments);
+			if (Arguments.Adapter != null) view.setAdapter(Arguments.Adapter);
+			if (Arguments.OnItemClickListener != null) view.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener({onItemClick:function(parent, View, position, id){try{Arguments.OnItemClickListener(parent, View, position, id);}catch(e){Exception(e);}}}));
+			if (Arguments.OnItemLongClickListener != null) view.setOnItemLongClickListener(new android.widget.AdapterView.OnItemLongClickListener({onItemLongClick:function(parent, View, position, id){try{return Arguments.OnItemLongClickListener(parent, View, position, id) != null;}catch(e){Exception(e);}}}));
+			if (Arguments.OnItemSelectedListener != null) view.setOnItemSelectedListener(new android.widget.AdapterView.OnItemSelectedListener({onItemSelected:function(parent, View, position, id){try{if (Arguments.OnItemSelectedListener.onItemSelected != null)Arguments.OnItemSelectedListener.onItemSelected(parent, View, position, id);}catch(e){Exception(e);}},onNothingSelected:function(parent){try{if (Arguments.OnItemSelectedListener.onNothingSelected != null)Arguments.OnItemSelectedListener.onNothingSelected(parent);}catch(e){Exception(e);}}}));
+			
+			if (Arguments.ad != null) view.setAdapter(Arguments.ad);
+			if (Arguments.oicl != null) view.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener({onItemClick:function(parent, View, position, id){try{Arguments.oicl(parent, View, position, id);}catch(e){Exception(e);}}}));
+			if (Arguments.oilcl != null) view.setOnItemLongClickListener(new android.widget.AdapterView.OnItemLongClickListener({onItemLongClick:function(parent, View, position, id){try{return Arguments.oilcl(parent, View, position, id) != null;}catch(e){Exception(e);}}}));
+        	if (Arguments.oisl != null) view.setOnItemSelectedListener(new android.widget.AdapterView.OnItemSelectedListener({onItemSelected:function(parent, View, position, id){try{if (Arguments.oisl.ois != null)Arguments.oisl.ois(parent, View, position, id);}catch(e){Exception(e);}},onNothingSelected:function(parent){try{if (Arguments.oisl.ons != null)Arguments.oisl.ons(parent);}catch(e){Exception(e);}}}));
+		}
+		return view;
+	}
+	catch(err){Exception(err);}
+}
+function LinearLayout(Arguments) {try
+	{
+		var view = new android.widget.LinearLayout(ctx);
+		if (Arguments != null)
+		{
+			view.setOrientation(1);
+			Viewer(view, Arguments);
+			Layouter(view, Arguments);
+		}
+		return view;
+	}
+	catch(e){Exception(e);}
+}
+function RadioGroup(Arguments){try
+	{
+		var view = new android.widget.RadioGroup(ctx);
+		if (Arguments != null)
+		{
+			view.setOrientation(0);
+			Viewer(view, Arguments);
+			Layouter(view, Arguments);
+		}
+		return view;
+	}
+	catch(e){Exception(e);}
+}
+function LinearLayoutoil(View, Orientation) {
+	var view = new android.widget.LinearLayout(ctx);
+	if (View != null) view.addView(View);
+	view.setOrientation(Orientation == null ? 1 : Orientation);
+	return view;
+}
+function ScrollView(Arguments) {try
+	{
+		var view = new android.widget.ScrollView(ctx);
+		if (Arguments != null)
+		{
+			ScrollViewer(view, Arguments);
+		}
+		return view;
+	}
+	catch(e){Exception(e);}
+}
+function HorizontalScrollView(Arguments) {try
+	{
+		var view = new android.widget.HorizontalScrollView(ctx);
+		if (Arguments != null)
+		{
+			ScrollViewer(view, Arguments);
+		}
+		return view;
+	}
+	catch(e){Exception(e);}
+}
+function ScrollViewoil(view){
+	var scroll = new android.widget.ScrollView(ctx);
+	scroll.addView(view);
+	return scroll;
+}
+function ImageView(Arguments) {try
+	{
+		var view = new android.widget.ImageView(ctx);
+		if (Arguments != null)
+		{
+			Viewer(view, Arguments);
+			if (Arguments.ImageDrawable != null) view.setImageDrawable(Arguments.ImageDrawable);
+			if (Arguments.i != null) view.setImageDrawable(getBitmap(Arguments.i));
+		}
+		return view;
+	}
+	catch(e){Exception(e);}
+}
+function ImageViewoil(Image){
+	var image = new android.widget.ImageView(ctx);
+	if (Image != null) image.setImageDrawable(getBitmap(Image));
+	return image;
+}
+function ProgressBar(Arguments) {try
+	{
+		var view = new android.widget.ProgressBar(ctx);
+		if (Arguments != null)
+		{
+			Viewer(view, Arguments);
+			ProgressBarer(view, Arguments);
+		}
+		return view;
+	}
+	catch(e){Exception(e);}
+}
+function SeekBar(Arguments) {try
+	{
+		var view = new android.widget.SeekBar(ctx);
+		if (Arguments != null)
+		{
+			Viewer(view, Arguments);
+			ProgressBarer(view, Arguments);
+			SeekBarer(view, Arguments);
+		}
+		return view;
+	}
+	catch(e){Exception(e);}
+}
+function CheckBox(Arguments){try
+	{
+		var view = new android.widget.CheckBox(ctx);
+		if (Arguments != null)
+		{
+			Viewer(view, Arguments);
+			Texter(view, Arguments);
+			CheckBoxer(view, Arguments);
+		}
+		return view;
+	}
+	catch(e){Exception(e);}
+}
+function PopupWindow(Arguments) {try
+	{
+		var pop = new android.widget.PopupWindow(ctx);
+		if (Arguments != null)
+		{
+			pop.setWidth(dip2px(Arguments.Width == null ? 100 : Arguments.Width));
+			pop.setHeight(dip2px(Arguments.Height == null ? 100 : Arguments.Height));
+
+			if (Arguments.View != null) pop.setContentView(Arguments.View);
+			if (Arguments.Background != null) pop.setBackgroundDrawable(getBitmap(Arguments.Background));
+			if (Arguments.Fucusable != null) pop.setFocusable(Arguments.Fucusable);
+			if (Arguments.onDismissListener != null) pop.setOnDismissListener(new android.widget.PopupWindow.OnDismissListener({onDismiss:function(){try{Arguments.onDismissListener();}catch(e){Exception(e);}}}));
+			if (Arguments.OnInit != null) Arguments.OnInit(pop);
+				
+			if (Arguments.init != null) Arguments.init(pop);
+			if (Arguments.f != null) pop.setFocusable(Arguments.f);
+			if (Arguments.b != null) pop.setBackgroundDrawable(getBitmap(Arguments.b));
+			if (Arguments.w != null) pop.setWidth(dip2px(Arguments.w));
+			if (Arguments.h != null) pop.setHeight(dip2px(Arguments.h));
+			if (Arguments.v != null) pop.setContentView(Arguments.v);
+			if (Arguments.odl != null) pop.setOnDismissListener(new android.widget.PopupWindow.OnDismissListener({onDismiss:function(){try{Arguments.odl();}catch(e){Exception(e);}}}));
+		}
+		return pop;
+	}
+	catch(e){Exception(e);}
+}
+function Exception(e) {try
+	{
+		runOnUiThread(function(){
+			baseDialog({
+				Title:"JS运行时-异常",
+				Message:"错误信息-->" + e + "\n异常行号:" + e.lineNumber,
+				PositiveButton:{Text:"got it"}
+			});
+		});
+		Logcat.log("错误信息-->" + e + "\n异常行号:" + e.lineNumber);
+	}
+	catch(e){print(e);}
+}
+
+function Toast(Arguments){runOnUiThread(function(){
+	{
+		var toast = new android.widget.Toast(ctx);
+		if (Arguments != null)
+		{
+			if (typeof Arguments == "object")
+			{
+				
+				toast.makeText(ctx, Arguments.msg, 0).show();
+				return;
+				//wrong
+				toast.setDuration(Arguments.Duration == null ? 3000 : Arguments.Duration);
+				if (Arguments.Gravity != null) toast.setGravity(Arguments.Gravity, 0, 0);
+				if (Arguments.View != null) toast.setView(Arguments.View);
+				if (Arguments.Message != null)
+				{
+					var icon = ImageView({i : DefaultViewProperties.Toast.Icon});
+					var content = TextView({ts : Arguments.ts == null ? DefaultViewProperties.Toast.TextSize : Arguments.ts, t : Arguments.Message, lp : LayoutParams.getParams(-2, -1)});
+					content.setPadding(DefaultViewProperties.Toast.TextPadding, DefaultViewProperties.Toast.TextPadding, DefaultViewProperties.Toast.TextPadding, DefaultViewProperties.Toast.TextPadding);
+					var layout = LinearLayout({vs : [icon, content], o : 0, lp : LayoutParams.getParams(-1, -1)});
+					layout.setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.parseColor(DefaultViewProperties.Toast.BackgroundColor)));
+					toast.setView(layout);
+				}
+				if (Arguments.OnInit != null) Arguments.OnInit(toast);
+				
+				if (Arguments.init != null) Arguments.init(toast);
+				if (Arguments.d != null) toast.setDuration(Arguments.d);
+				if (Arguments.g != null) toast.setGravity(Arguments.g, 0, 0);
+				if (Arguments.v != null) toast.setView(Arguments.v);
+				if (Arguments.msg != null) 
+				{
+					var icon = ImageView({i : DefaultViewProperties.Toast.Icon});
+					var content = TextView({ts : Arguments.ts == null ? DefaultViewProperties.Toast.TextSize : Arguments.ts, t : Arguments.msg, lp : LayoutParams.getParams(-2, -1)});
+					content.setPadding(DefaultViewProperties.Toast.TextPadding, DefaultViewProperties.Toast.TextPadding, DefaultViewProperties.Toast.TextPadding, DefaultViewProperties.Toast.TextPadding);
+					var layout = LinearLayout({vs : [icon, content], o : 0, lp : LayoutParams.getParams(-1, -1)});
+					layout.setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.parseColor(DefaultViewProperties.Toast.BackgroundColor)));
+					toast.setView(layout);
+				}
+			
+				if (Arguments.is != null && Arguments.is == false) 
+					return toast;
+				toast.show();
+			}
+			else 
+			{
+				Toast({msg:Arguments + ""});
+			}
+		}
+		
+		return toast;
+	}
+	});
+}
+function ShowPop(pop, gravity, x_offset, y_offset) {try
+	{
+		pop.showAtLocation(ctx.getWindow().getDecorView(), gravity == null ? android.view.Gravity.CENTER : gravity, x_offset == null ? 0 : x_offset, y_offset == null ? 0 : y_offset);
+		return pop;
+	}
+	catch(e){Exception(e);}
+}
+function GraphicsAnimation(View){
+	
+}
+function parseColor(string) {
+	return android.graphics.Color.parseColor(string);
+}
+
+function createTypeface(typeface) {
+	if (typeof typeface == "string" || typeface instanceof java.io.File)
+		return android.graphics.Typeface.createFromFile(typeface);
+	else if (typeof typeface == "number")
+		return android.graphics.Typeface.defaultFromStyle(typeface);
+    else if (typeface instanceof android.graphics.Typeface)
+		return typeface;
+	else
+		throw ArgumentException("TTF set fail, you've given a unknown value");
+}
+
+function getBitmap(bitmap){
+	if (bitmap instanceof android.graphics.drawable.Drawable)
+		return bitmap;
+	else if (typeof bitmap == "string")
+		return android.graphics.drawable.BitmapDrawable.createFromStream(new java.io.FileInputStream(bitmap), "");
+	else if (typeof bitmap == "number")
+		return StriptManager.getAndroidDrawable(bitmap);
+	else if (bitmap instanceof java.io.InputStream)
+		return android.graphics.drawable.BitmapDrawable.createFromStream(bitmap, "");
+}
+function pxHeight(height) {
+	return Math.round(screen_height * height);
+}
+function pxWindth(width) {
+	return Math.round(screen_width * width);
+}
+function pxViewParams(view, num_w, num_h) {try
+	{
+		view.setLayoutParams(LayoutParams.getParams( Math.round(view.getRootView().getWidth() * num_w), Math.round(view.getRootView().getHeight() * num_h) ));
+		return view;
+	}catch(e){Exception(e);}
+}
+function dip2px(dips) { 
+	return Math.ceil(dips * ctx.getResources().getDisplayMetrics().density); 
+}
+
+function AlphaAnimator(Arguments) {
+	var anim = null;
+	
+	if (Arguments != null){
+		if (Arguments.FromAlpha != null & Arguments.ToAlpha != null) anim = new android.view.animation.AlphaAnimation(parseJavaFloat(Arguments.FromAlpha), parseJavaFloat(Arguments.ToAlpha));
+		if (Arguments.from != null && Arguments.to != null) anim = new android.view.animation.AlphaAnimation(parseJavaFloat(Arguments.from), parseJavaFloat(Arguments.to));
+		
+		if (Arguments.Duration != null) anim.setDuration(Arguments.Duration);
+		if (Arguments.FillAfter != null) anim.setFillAfter(Arguments.FillAfter);
+		if (Arguments.Interpolator != null) anim.setInterpolator(Interpolator);
+		if (Arguments.RepeatCount != null) anim.setRepeatCount(Arguments.RepeatCount);
+		if (Arguments.RepeatMode != null) anim.setRepeatMode(Arguments.RepeatMode);
+			
+		if (Arguments.d != null) anim.setDuration(Arguments.d);
+		if (Arguments.fa != null) anim.setFillAfter(Arguments.fa);
+		if (Arguments.i != null) anim.setInterpolator(Arguments.i);
+		if (Arguments.rc != null) anim.setRepeatCount(Arguments.rc);
+		if (Arguments.rm != null) anim.setRepeatMode(Arguments.rm);
+		
+	} else {
+		throw "Arguments can't be null";
+	}
+	return anim;
+}
+function ScaleAnimation(Arguments) {
+	var anim = null;
+	var params = Arguments;
+	
+	if (params != null){
+		
+		params.PivotX == null ? parseJavaFloat(0.5) : parseJavaFloat(params.PivotX);
+		params.PivotY == null ? parseJavaFloat(0.5) : parseJavaFloat(params.PivotY);
+		params.px == null ? parseJavaFloat(0.5) : parseJavaFloat(params.px);
+		params.py == null ? parseJavaFloat(0.5) : parseJavaFloat(params.py);
+		
+		if (params.FromX != null && params.ToX != null && params.FromY != null && params.ToY != null) anim = new android.view.animation.ScaleAnimation(parseJavaFloat(params.FromX), parseJavaFloat(params.ToX), parseJavaFloat(params.FromY), parseJavaFloat(params.ToY) , params.PivotX, params.PivotY);
+		if (params.fx != null && params.tx != null && params.fy != null && params.ty != null) anim = new android.view.animation.ScaleAnimation(parseJavaFloat(params.fx), parseJavaFloat(params.tx), parseJavaFloat(params.fy), parseJavaFloat(params.ty) , params.px, params.py);
+		
+		if (params.Duration != null) anim.setDuration(params.Duration);
+		if (params.FillAfter != null) anim.setFillAfter(params.FillAfter);
+		if (params.Interpolator != null) anim.setInterpolator(Interpolator);
+		if (params.RepeatCount != null) anim.setRepeatCount(params.RepeatCount);
+		if (params.RepeatMode != null) anim.setRepeatMode(params.RepeatMode);
+			
+		if (params.d != null) anim.setDuration(params.d);
+		if (params.fa != null) anim.setFillAfter(params.fa);
+		if (params.i != null) anim.setInterpolator(params.i);
+		if (params.rc != null) anim.setRepeatCount(params.rc);
+		if (params.rm != null) anim.setRepeatMode(params.rm);
+		
+	} else {
+		throw ArgumentException("Arguments can't be null");
+	}
+	return anim;
+}
+function RotateAnimation(Arguments) {
+
+	var anim = null;
+	var params = Arguments;
+	
+	if (params != null){
+	
+		params.PivotX == null ? parseJavaFloat(0.5) : parseJavaFloat(params.PivotX);
+		params.PivotY == null ? parseJavaFloat(0.5) : parseJavaFloat(params.PivotY);
+		params.px == null ? parseJavaFloat(0.5) : parseJavaFloat(params.px);
+		params.py == null ? parseJavaFloat(0.5) : parseJavaFloat(params.py);
+		
+		if (params.FromDegree != null && params.ToDegree != null) anim = new android.view.animation.RotateAnimation(parseJavaFloat(params.FromDegree), parseJavaFloat(params.ToDegree), parseJavaFloat(params.PivotX), parseJavaFloat(params.PivotY));
+		if (params.fd != null && params.td != null) anim = new android.view.animation.RotateAnimation(parseJavaFloat(params.fd), parseJavaFloat(params.td), parseJavaFloat(params.px), parseJavaFloat(params.py));
+		
+		if (params.Duration != null) anim.setDuration(params.Duration);
+		if (params.FillAfter != null) anim.setFillAfter(params.FillAfter);
+		if (params.Interpolator != null) anim.setInterpolator(Interpolator);
+		if (params.RepeatCount != null) anim.setRepeatCount(params.RepeatCount);
+		if (params.RepeatMode != null) anim.setRepeatMode(params.RepeatMode);
+			
+		if (params.d != null) anim.setDuration(params.d);
+		if (params.fa != null) anim.setFillAfter(params.fa);
+		if (params.i != null) anim.setInterpolator(params.i);
+		if (params.rc != null) anim.setRepeatCount(params.rc);
+		if (params.rm != null) anim.setRepeatMode(params.rm);
+		
+	} else {
+		throw ArgumentException("Arguments can't be null");
+	}
+	return anim;
+}
+function BounceAnimator (Duration, FillAfter) {
+    return ScaleAnimation({d:Duration, fa:FillAfter, i:Interpolator.Bounce, fx:1, tx:1, fy:0, ty:1, px:0.5, py:0.5});
+}
+function TranslateAnimation(Arguments) {
+	
+	var anim = null;
+	var params = Arguments;
+	
+	if (params != null){
+		
+		if (params.FromXDelta != null && params.ToXDelta != null && params.FromYDelta != null && params.ToYDelta != null) anim = new android.view.animation.TranslateAnimation(parseJavaFloat(params.FromXDelta), parseJavaFloat(params.ToXDelta), parseJavaFloat(params.FromYDelta), parseJavaFloat(params.ToYDelta));
+		if (params.fx != null && params.tx != null && params.fy != null && params.ty != null) anim = new android.view.animation.TranslateAnimation(parseJavaFloat(params.fx), parseJavaFloat(params.tx), parseJavaFloat(params.fy), parseJavaFloat(params.ty));
+		
+		if (params.Duration != null) anim.setDuration(params.Duration);
+		if (params.FillAfter != null) anim.setFillAfter(params.FillAfter);
+		if (params.Interpolator != null) anim.setInterpolator(Interpolator);
+		if (params.RepeatCount != null) anim.setRepeatCount(params.RepeatCount);
+		if (params.RepeatMode != null) anim.setRepeatMode(params.RepeatMode);
+			
+		if (params.d != null) anim.setDuration(params.d);
+		if (params.fa != null) anim.setFillAfter(params.fa);
+		if (params.i != null) anim.setInterpolator(params.i);
+		if (params.rc != null) anim.setRepeatCount(params.rc);
+		if (params.rm != null) anim.setRepeatMode(params.rm);
+		
+	} else {
+		throw ArgumentException("Arguments can't be null");
+	}
+	return anim;
+}
+

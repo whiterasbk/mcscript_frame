@@ -1,0 +1,86 @@
+GUI
+
+继承自VIew后具有的参数属性
+Animation 
+	简写:a
+	说明:指定该组件的动画，此动画会在组件显示在屏幕的时候播放
+	示例:
+LayoutParams
+Gravity
+onClick
+OnLongClickListener
+OnTouchListener 
+KeepScreenOn 
+SaveEnable 
+Visibility 
+Tag 
+Id 
+BackgroundColor 
+Background 
+Padding
+OnInit 
+				
+	init 
+
+	pad
+
+	b 
+
+	id 
+
+	a 
+
+	g 
+
+	lp
+
+	oc
+
+	olc
+
+	ot 
+	
+
+	bc
+
+	kso 
+
+	sea 
+
+	tag 
+
+
+	 
+	 
+	if (Arguments.OnLongClickListener != null) view.setOnLongClickListener(new android.view.View.OnLongClickListener({ onLongClick : function(v){ try{GraphicsAnimation([v], "long-click");Arguments.OnLongClickListener(v) != null;}catch(e){Exception(e);return false;}}})); 
+	if (Arguments.OnTouchListener != null) view.setOnTouchListener(new android.view.View.OnTouchListener({onTouch : function(v, e){try{GraphicsAnimation([v, e], "touch-click");return Arguments.OnTouchListener(v, e) != null;}catch(e){Exception(e);return false;}}}));
+	if (Arguments.KeepScreenOn != null) view.setKeepScreenOn(Arguments.KeepScreenOn);
+    if (Arguments.SaveEnable != null) view.setSaveEnabled(Arguments.SaveEnable);
+    if (Arguments.Visibility != null) view.setVisibility(Arguments.Visibility);
+	if (Arguments.Tag != null) view.setTag(Arguments.Tag);
+	if (Arguments.Id != null) view.setId(Arguments.Id);
+	if (Arguments.BackgroundColor != null) view.setBackgroundColor(Arguments.BackgroundColor);
+	if (Arguments.Background != null) view.setBackgroundDrawable(getBitmap(Arguments.Background));
+	if (Arguments.Padding != null) view.setPadding(Arguments.Padding[0], Arguments.Padding[1], Arguments.Padding[2], Arguments.Padding[3]);
+	if (Arguments.OnInit != null) Arguments.OnInit(view);
+				
+	if (Arguments.init != null) Arguments.init(view);
+	if (Arguments.pad != null) view.setPadding(Arguments.pad[0], Arguments.pad[1], Arguments.pad[2], Arguments.pad[3]);
+	if (Arguments.b != null) view.setBackgroundDrawable(getBitmap(Arguments.b));
+	if (Arguments.id != null) view.setId(Arguments.id);
+	if (Arguments.a != null) view.setAnimation(Arguments.a);
+	if (Arguments.g != null) view.setGravity(Arguments.g);
+	if (Arguments.lp != null) view.setLayoutParams(Arguments.lp);
+	if (Arguments.oc != null) view.setOnClickListener(new android.view.View.OnClickListener({onClick : function(v){try{Arguments.oc(v); GraphicsAnimation([v], "click");}catch(e){Exception(e);}}}));
+	if (Arguments.olc != null) view.setOnLongClickListener(new android.view.View.OnLongClickListener({onLongClick : function(v){try{GraphicsAnimation([v], "long-click");return Arguments.olc(v) != null;}catch(e){Exception(e);return false;}}})); 
+	if (Arguments.ot != null) view.setOnTouchListener(new android.view.View.OnTouchListener({onTouch : function(v, e){try{GraphicsAnimation([v, e], "touch-click");return Arguments.ot(v, e) != null;}catch(e){Exception(e);return false;}}}));
+	if (Arguments.bc != null) view.setBackgroundColor(parseColor(Arguments.bc));
+	if (Arguments.kso != null) view.setKeepScreenOn(Arguments.kso);
+	if (Arguments.sea != null) view.setSaveEnabled(Arguments.sea);
+	if (Arguments.tag != null) view.setTag(Arguments.tag);
+
+函数:
+Button(Arguments)
+返回:android.widget.Button
+继承关系:android.view.View
+			android.widget.TextView

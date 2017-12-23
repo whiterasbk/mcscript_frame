@@ -1,0 +1,26 @@
+[
+	{
+		name: "QQ小冰",
+		id: 601,
+		lightLevel: 4,
+		texture: [
+			{
+				d: ["ice", 0],
+				u: ["ic", 1],
+				b: ["ic", 2],
+				f: ["ic", 3],
+				l: ["ic", 5],
+				r: ["ic", 6]
+			}
+		]
+	},
+	{
+		name: "水？",
+		id: "600",
+		isLiquid: true,
+		texture: {
+			still: "ic_1",
+			flow : "ic_0"
+		}
+	}
+]

@@ -1,0 +1,110 @@
+[
+	{
+		name: "stone",
+		id: 12,
+		isLiquid: false,
+		extendsFrom: 1,
+		isHyaline: false,
+		model: 1,
+		color: "<#fff>",
+		destroyTime: 1000,
+		explosionResistance: 3,
+		friction: 0.1,
+		lightLevel: 4,
+		lightOpacity: 1,
+		redstoneConsumer: false,
+		renderLayer: 0,
+		texture: [
+			{
+				down: ["@right", 0],
+				up: ["@down", 0],
+				back: ["@down", 0],
+				front: ["@down", 0],
+				left: ["@down", 0],
+				right: ["@script: sdcard", 0]
+			},
+			{
+				d: ["@l", 0],
+				u: ["@d", 0],
+				b: ["d", 0],
+				f: ["@u", 0],
+				l: ["@script: sdcard", 0],
+				r: ["right", 0]
+			}
+		],
+		shape: {
+			FromX: 0, ToX: 1,
+			FromY: 0, ToY: 1,
+			FromZ: 0, ToZ: 1
+		}
+	},
+	{
+		name: "oil",
+		id: 172,
+		isLiquid: true,
+		extendsFrom: 8,
+		isHyaline: false,
+		model: 1,
+		color: "<#fff>",
+		destroyTime: 1000,
+		explosionResistance: 3,
+		friction: 0.1,
+		lightLevel: 4,
+		lightOpacity: 1,
+		redstoneConsumer: false,
+		renderLayer: 0,
+		texture: {
+			still: "still.png",
+			flow: "flow.png"
+		},
+		shape: {
+			FromX: 0, ToX: 1,
+			FromY: 0, ToY: 1,
+			FromZ: 0, ToZ: 1
+		}
+	},
+	{
+		name: "yellowstone",
+		id: 12,
+		ef: 1,
+		isH: false,
+		m: 1,
+		c: "<#fff>",
+		dt: 1000,
+		er: 3,
+		f: 0.1,
+		ll: 4,
+		lo: 1,
+		rc: false,
+		rl: 0,
+		texture: [
+			{
+				d: ["@l", 0],
+				u: ["@d", 0],
+				b: ["d", 0],
+				f: ["@u", 0],
+				l: ["@script: sdcard", 0],
+				r: ["right", 0]
+			}
+		],
+		s: {
+			fx: 0, tx: 1,
+			fy: 0, ty: 1,
+			fz: 0, tz: 1
+		}
+	},
+	{
+		name: "QQ小冰",
+		id: 123,
+		texture: [
+			{
+				d: ["ice", 0],
+				u: ["@d", 0],
+				b: ["@d", 0],
+				f: ["@d", 0],
+				l: ["@d", 0],
+				r: ["@d", 0]
+			}
+		]
+	}
+]
