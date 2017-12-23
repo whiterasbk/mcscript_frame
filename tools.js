@@ -44,19 +44,16 @@ function getRunTime(Action) {
     return end - start;
 }
 function Debug(obj) {
-	if (debug)
-	{
+	if (debug) {
 		Exception(obj.toString());
-	}
-	else
-	{
+	} else {
 		Toast(obj.toString());
 	}
 }
-function getTime(){
+function getTime() {
 	var date = new Date();
 	return date.getFullYear() + "." + add(date.getMonth()) +  "." + date.getDate() + "  " +  date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + ":" + date.getMilliseconds();  
-	function add(m){
+	function add(m) {
 		if (m <= 11)
 			return m + 1;
 		else
