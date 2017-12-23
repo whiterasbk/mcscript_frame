@@ -1,13 +1,10 @@
 function ToJavaArray(array, type) {
-	if (array != null)
-	{
+	if (array != null) {
 		var JavaArray = java.lang.reflect.Array.newInstance(type, array.length);
 		for (var i = 0; i < array.length; i++)
 			JavaArray[i] = array[i];
 		return JavaArray;
-	}
-	else
-	{
+	} else {
 		return java.lang.reflect.Array.newInstance(type, 0);
 	}
 }
