@@ -6,3 +6,6 @@ and some thinkings in this project are still not good enough
 
 created by whiter
 if you have any ideas about this project, welcome to commit it.
+
+
+## This project will be refactor sooner or later.
