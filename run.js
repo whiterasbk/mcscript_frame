@@ -1,3 +1,40 @@
+required("android/adapters.js");
+required("android/phone.js");
+required("base/tools.js");
+required("android/media.js");
+required("base/threads.js");
+required("android/windowmanager.js");
+required("base/io.js");
+required("base/exceptions.js");
+required("base/zip.js");
+required("android/net.js");
+required("android/database.js");
+required("base/random.js");
+required("base/json.js");
+required("base/xml.js");
+required("base/base/ini.js");
+required("android/logcat.js");
+required("android/er.js");
+required("android/graphics.js");
+required("android/windows.js");
+required("android/animation.js");
+required("mcpe/adapters.js");
+required("mcpe/builder.js");
+required("mcpe/defines.js");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Logcat.turnOn();
 
 runOnUiThread(function(){
@@ -8,7 +45,7 @@ runOnUiThread(function(){
 
 
 /**
-	*var plan = {
+	*let plan = {
 	*Ⅰ : database.js(get, transaction),
 	*Ⅱ : fileList.Function(),
 	*Ⅲ : listView(),
@@ -23,15 +60,15 @@ runOnUiThread(function(){
 function runTemp(){
 	
 	
-//	var zipFile = sdcard + "SpeedSoftware/Archives/AVYAAJtpAAA=.zip";
-//	var unZipDir = sdcard + "SpeedSoftware/Archives/";
+//	let zipFile = sdcard + "SpeedSoftware/Archives/AVYAAJtpAAA=.zip";
+//	let unZipDir = sdcard + "SpeedSoftware/Archives/";
 //	UnZip(zipFile, unZipDir);
 //	print("解压完成");
 	
 	
 	
-	var window = PopupWindow({w:50, h:50, f:false});
-	var view = MoveWindowView(Button({
+	let window = PopupWindow({w:50, h:50, f:false});
+	let view = MoveWindowView(Button({
 		a:BounceAnimator(1000), 
 		b:android.R.drawable.ic_menu_compass, 
 		oc:function(v){
@@ -76,19 +113,19 @@ function runTemp(){
 	
 	window.setContentView(view);
 	ShowPop(window);
+
+}
+
+
+
+
+
+
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	/*
-	var path = test_script_dir;
+	let path = test_script_dir;
 	
 	fileList(path, {onDir:function(file){
 		print("Dir:" + file);
@@ -101,22 +138,22 @@ function runTemp(){
 	//print()();
 	
 	//writeText("Congratulations\n", "/storage/sdcard0/JavaScriptProjects/Library/testDir/us.log", true);
-	/*var path = "/storage/sdcayrd0/JavaScriptProjects/Library/testDir/us.log";
-	var writer = new java.io.FileWriter(path);
+	/*let path = "/storage/sdcayrd0/JavaScriptProjects/Library/testDir/us.log";
+	let writer = new java.io.FileWriter(path);
 	writer.append(path);
 	writer.close();*/
 	
 	//vibrator(1000);
 	//Logcat.turnOff();
 	/*
-	var ini = new databaseTable(test_script_dir + "testDir/ini.db", "INI");
+	let ini = new databaseTable(test_script_dir + "testDir/ini.db", "INI");
 	ini.createOrOpen("name, type, content, extra");
 	//ini.drop();
-	for(var i = 0; i < 10; i++)
+	for(let i = 0; i < 10; i++)
 		ini.insertData({name:"No." + i, type:"file", content:test_script_dir + "i" + i + ".db"});
 	*/
 	/*
-	var p = PopupWindow({w:100, h:100, v:
+	let p = PopupWindow({w:100, h:100, v:
 	Button({t:"android",
 		olc:function(v){
 			startNewThread(function(){
@@ -135,7 +172,7 @@ function runTemp(){
 	ExportDialog(test_script_dir);
 	*/
 	
-	/*var p = PopupWindow({w:100, h:300, v:ListView({oicl:function(p, v, po, i){print("(t;)" +  po);},
+	/*let p = PopupWindow({w:100, h:300, v:ListView({oicl:function(p, v, po, i){print("(t;)" +  po);},
 	oilcl:function(p, v, po, id){print(po);},
 	oisl:{ois:function(p, v, po , i){print("oisl");} , ons:function(p){print("ons");}},
 	ad:ListAdapter.array(["==", "()", "}}", "gd", "hhhh", "yfg", "safb", "resc", "syj", "jhc"], SimpleListItemResources.multiple_choice)})});
@@ -149,9 +186,9 @@ function runTemp(){
 	//VideoDialog("/sdcard/Android/data/tv.danmaku.bili/download/7449411/1/lua.mp4.bili2api.1/0.blv");
 	
 	/*
-	var mt = new databaseTable(test_script_dir + "testDir/mydb.db0db", "TestTable");
+	let mt = new databaseTable(test_script_dir + "testDir/mydb.db0db", "TestTable");
 	mt.setDebug(true);
-	mt.create("name integer not null, id varchar primary key, extra varchar");
+	mt.create("name integer not null, id letchar primary key, extra letchar");
 		mt.insert("name, id", "?, ?", ["xiao", 1]);
 		mt.insert("name, id", "?, ?", ["xia ", 2]);
 		mt.insert("name, id", "?, ?", ["xing", 3]);
@@ -208,23 +245,23 @@ function runTemp(){
 		print("加载时间:" + getAppRunTime() / 1000 + "秒");
 	});
 	
-	var v = notifyFactory.newInstance({title:"uuu",t:"===", i:PendingIntentFactory.create(new android.content.Intent())});
+	let v = notifyFactory.newInstance({title:"uuu",t:"===", i:PendingIntentFactory.create(new android.content.Intent())});
 	notifyFactory.notify(v, 0);
 	*/
 	//PendingIntentFactory.create()
 	//DownloadUtil.download("http://down.shouji.kuwo.cn/star/mobile/kwplayer_ar_kwmusic_m2.apk", "/storage/sdcard0/1-Work-Space-1-JavaScript/Library/temp.html");
 	
-//	var zipf = "/storage/sdcard0/1-Work-Space-1-JavaScript/Library/testDir/zip.zip";
-//	var unzipdir = "/storage/sdcard0/1-Work-Space-1-JavaScript/Library/testDir/zip/";
-//	var size = getTotalEntriesSize(zipf);
-//	var count = 0;
+//	let zipf = "/storage/sdcard0/1-Work-Space-1-JavaScript/Library/testDir/zip.zip";
+//	let unzipdir = "/storage/sdcard0/1-Work-Space-1-JavaScript/Library/testDir/zip/";
+//	let size = getTotalEntriesSize(zipf);
+//	let count = 0;
 //	
-//	var m = ProgressDialog({Max:size, Title:"unZipping"});
+//	let m = ProgressDialog({Max:size, Title:"unZipping"});
 //	m.showDialog();
 //	newThread(function(){
 //		UnZip(zipf, unzipdir, function(zf, entry){
 //			count += entry.getSize();
-//			var b = parseInt((count/size) * 100);
+//			let b = parseInt((count/size) * 100);
 //			
 //			if (b < 30)
 //				m.setText("解压刚刚开始");
@@ -241,17 +278,17 @@ function runTemp(){
 //	}).start();
 	//m.dismisDialog();
 	
-//	var zipf = "/storage/sdcard0/1-Work-Space-1-JavaScript/Library/testDir/zip.zip";
-//	var unzipdir = "/storage/sdcard0/1-Work-Space-1-JavaScript/Library/testDir/zip/";
-//	var size = getTotalEntriesSize(zipf);
-//	var count = 0;
+//	let zipf = "/storage/sdcard0/1-Work-Space-1-JavaScript/Library/testDir/zip.zip";
+//	let unzipdir = "/storage/sdcard0/1-Work-Space-1-JavaScript/Library/testDir/zip/";
+//	let size = getTotalEntriesSize(zipf);
+//	let count = 0;
 //	
-//	var m = ProgressWindow({f:true, max:size, t:"unZipping", color:"#ff0028", os:function(){Toast("你拉也没有用。。");}});
+//	let m = ProgressWindow({f:true, max:size, t:"unZipping", color:"#ff0028", os:function(){Toast("你拉也没有用。。");}});
 //	m.showWindow();
 //	newThread(function(){
 //		UnZip(zipf, unzipdir, function(zf, entry){
 //			count += entry.getSize();
-//			var b = parseInt((count/size) * 100);
+//			let b = parseInt((count/size) * 100);
 //			
 //			if (b < 30)
 //				m.setText("解压刚刚开始");
@@ -267,10 +304,8 @@ function runTemp(){
 //		});
 //	}).start();
 //	
-	//var m = ProgressWindow({Title:"yes?", Width:300, Height:125});
+	//let m = ProgressWindow({Title:"yes?", Width:300, Height:125});
 	//m.showWindow();
-}
-
 
 
 /*
@@ -285,14 +320,14 @@ startActivity(intent);
 
 或者
 
-var b = new databaseTable(test_script_dir + "testDir/ini.db", "INI");
+let b = new databaseTable(test_script_dir + "testDir/ini.db", "INI");
 			print(b.toArrayJson());
-			var db = b.toArrayJson();
-			var t = [];
+			let db = b.toArrayJson();
+			let t = [];
 			
-			for(var i in db) {
-				var o = {};
-				for(var j in db[i]) {
+			for(let i in db) {
+				let o = {};
+				for(let j in db[i]) {
 					print(j + ":" + db[i][j]);
 					o[j] = db[i][j];
 				}
