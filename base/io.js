@@ -1,9 +1,15 @@
-function readText(path) {try
+/*
+	
+ */
+
+import {searchMode, } from 'defines.js'
+
+export function readText(path) {try
 	{
-		var reader = new java.io.BufferedReader(new java.io.FileReader(path));
-        var buf = java.lang.reflect.Array.newInstance(java.lang.Character.TYPE, 1024 * 20);
-        var sb = new java.lang.StringBuilder();
-        var lenght = 0;
+		let reader = new java.io.BufferedReader(new java.io.FileReader(path));
+        let buf = java.lang.reflect.Array.newInstance(java.lang.Character.TYPE, 1024 * 20);
+        let sb = new java.lang.StringBuilder();
+        let lenght = 0;
         while ((lenght = reader.read(buf)) != -1)
         {
             sb.append(java.lang.String.valueOf(buf, 0, lenght));
@@ -13,120 +19,92 @@ function readText(path) {try
 	}
 	catch(e){Exception(e);}
 }
-function readByte(path) {try
+
+export function readByte(path) {try
 	{
-		var fis = new java.io.FileInputStream(path);
-        var buf = java.lang.reflect.Array.newInstance(ByteType, fis.available());
+		let fis = new java.io.FileInputStream(path);
+        let buf = java.lang.reflect.Array.newInstance(ByteType, fis.available());
         fis.read(buf);
 		fis.close();
 		return buf;
 	}
 	catch(e){Exception(e);}
 }
-function writeText(content, path, isAppend) {try
+export function writeText(content, path, isAppend) {try
 	{
-		var writer = new java.io.FileWriter(path);
+		let writer = new java.io.FileWriter(path);
 		writer.write(content);
 		writer.close();
 	}
 	catch(e){Exception(e);}
 }
-function writeByte(content, path) {try
+export function writeByte(content, path) {try
 	{
-		var fos = new java.io.FileOutputStream(path);
+		let fos = new java.io.FileOutputStream(path);
         fos.write(content);
         fos.close();
 	}
 	catch(e){Exception(e);}
 }
-function getFileName(params) {
+export function getFileName(params) {
 	if (params instanceof java.io.File)
 		return params.getName();
 	else if (typeof params == "string")
 		return new java.io.File(params).getName();
 }
-function getFile(path){
+export function getFile(path){
 	return new java.io.File(path.toString());
 }
-function createNewFile(path){
-	var file = new java.io.File(path);
+export function createNewFile(path){
+	let file = new java.io.File(path);
 	if (file.exists()) {
 		file.createNewFile();
 	}
 	return file;
 }
-function makeFileExist(path, type) {
-	var file = getFile(path);
+export function makeFileExist(path, type) {
+	let file = getFile(path);
 	if (file.exists()) return;
 	
 	if (type == FileType.dir) {
 		file.mkdirs();
 	} else {
-		var parent = getFile(file.getParent());
+		let parent = getFile(file.getParent());
 		parent.mkdirs();
 		file.createNewFile();
 	}
 }
-function FileInformation(file){
-	var inf;
-	
-	var file_canExecute = file.canExecute();
-    var file_canRead = file.canRead();
-    var file_canWrite = file.canWrite();
-    var file_absoluteFile = file.getAbsoluteFile();
-    var file_exists = file.exists();
-    var file_absolutePath = file.getAbsolutePath();
-    var file_canonicalFile = file.getCanonicalFile();
-    var file_canonicalPath = file.getCanonicalPath();
-    var file_freeSpace = file.getFreeSpace();
-    var file_name = file.getName();
-    var file_parent = file.getParent();
-    var file_parentFile = file.getParentFile();
-    var file_path = file.getPath();
-    var file_totalSpace = file.getTotalSpace();
-    var file_usableSpace = file.getUsableSpace();
-    var file_isAbsolute = file.isAbsolute();
-    var file_isDirectory = file.isDirectory();
-    var file_isFile = file.isFile();
-    var file_isHidden = file.isHidden();
-    var file_lastModified = file.lastModified();
-    var file_length = file.length();
-    var file_toString = file.toString();
-    var file_toURI = file.toURI();
-    var file_toURL = file.toURL();
-	
-	inf = {
+export function FileInformation(file){
+	return {
 		file:file,
-		canExecute:file_canExecute,
-		canRead:file_canRead,
-   		canWrite:file_canWrite,
-   		absoluteFile:file_absoluteFile,
-   		exists:file_exists,
-   		absolutePath:file_absolutePath,
-   		canonicalFile:file_canonicalFile,
-  		canonicalPath:file_canonicalPath ,
-   		freeSpace:file_freeSpace,
-    	name:file_name,
-        parent:file_parent,
-   		parentFile:file_parentFile,
-   		path:file_path,
-    	totalSpace:file_totalSpace,
-    	usableSpace:file_usableSpace,
-    	isAbsolute:file_isAbsolute,
-   		isDirectory:file_isDirectory,
-    	isFile:file_isFile,
-   		isHidden:file_isHidden,
-   		lastModified:file_lastModified,
-  		length:file_length,
-    	toString:file_toString,
-   		toURI:file_toURI,
-   		toURL:file_toURL,
+		canExecute: file.canExecute(),
+		canRead: file.canRead(),
+   		canWrite: file.canWrite(),
+   		absoluteFile: file.getAbsoluteFile(),
+   		exists: file.exists(),
+   		absolutePath: file.getAbsolutePath(),
+   		canonicalFile: file.getCanonicalFile(),
+  		canonicalPath: file.getCanonicalPath(),
+   		freeSpace: file.getFreeSpace(),
+    	name: file.getName(),
+        parent: file.getParent(),
+   		parentFile: file.getParentFile(),
+   		path: file.getPath(),
+    	totalSpace: file.getTotalSpace(),
+    	usableSpace: file.getUsableSpace(),
+    	isAbsolute: file.isAbsolute(),
+   		isDirectory: file.isDirectory(),
+    	isFile: file.isFile(),
+   		isHidden: file.isHidden(),
+   		lastModified: file.lastModified(),
+  		length: file.length(),
+    	toString:file.toString(),
+   		toURI: file.toURI(),
+   		toURL: file.toURL(),		
 	};
-	
-	return inf;
 }
-function fileList(path, actions) {
-	var root_file = new java.io.File(path);
+export function fileList(path, actions) {
+	let root_file = new java.io.File(path);
 	iterator(root_file);
 
 	function iterator(file) {try
@@ -137,9 +115,9 @@ function fileList(path, actions) {
 			}
 			else
 			{
-				var subfiles = file.listFiles();
+				let subfiles = file.listFiles();
 				if (actions.onDir != null) actions.onDir(file);
-				for (var i in subfiles)
+				for (let i in subfiles)
 				{
 					iterator(subfiles[i]);
 				}
@@ -148,28 +126,28 @@ function fileList(path, actions) {
 		catch(e){Exception(e);}
 	}
 }
-function iterateForDirAndFileInformatica(iteratePath){
-	var file_count = 0;
-	var dir_count = 0;
-	var files_size = 0;
+export function iterateForDirAndFileInformatica(iteratePath){
+	let file_count = 0;
+	let dir_count = 0;
+	let files_size = 0;
 	
 	fileList(iteratePath, {
 		onDir:function(dir){
-			//var inf = FileInformation(dir);
+			//let inf = FileInformation(dir);
 			dir_count ++;
 		},
 		onFile:function(file){
-			var inf = FileInformation(file);
+			let inf = FileInformation(file);
 			file_count ++;
 			files_size += inf.length;
 	}});
 	
 	return {totalSize:files_size, files:file_count, dirs:dir_count, all: file_count + dir_count};
 }
-function searchFile(path, fileName, searchMode, searchRang){
-	var results = new Array();
-	var keyword = fileName.replace(/\./g, "\\\\.").replace(/\./g, "\\\\.").replace(/\[/g, "\\\\[").replace(/\]/g, "\\\\]").replace(/\(/g, "\\\\(").replace(/\)/g, "\\\\)").replace(/\{/g, "\\\\{").replace(/\}/g, "\\\\}").replace(/\-/g, "\\\\-").replace(/\^/g, "\\\\^").replace(/\$/g, "\\\\$").replace(/\&/g, "\\\\&").replace(/\|/g, "\\\\|");
-	var regexp = new RegExp(".*" + keyword + ".*");
+export function searchFile(path, fileName, searchMode, searchRang){
+	let results = new Array();
+	let keyword = fileName.replace(/\./g, "\\\\.").replace(/\./g, "\\\\.").replace(/\[/g, "\\\\[").replace(/\]/g, "\\\\]").replace(/\(/g, "\\\\(").replace(/\)/g, "\\\\)").replace(/\{/g, "\\\\{").replace(/\}/g, "\\\\}").replace(/\-/g, "\\\\-").replace(/\^/g, "\\\\^").replace(/\$/g, "\\\\$").replace(/\&/g, "\\\\&").replace(/\|/g, "\\\\|");
+	let regexp = new RegExp(".*" + keyword + ".*");
 	if (searchMode == SearchMode.Dir){
 			fileList(path, {
 			onDir:function(dir){

@@ -1,5 +1,5 @@
 function JsonText(str) {
-	var json = new org.json.JSONObject(str);
+	let json = new org.json.JSONObject(str);
 	
 	this.Null = json.Null;
 	this.length = json.length();
@@ -32,7 +32,7 @@ function JsonText(str) {
 		return json.toJSONArray(new org.json.JSONArray(ToStringJsonArray(names)));
 	};
 	this.keys = function(){
-		var res = [];
+		let res = [];
 		while(json.keys().hasNext())
             res.push(json.keys().next() + "");
 		return res;
@@ -77,7 +77,7 @@ function JsonText(str) {
 
 function JsonFile(path){
 	
-	var json = new org.json.JSONObject(readText(path));
+	let json = new org.json.JSONObject(readText(path));
 	
 	this.Null = json.Null;
 	this.length = json.length();
@@ -113,7 +113,7 @@ function JsonFile(path){
 		return json.toJSONArray(new org.json.JSONArray(ToStringJsonArray(names)));
 	};
 	this.keys = function(){
-		var res = [];
+		let res = [];
 		while(json.keys().hasNext())
             res.push(json.keys().next() + "");
 		return res;
@@ -156,7 +156,7 @@ function JsonFile(path){
 	};
 }
 function JsonArrayFile(path){
-	var array = new org.json.JSONArray(readText(path));
+	let array = new org.json.JSONArray(readText(path));
 
 	this.length = array.length();
 	
@@ -216,8 +216,8 @@ function JsonArrayFile(path){
 	};
 }
 function ToStringJsonArray(array){
-	var res = "[";
-	for (var i in array)
+	let res = "[";
+	for (let i in array)
 	{
 		if (i != array.length - 1) {
 			parse(i, ",");
@@ -241,14 +241,14 @@ function ToStringJsonArray(array){
 	return res + "]";
 }
 function ToStringJsonObject(obj){
-	var res = "{";
-	var count = 0;
-	var subcount = 0;
-	for (var i in obj)
+	let res = "{";
+	let count = 0;
+	let subcount = 0;
+	for (let i in obj)
 	{
 		count ++;
 	}
-	for (var y in obj)
+	for (let y in obj)
 	{
 		subcount ++;
 		if (subcount == count)
@@ -280,3 +280,20 @@ function toJavaScriptObject(str){
 }
 
 
+
+
+
+
+
+
+export function json(jstr){
+	if (jstr instanceof org.json.JSONObject || jstr instanceof org.json.JSONArray) {
+		return eval(jstr.toString())
+	} else if (jstr instanceof Array) {
+		return new org.json.JSONArray(jstr);
+	} else if (jstr instanceof String) {
+		return eval(jstr);
+	} else if (jstr instanceof Object) {
+		return new org.json.JSONObject(jstr);
+	} 
+}

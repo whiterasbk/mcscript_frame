@@ -1,7 +1,17 @@
-var PropertiesINI = {
+/*
+	model name: ini.js
+	usage:
+	for:
+	
+	PropertiesINI
+ */
+
+import {PropertiesINILoadMode} from 'defines.js'
+
+export let PropertiesINI = {
 	load : function(path, mode) {
 		
-		var file = new java.io.File(path);
+		let file = new java.io.File(path);
 		if (!file.exists()) 
 			file.createNewFile();
 		
@@ -19,7 +29,7 @@ var PropertiesINI = {
 		this.properties.setProperty(name, value);
 	},
 	setJson : function(json){
-		for (var i in json) {
+		for (let i in json) {
 			this.set(i, json[i]);
 		}
 	},
@@ -27,15 +37,15 @@ var PropertiesINI = {
 		return this.properties.getProperty(name);
 	},
 	getNames :function() {
-		var e = this.properties.keys();
-		var results =[];
+		let e = this.properties.keys();
+		let results =[];
         while(e.hasMoreElements())
            results.push("" + e.nextElement());
 		return results;
 	},
 	getValues : function() {
-		var e = this.properties.elements();
-		var results =[];
+		let e = this.properties.elements();
+		let results =[];
         while(e.hasMoreElements())
            results.push("" + e.nextElement());
 		return results;
@@ -49,6 +59,7 @@ var PropertiesINI = {
 		else if (this.mark == PropertiesINILoadMode.XML)
 			this.properties.storeToXML(new java.io.FileOutputStream(this.textFile), note == null ? "" : note);
 	},
+
 	mark : null,
 	textFile : null,
 	properties : new java.util.Properties()

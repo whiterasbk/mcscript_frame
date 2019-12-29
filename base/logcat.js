@@ -1,4 +1,8 @@
-var Logcat = {
+import {databse} from 'database.js'
+import {Defauts} from 'defines.js'
+
+
+export let Logcat = {
 	LogcatDir : Defaults.LogcatDir,
 	setDir : function(path){
 		this.LogcatDir = path;
@@ -11,8 +15,8 @@ var Logcat = {
 	},
 	log : function(error){
 		if (!LogcatSwitch) return;
-		var content = error + "\n";
-		var db = new databaseTable(this.LogcatDir, "Logcat");
+		let content = error + "\n";
+		let db = new databaseTable(this.LogcatDir, "Logcat");
 		db.createOrOpen("time, content");
 		db.insertData({time:getTime(), content:content});
 		db.close();

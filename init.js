@@ -13,7 +13,7 @@ let __lunch_utils =
 
  */
 
-let ms = {
+export let ms = {
 	scriptCodeStartTime: 0,
 	ctx: com.mojang.minecraftpe.MainActivity.currentMainActivity.get(),
 	__lunch_test_dir: "/storage/sdcard0/JavaScriptProjects/Library/",
