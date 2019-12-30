@@ -1,0 +1,25 @@
+{
+	"configure": {
+
+	},
+	"res": {
+
+	},
+	"script": {
+
+	},
+	"image": {
+
+	},
+	"model": {
+		"base": {
+			"defines.js":"",
+			
+		}
+	},
+	".msc[@hide,@sys]": {
+
+	},
+	"icon.png": "@copy:fromdata",
+	"package-info.json": "@copy:fromdata",
+}
