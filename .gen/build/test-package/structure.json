@@ -13,13 +13,14 @@
 	},
 	"model": {
 		"base": {
-			"defines.js":"",
-			
+			"defines.js":"@copy: base/defines.js",
+			"database.js":"@copy: base/database.js"
 		}
 	},
-	".msc[@hide,@sys]": {
-
+	".msc[@system,@hide]": {
+		"haha":{},
+		"whiter.ini":"develop by whiter"
 	},
-	"icon.png": "@copy:fromdata",
-	"package-info.json": "@copy:fromdata",
+	"icon.png": "@copy-res: 1.png",
+	"package-info.json": "@copy: project-info.json",
 }
